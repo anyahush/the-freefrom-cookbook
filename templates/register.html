@@ -9,21 +9,21 @@
                 <!--username-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z]{5,15}$" class="validate" required>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
                 <!--first name-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first-name" name="first-name" type="text" minlength="3" maxlength="15" pattern="^[a-zA-Z]$" class="validate" required>
+                        <input id="first-name" name="first-name" type="text" minlength="3" maxlength="15" pattern="^\S+$"  class="validate" required>
                         <label for="first-name">First Name</label>
                     </div>
                 </div>
                 <!--surname-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="surname" name="surname" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z]$" class="validate" required>
+                        <input id="surname" name="surname" type="text" minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
                         <label for="surname">Surname</label>
                     </div>
                 </div>
@@ -37,14 +37,14 @@
                 <!--password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" pattern="^[a-zA-Z]{5,15}$" class="validate" required>
+                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <!--confirm password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z]{5,15}$" class="validate">
+                        <input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="15" pattern="^\S+$"  class="validate">
                         <label for="confirm-password">Confirm password</label>
                     </div>
                 </div>
@@ -56,6 +56,15 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <p class="center-align">
+                Already registered?
+                <a href="{{ url_for('login') }}">Login</a>
+            </p>
+        </div>
     </div>
 
 {% endblock %}
