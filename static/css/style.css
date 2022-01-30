@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;400;500&display=swap');
 
 nav {
     background-color: #fff;
     height: 75px;
+    box-shadow: none;
 }
 
 nav ul a, i {
@@ -16,3 +17,22 @@ h1 {
     margin: 10px;
     color: #46759f;
 }
+
+h2 {
+    font-family: "Montserrat";
+    color: #9e8464;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 120%;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
