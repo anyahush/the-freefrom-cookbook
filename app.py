@@ -24,7 +24,6 @@ def get_recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """ register view, when form submitted database
@@ -115,6 +114,10 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
+@app.route("/index")
+def index():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
