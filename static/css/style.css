@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+nav {
+    background-color: #fff;
+    height: 75px;
+}
+
+nav ul a, i {
+    color: #46759f;
+}
+
 h1 {
     font-family: "Lobster";
     text-transform: lowercase;
+    font-size: 100%;
+    margin: 10px;
+    color: #46759f;
 }

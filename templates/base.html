@@ -15,14 +15,13 @@
 <body>
     <header>
         <!--title banner-->
-        <div class="nav-content center">
-            <h1><a href="#!" class="brand-logo">The FreeFrom CookBook</a></h1>
-        </div>
+      
         <!--navbar-->
         <nav>
             <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center"><h1>The FreeFrom CookBook</h1></a>
                 <a href="{{ url_for('get_recipes') }}" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="hide-on-med-and-down brand-logo center">
+                <ul class="hide-on-med-and-down brand-logo right">
                     <li><a href="">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
