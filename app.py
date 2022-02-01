@@ -74,7 +74,7 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login", methods=["GET","POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # check if username exists in db
@@ -125,6 +125,18 @@ def logout():
 @app.route("/index")
 def index():
     return render_template("index.html")
+
+
+@app.route("/recipes/<recipe_title>")
+def recipe(recipe_title):
+    recipe_record = mongo.db.recipes.find_one({"url": recipe_title})
+
+    if recipe_record:
+
+        return render_template(
+            "view-recipe.html",
+            recipe=recipe_record)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
