@@ -165,11 +165,27 @@ def saved_recipes():
     return render_template("saved_recipes.html")
 
 
-@app.route("/create_recipe")
+@app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
     """
     Allow users to create a recipe and save
     """
+    if request.method == "POST":
+        recipe = {
+            "recipe_title": request.form.get("recipe_title"),
+            "category_name": request.form.get("category_name"),
+            "image_url": request.form.get("image_url"),
+            "allergen_name": request.form.getlist("allergen_name"),
+            "servings": request.form.get("servings"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "ingredients": request.form.getlist("ingredients"),
+            "method_step": request.form.getlist("method_step"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Task successfully added")
+        return redirect(url_for("get_recipes"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template("create_recipe.html", categories=categories, allergens=allergens)

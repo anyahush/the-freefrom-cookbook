@@ -38,8 +38,9 @@ h2 {
     font-size: 120%;
 }
 
-h5 {
+h3, h5 {
     text-transform: uppercase;
+    text-align: center;
 }
 
 
