@@ -27,10 +27,15 @@ h2 {
     font-size: 120%;
 }
 
+h5 {
+    text-transform: uppercase;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    color: #71717A;
   }
 
   main {
@@ -39,4 +44,12 @@ body {
 
 .page-footer {
     background-color: #9CBEA3;
+}
+
+.form-input {
+    border-radius: 3px 3px;
+}
+
+input {
+    background-color: #fff;
 }
