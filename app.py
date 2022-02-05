@@ -163,7 +163,11 @@ def saved_recipes():
     Diplays users own recipes and saved recipes
     """
     return render_template("saved_recipes.html")
-    
+
+
+@app.route("/create_recipe")
+def create_recipe():
+    return render_template("create_recipe.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
