@@ -21,12 +21,19 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
+    """
+    Gets recipes from db and displays 
+    """
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    Creates search function, so users can search recipe db for
+    specific recipes or ingredients
+    """
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
@@ -76,6 +83,10 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Allows users to login into an existing account and verifies 
+    username and password
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -104,6 +115,9 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Displays user profile once logged in
+    """
     # get user's username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -116,6 +130,9 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+    """
+    Allows users to logout of account
+    """
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -124,11 +141,18 @@ def logout():
 
 @app.route("/index")
 def index():
+    """
+    Displays the home page
+    """
     return render_template("index.html")
 
 
 @app.route("/recipes/<recipe_title>")
 def recipe(recipe_title):
+    """
+    Displays selected recipe in seperate page 
+    based on recipe_title
+    """
     recipe_record = mongo.db.recipes.find_one({"url": recipe_title})
 
     if recipe_record:
@@ -136,7 +160,7 @@ def recipe(recipe_title):
         return render_template(
             "view-recipe.html",
             recipe=recipe_record)
-
+    
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
