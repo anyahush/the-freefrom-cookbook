@@ -24,18 +24,17 @@
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                     {% endfor %}
                 </select>
-                <label>Category</label>
+                <label for="category_name">Category</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <select multiple>
+                <select multiple id="allergen" name="allergen" class="validate" required>
                     <option value="" disabled selected>Select</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <label>Free From</label>
+                    {% for allergen in allergens %}
+                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                    {% endfor %}
+                <label for="allergen_name">Free From</label>
             </div>
         </div>
 
