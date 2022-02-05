@@ -155,6 +155,14 @@ def view_recipe(recipe_id):
     """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("view_recipe.html", recipe=recipe)
+
+
+@app.route("/saved_recipes")
+def saved_recipes():
+    """
+    Diplays users own recipes and saved recipes
+    """
+    return render_template("saved_recipes.html")
     
 
 if __name__ == "__main__":
