@@ -26,7 +26,7 @@
         {% for recipe in recipes %}
         <div class="card">
             <div class="card-image">
-                <a href="/recipes/{{ recipe.url }}}}">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
                     <img src="images/sample-1.jpg">
                     <span class="card-title">Title</span>
                 </a>

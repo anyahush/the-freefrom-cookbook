@@ -18,7 +18,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route("/")
+def index():
+    """
+    Displays the home page
+    """
+    return render_template("index.html")
+
+
 @app.route("/get_recipes")
 def get_recipes():
     """
@@ -139,27 +147,14 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/index")
-def index():
-    """
-    Displays the home page
-    """
-    return render_template("index.html")
-
-
-@app.route("/recipes/<recipe_title>")
-def recipe(recipe_title):
+@app.route("/view_recipe/<recipe_id>")
+def view_recipe(recipe_id):
     """
     Displays selected recipe in seperate page 
     based on recipe_title
     """
-    recipe_record = mongo.db.recipes.find_one({"url": recipe_title})
-
-    if recipe_record:
-
-        return render_template(
-            "view-recipe.html",
-            recipe=recipe_record)
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("view_recipe.html", recipe=recipe)
     
 
 if __name__ == "__main__":
