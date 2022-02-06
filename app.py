@@ -175,7 +175,7 @@ def create_recipe():
             "recipe_title": request.form.get("recipe_title"),
             "category_name": request.form.get("category_name"),
             "image_url": request.form.get("image_url"),
-            "allergen_name": request.form.getlist("allergen_name"),
+            "allergen_list": request.form.getlist("allergen_list"),
             "servings": request.form.get("servings"),
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
@@ -193,6 +193,7 @@ def create_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """ Allow users to edit existing recipe """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     categories = mongo.db.categories.find().sort("category_name", 1)

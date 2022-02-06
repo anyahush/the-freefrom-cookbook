@@ -36,13 +36,13 @@
                 <label for="category_name">Category</label>
             </div>
             <div class="input-field col s6">
-                <select multiple id="allergen_name" name="allergen_name" class="validate" required>
+                <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled selected>Select</option>
                     {% for allergen in allergens %}
                     <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                     {% endfor %}
                 </select>
-                <label for="category_name">Free From</label>
+                <label for="allergen_list">Free From</label>
             </div>
         </div>
         <!-- recipe prep and cook time -->
@@ -61,7 +61,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <input id="recipe_description" name="recipe_description" type="text" minlength="10" maxlength="250"
-                    pattern="^[A-Za-z][A-Za-z]*$" class="validate" required>
+                    class="validate" required>
                 <label for="recipe_description">Description</label>
                 <p>Between 10 and 250 characters</p>
             </div>
