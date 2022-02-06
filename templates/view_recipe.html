@@ -25,8 +25,11 @@
 
     </div>
     <div><p> <em>by: {{ recipe.created_by }}</em></p></div>
-    <div>
-        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small">Edit</a></div>
+    {% if session.user|lower == recipe.created_by|lower %}
+        <div>
+            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small">Edit</a>
+        </div>
+    {% endif %}
 </div>
 
   
