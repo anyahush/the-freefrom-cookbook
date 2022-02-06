@@ -11,7 +11,7 @@
             </div>
             <div class="col s12 m4">
                 <a href="{{ url_for('get_recipes') }}" class="red btn">Reset</a>
-                <button type="submit" class="light-blue"> 
+                <button type="submit" class="light-blue">
                     <i class="fas fa-search left"></i>Search
                 </button>
             </div>
@@ -23,42 +23,43 @@
 {% if recipes|length > 0 %}
 <div class="row">
     {% for recipe in recipes %}
-        <div class="col s12 m4">
-            {% if loop.index / 4 %}
-            <div class="card">
-                <div class="card-image">
-                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
-                        <img src="{{ recipe.image_url }}">
-                        <span class="card-title">Title</span>
-                    </a>
-                </div>
-                <div class="card-content">
-                    <h5>{{ recipe.recipe_title}}</h5>
-                    <p>{{ recipe.description }}</p>
-                    
-                    <p>Cook time: {{ recipe.cook_time}}</p>
-
-                </div>
-                <div class="card-action">
-                    <p>Serves: {{ recipe.servings}}</p>
-                </div>
+    <div class="col s12 m6 l4">
+        {% if loop.index / 4 %}
+        <div class="card">
+            <div class="card-image">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                    <img src="{{ recipe.image_url }}">
+                </a>
             </div>
-       
+            <div class="card-content">
+                <h5>{{ recipe.recipe_title}}</h5>
+                <p>{{ recipe.recipe_description }}</p>
+                <p>
+                    <span>
+                        <i class="fas fa-clock"></i> {{ recipe.cook_time}}
+                    </span>
+                    <span>
+                        <i class="fas fa-utensils"></i> Serves: {{ recipe.servings}}
+                    </span>
+                </p>
+            </div>
         </div>
- <div class="row">
+
+    </div>
+    <div class="row">
         {% endif %}
-    {% endfor %}
-</div>
-   
+        {% endfor %}
+    </div>
+
 </div>
 {% else %}
-    <div>
-        <h2>No results found</h2>
-    </div>
+<div>
+    <h2>No results found</h2>
+</div>
 {% endif %}
-  
-  
- 
+
+
+
 
 
 
