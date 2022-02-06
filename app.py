@@ -194,11 +194,29 @@ def create_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     """ Allow users to edit existing recipe """
+    if request.method == "POST":
+        edit = {
+            "recipe_title": request.form.get("recipe_title"),
+            "category_name": request.form.get("category_name"),
+            "image_url": request.form.get("image_url"),
+            "allergen_list": request.form.getlist("allergen_list"),
+            "servings": request.form.get("servings"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "ingredients": request.form.getlist("ingredients"),
+            "method_step": request.form.getlist("method_step"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        flash("Task successfully updated")
+
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories, allergens=allergens)
+    return render_template(
+        "edit_recipe.html", recipe=recipe,
+        categories=categories, allergens=allergens)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

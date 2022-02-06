@@ -6,7 +6,7 @@
         <!-- recipe title -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9]*$" required>
+                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9_ ]*$" required>
                 <label for="recipe_title">Recipe Title</label>
             </div>
         </div>
@@ -43,9 +43,6 @@
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled>Select</option>
                     {% for allergen in allergens %}
-                        {% for allergen in recipe.allergen_name %}
-                            <option value="{{ recipe.allergen_list}}" selected>{{ recipe.allergen_name }}</option>
-                        {% endfor %}
                             <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                     {% endfor %}
                 </select>
