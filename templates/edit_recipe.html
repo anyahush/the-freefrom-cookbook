@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Edit Recipe</h3>
+<div class="row">
+    <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
+        <!-- recipe title -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="recipe_title" name="recipe_title" type="text" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9]*$" required>
+                <label for="recipe_title">Recipe Title</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- recipe image -->
+            <div class="input-field col s8">
+                <!-- regex pattern taken from https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631 -->
+                <input id="image_url" name="image_url" type="text" placeholder="Optional" class="validate" pattern="^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$">
+                <label for="image_url">Upload image url</label>
+            </div>
+            <!-- number of servings -->
+            <div class="input-field col s4">
+                <input id="servings" name="servings" type="text" minlength="1" maxlength="20" class="validate" required>
+                <label for="servings">Servings</label>
+            </div>
+        </div>
+        <!-- recipe category -->
+        <div class="row">
+            <div class="input-field col s6">
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Select</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name">Category</label>
+            </div>
+            <div class="input-field col s6">
+                <select multiple id="allergen_name" name="allergen_name" class="validate" required>
+                    <option value="" disabled selected>Select</option>
+                    {% for allergen in allergens %}
+                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name">Free From</label>
+            </div>
+        </div>
+        <!-- recipe prep and cook time -->
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="prep_time" name="prep_time" type="text" minlength="1" maxlength="5" class="validate" pattern="^[0-9]*$" required>
+                <label for="prep_time">Prep Time</label>
+                <p>Time in minutes</p>
+            </div>
+            <div class="input-field col s6">
+                <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5" class="validate" pattern="^[0-9]*$"  required>
+                <label for="cook_time">Cook Time</label>
+            </div>
+        </div>
+        <!-- recipe description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="recipe_description" name="recipe_description" type="text" minlength="10" maxlength="250"
+                    pattern="^[A-Za-z][A-Za-z]*$" class="validate" required>
+                <label for="recipe_description">Description</label>
+                <p>Between 10 and 250 characters</p>
+            </div>
+        </div>
+        <!--used from Wanderlust Recipes full details in README -->
+        <!-- add ingredients -->
+        <div class="row">
+            <div class="col s12">
+                <h6>Ingredients</h6>
+            </div>
+            <div class="col s12">
+                <ul id="ingredients" class="collection validate">
+                    <li class="collection-item">
+                        <a class="btn-floating btn-small waves-effect waves-light add-ingredient-list-item">
+                            <i class="fas fa-plus"></i>
+                            <span class="sr-only">Add Ingredient</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- add method -->
+        <div class="row">
+            <div class="col s12">
+                <h6>Method</h6>
+            </div>
+            <div class="col s12">
+                <ul id="method_step" class="collection validate">
+                    <li class="collection-item">
+                        <a class="btn-floating btn-small waves-effect waves-light add-method-step-item">
+                            <i class="fas fa-plus"></i>
+                            <span class="sr-only">Add Method Step</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--End of Wanderlust code -->
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn large">
+                    Edit Recipe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock%}
