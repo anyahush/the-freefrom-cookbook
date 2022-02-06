@@ -91,6 +91,12 @@ As admin:
 
 ## Credits
 
+### Code
+- User Authentication and validating the Materialize select dropdown used from Code Institute's Task Manager mini project https://github.com/Code-Institute-Solutions/TaskManagerAuth
+- Regex pattern for users to submit an image url used from https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631
+- Code for users to submit ingredients and method steps when creating a recipe and scheme design was used from https://github.com/RussOakham/wanderlust-recipes
+- 
+
 ### Content
 
 ### Media
