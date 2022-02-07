@@ -97,6 +97,12 @@ span {
     margin: 0 20px;
 }
 
+/* view- recipe page */
+.recipe_img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
 /* media queries */
 @media screen and (max-width: 768px) {
     h1 {
