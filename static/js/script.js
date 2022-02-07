@@ -34,7 +34,23 @@
 //End of CI code
 
 // Add list item to ingredients list when '+' button hit
-// Used from https://github.com/RussOakham/wanderlust-recipes/blob/master/static/js/script.js
+// Modified from https://github.com/RussOakham/wanderlust-recipes/blob/master/static/js/script.js
+$('#allergen_list .add-allergern-list-item').click(function (event) {
+    let AllergenItem = `<select multiple id="allergen_list" name="allergen_list" class="validate" required>
+                            <option value="" disabled selected>Select</option>
+                                {% for allergen in allergens %}
+                                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                                {% endfor %}
+                        </select>
+                        <label for="allergen_list">Free From</label>`;
+    $(this).parent().before(AllergenItem);
+});
+  
+  // Remove ingredient list item on click
+  $('#allergen_list').on("click", ".remove-list-item", function (event) {
+    $(this).parent().remove();
+  });
+
 $('#ingredients .add-ingredient-list-item').click(function (event) {
   let IngredientItem = `<li class="collection-item">
                               <div class="input-field">
@@ -74,5 +90,7 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
   $(this).parent().remove();
 });
 // End of Wanderlust code 
+
+
 
 

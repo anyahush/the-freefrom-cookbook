@@ -40,7 +40,7 @@
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled selected>Select</option>
                     {% for allergen in allergens %}
-                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                    <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                     {% endfor %}
                 </select>
                 <label for="allergen_list">Free From</label>

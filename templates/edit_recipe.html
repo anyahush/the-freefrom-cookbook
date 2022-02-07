@@ -15,8 +15,7 @@
         <div class="row">
             <!-- recipe image -->
             <div class="input-field col s8">
-                <!-- regex pattern taken from https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631 -->
-                <input id="image_url" name="image_url" type="text"  value="{{ recipe.image_url }}" placeholder="Optional" class="validate" pattern="^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$">
+                <input id="image_url" name="image_url" type="text"  value="{{ recipe.image_url }}" placeholder="Optional" class="validate">
                 <label for="image_url">Upload image url</label>
             </div>
             <!-- number of servings -->
@@ -43,9 +42,15 @@
             <div class="input-field col s6">
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled>Select</option>
-                    {% for allergen in allergens %}
-                            <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
-                    {% endfor %}
+                    
+                        {% for allergen in recipe.allergen_list %}
+                            <option value="{{ allergen }}" selected>{{ allergen }}</option>
+                        {% endfor %}
+                        {% for allergen in allergens %}
+                            <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                        {% endfor %}
+                       
+                
                 </select>
                 <label for="allergen_list">Free From</label>
             </div>
