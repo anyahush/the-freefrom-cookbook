@@ -209,8 +209,8 @@ def edit_recipe(recipe_id):
             "method_step": request.form.getlist("method_step"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
-        flash("Task successfully updated")
+        mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
+        flash("Recipe successfully updated")
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
