@@ -53,8 +53,19 @@ h5 {
     background-color: #a22843;
 }
 
-.form-input {
+#social-media-links {
+    display: flex;
+}
+
+#social-media-links i {
+    color: #fff;
+    font-size: 150%;
+    margin: 0 20px 0 0;
+}
+
+input[type=email]:not(.browser-default) {
     border-radius: 3px 3px;
+    background: #fff;
 }
 
 /* home page */
@@ -106,6 +117,9 @@ span {
     #hero_image {
         height: 350px;
     }
+    input[type=email]:not(.browser-default) {
+        width: 75%
+    }
     
 }
 
@@ -118,6 +132,9 @@ span {
     }
     #hero_image {
         height: 400px;
+    }
+    input[type=email]:not(.browser-default) {
+        width: 50%;
     }
     
 }
