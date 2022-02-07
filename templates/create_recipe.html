@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h3>Create Recipe</h3>
+<div class="container">
+    <h3>Create Recipe</h3>
 <div class="row">
     <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('create_recipe')}}">
         <!-- recipe title -->
@@ -110,6 +110,8 @@
             </div>
         </div>
     </form>
+</div>
+
 </div>
 
 {% endblock%}
