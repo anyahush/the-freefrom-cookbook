@@ -2,9 +2,10 @@
 {% block content %}
 <div class="container">
     <h3>Edit Recipe</h3>
-<div class="row">
-    <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
-        <!-- recipe title -->
+    <div class="row">
+        <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
+        <div class="card-panel">
+             <!-- recipe title -->
         <div class="row">
             <div class="input-field col s12">
                 <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9_ ]*$" required>
@@ -49,8 +50,6 @@
                         {% for allergen in allergens %}
                             <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                         {% endfor %}
-                       
-                
                 </select>
                 <label for="allergen_list">Free From</label>
             </div>
@@ -138,15 +137,20 @@
         <!--End of Wanderlust code -->
         <!-- edit recipe button -->
         <div class="row">
-            <div class="col s12 center-align">
+            <div class="col s12 m6 center-align">
                 <a href="{{ url_for('saved_recipes') }}" class="btn-large red">Cancel</a>
-                <button type="submit" class="btn large">
+            </div>
+            <div class="col s12 m6 center-align">
+                <button type="submit" class="btn-large">
                     Edit Recipe
                 </button>
             </div>
         </div>
-    </form>
-</div>
+
+        </div>
+       
+        </form>
+    </div>
 
 </div>
 

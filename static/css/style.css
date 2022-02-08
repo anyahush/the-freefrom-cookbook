@@ -112,8 +112,8 @@ span {
     object-fit: cover;
 }
 
-hr {
-    width: 70%;
+.fa-plus {
+    background-color: #31625c;
 }
 
 /* media queries */
