@@ -8,7 +8,7 @@
              <!-- recipe title -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9]*$" required>
+                <input id="recipe_title" name="recipe_title" type="text" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9_ ]*$" required>
                 <label for="recipe_title">Recipe Title</label>
             </div>
         </div>
@@ -16,8 +16,7 @@
         <div class="row">
             <!-- recipe image -->
             <div class="input-field col s8">
-                <!-- regex pattern taken from https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631 -->
-                <input id="image_url" name="image_url" type="text" placeholder="Optional" class="validate" pattern="^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$">
+                <input id="image_url" name="image_url" type="text" placeholder="Optional" class="validate">
                 <label for="image_url">Upload image url</label>
             </div>
             <!-- number of servings -->
@@ -26,8 +25,9 @@
                 <label for="servings">Servings</label>
             </div>
         </div>
-        <!-- recipe category -->
+        
         <div class="row">
+            <!-- recipe category -->
             <div class="input-field col s6">
                 <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled selected>Select</option>
@@ -37,6 +37,7 @@
                 </select>
                 <label for="category_name">Category</label>
             </div>
+            <!-- allergen dropdown -->
             <div class="input-field col s6">
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled selected>Select</option>
