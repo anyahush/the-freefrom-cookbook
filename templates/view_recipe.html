@@ -1,26 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>{{ recipe.recipe_title }}</h3>
-<hr>
 
 <div class="container">
     <div class="row">
+        <div class="col s12">
+            <h4>{{ recipe.recipe_title }}</h4>
+            <hr>
+        </div>
         <div class="col s12 m8 content-container">
             <img class="recipe_img" src="{{ recipe.image_url }}">  
         </div>
-        <div class="col s12 m3 offset-m1 content-container">
+        <div class="col s12 m4 content-container">
             <h6>{{ recipe.recipe_description }}</h6>
-            <h6>Serves: {{ recipe.servings }}</h6>
-            
-            <h6>Free From:
-                {% for allergen in recipe.allergen_list %}
-                    {{ allergen }}, 
-                {% endfor %}
-            </h6>
-            <div>
-                <h6>Prep Time: {{ recipe.prep_time }}</h6>
-                <h6>Cook Time: {{ recipe.cook_time }}</h6>
+            <div class="content-container">
+                <h6 class="bold-heading">Serves: {{ recipe.servings }}</h6>
+
+                <h6 class="bold-heading">Free From:
+                    {% for allergen in recipe.allergen_list %}
+                    {{ allergen }},
+                    {% endfor %}
+                </h6>
+
+                <h6 class="bold-heading">Prep Time: {{ recipe.prep_time }}</h6>
+                <h6 class="bold-heading">Cook Time: {{ recipe.cook_time }}</h6>
             </div>
+  
         </div>
 
     </div>
