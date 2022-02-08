@@ -43,13 +43,13 @@
             <div class="input-field col s6">
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
                     <option value="" disabled>Select</option>
-                    
-                        {% for allergen in recipe.allergen_list %}
-                            <option value="{{ allergen }}" selected>{{ allergen }}</option>
-                        {% endfor %}
-                        {% for allergen in allergens %}
+                    {% for allergen in allergens %}
+                        {% if allergen.allergen_name in recipe.allergen_list %}
+                            <option value="{{ allergen.allergen_name }}" selected>{{ allergen.allergen_name }}</option>
+                        {% else %}
                             <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
-                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                 </select>
                 <label for="allergen_list">Free From</label>
             </div>
