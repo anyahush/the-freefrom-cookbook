@@ -98,6 +98,11 @@ As admin:
 - 
 
 ### Content
+Recipes added by the developer/ admin are a mixture of their own recipes, modified and used from various sites, as shown below:
+- https://www.bbcgoodfood.com/
+-  https://www.twopeasandtheirpod.com/
+- https://realfood.tesco.com/
+
 
 ### Media
 
