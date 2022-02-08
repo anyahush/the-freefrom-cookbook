@@ -33,7 +33,8 @@ def get_recipes():
     Gets recipes from db and displays 
     """
     recipes = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipes=recipes)
+    allergens = mongo.db.allergens.find().sort("allergen_name", 1)
+    return render_template("recipes.html", recipes=recipes, allergens=allergens)
 
 
 @app.route("/search", methods=["GET", "POST"])

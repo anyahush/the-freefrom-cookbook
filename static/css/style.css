@@ -138,6 +138,20 @@ span {
     color: #31625c;
 }
 
+.collapsible {
+    box-shadow: none;
+    border: none;
+}
+
+.collapsible-header {
+    justify-content: center;
+    border-bottom: none;
+}
+
+#allergen_search_bar li {
+    display: flex;
+}
+
 .fa-plus {
     background-color: #31625c;
 }

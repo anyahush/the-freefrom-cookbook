@@ -1,6 +1,7 @@
  $(document).ready(function(){
     $('.sidenav').sidenav();
     $('select').formSelect();
+    $('.collapsible').collapsible();
 
     // used from Code Institute Task Manager full details in README
     validateMaterializeSelect();
