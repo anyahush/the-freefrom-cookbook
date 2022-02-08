@@ -221,6 +221,11 @@ def edit_recipe(recipe_id):
         "edit_recipe.html", recipe=recipe,
         categories=categories, allergens=allergens)
 
+
+@app.route("/shopping_list")
+def shopping_list():
+    return render_template("shopping_list.html")
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
