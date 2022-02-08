@@ -49,6 +49,11 @@ h5 {
     font-size: 130%;
 }
 
+.btn-large {
+    background-color: #31625c;
+}
+
+/* footer */
 .page-footer {
     background-color: #a22843;
 }
@@ -63,7 +68,7 @@ h5 {
     margin: 0 20px 0 0;
 }
 
-input[type=email]:not(.browser-default) {
+#newsletter_email {
     border-radius: 3px 3px;
     background: #fff;
 }
@@ -131,7 +136,7 @@ hr {
     #hero_image {
         height: 350px;
     }
-    input[type=email]:not(.browser-default) {
+    #newsletter_email {
         width: 75%
     }
     
@@ -147,7 +152,7 @@ hr {
     #hero_image {
         height: 400px;
     }
-    input[type=email]:not(.browser-default) {
+    #newsletter_email {
         width: 50%;
     }
     
