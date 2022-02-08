@@ -34,6 +34,8 @@
 });
 //End of CI code
 
+
+
 // Add list item to ingredients list when '+' button hit
 // Modified from https://github.com/RussOakham/wanderlust-recipes/blob/master/static/js/script.js
 $('#allergen_list .add-allergern-list-item').click(function (event) {

@@ -19,7 +19,7 @@ nav {
     box-shadow: none;
 }
 
-nav ul a {
+nav ul a, .fa-bars, .sidenav li>a {
     color: #71717A;
     text-transform: uppercase;
 }
@@ -36,7 +36,7 @@ h2 {
     color: #9e8464;
     text-transform: uppercase;
     text-align: center;
-    font-size: 90%;
+    font-size: 120%;
 }
 
 h3, h4 {
@@ -190,7 +190,7 @@ span {
         font-size: 200%;
     }
     #hero_image {
-        height: 400px;
+        height: 500px;
     }
     #newsletter_email {
         width: 50%;
