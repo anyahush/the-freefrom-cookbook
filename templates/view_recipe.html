@@ -13,16 +13,16 @@
         <div class="col s12 m4 content-container">
             <h6>{{ recipe.recipe_description }}</h6>
             <div class="content-container">
-                <h6 class="bold-heading">Serves: {{ recipe.servings }}</h6>
+                <h6><strong>Serves: </strong>{{ recipe.servings }}</h6>
 
-                <h6 class="bold-heading">Free From:
+                <h6><strong>Free From:</strong>
                     {% for allergen in recipe.allergen_list %}
                     {{ allergen }},
                     {% endfor %}
                 </h6>
 
-                <h6 class="bold-heading">Prep Time: {{ recipe.prep_time }}</h6>
-                <h6 class="bold-heading">Cook Time: {{ recipe.cook_time }}</h6>
+                <h6><strong>Prep Time: </strong>{{ recipe.prep_time }}</h6>
+                <h6><strong>Cook Time:</strong> {{ recipe.cook_time }}</h6>
             </div>
   
         </div>
