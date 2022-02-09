@@ -8,7 +8,7 @@
             <hr>
         </div>
         <div class="col s12 m8 content-container">
-            <img class="recipe_img" src="{{ recipe.image_url }}">  
+                <img class="recipe_img" src="{{ recipe.image_url }}">  
         </div>
         <div class="col s12 m4 content-container">
             <h6>{{ recipe.recipe_description }}</h6>
@@ -21,8 +21,8 @@
                     {% endfor %}
                 </h6>
 
-                <h6><strong>Prep Time: </strong>{{ recipe.prep_time }}</h6>
-                <h6><strong>Cook Time:</strong> {{ recipe.cook_time }}</h6>
+                <h6><strong>Prep Time: </strong>{{ recipe.prep_time }} minutes</h6>
+                <h6><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</h6>
             </div>
             <div class="content-container">
                 {% if session.user|lower == recipe.created_by|lower %}
@@ -31,6 +31,10 @@
 
                     <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small">Delete</a>
+                {% endif %}
+                {% if session. user %}
+                    <a href=""
+                    class="waves-effect waves-light btn-small">Save</a>
                 {% endif %}
             </div>
   
@@ -41,7 +45,7 @@
     <div class="row">
         <!--modified from Wanderlust recipes. Full details in README -->
         <div class="col s12 m4 content-container">
-            <form action="POST" action="url_for('create_shopping_list') }}">
+            <form action="POST" action="">
                 <h5>Ingredients</h5>
                 <ul id="shopping_list">
                     {% for ingredient in recipe.ingredients %}
@@ -68,6 +72,20 @@
                 {% endfor %}
             </ol>
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {% if session.user %}
+                <h5>Leave a comment</h5>
+                <form action="">
+                    <input type="text">
+                    <label for=""></label>
+                </form>
+            {% endif %}
+        </div>
+        <div class="col s12">
+            <h5>Comments</h5>
         </div>
     </div>
 </div>
