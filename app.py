@@ -34,7 +34,8 @@ def get_recipes():
     """
     recipes = list(mongo.db.recipes.find())
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
-    return render_template("recipes.html", recipes=recipes, allergens=allergens)
+    return render_template(
+        "recipes.html", recipes=recipes, allergens=allergens)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -190,7 +191,8 @@ def create_recipe():
         return redirect(url_for("get_recipes"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
-    return render_template("create_recipe.html", categories=categories, allergens=allergens)
+    return render_template(
+        "create_recipe.html", categories=categories, allergens=allergens)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -229,24 +231,35 @@ def delete_recipe(recipe_id):
     flash("Recipe successfully deleted")
     return redirect(url_for("saved_recipes"))
 
-
-@app.route("/shopping_list/<recipe_id>", methods=["GET", "POST"])
-def shopping_list(recipe_id):
+@app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
+def create_shopping_list(recipe_id):
     """ Users can select ingredients to save to own profile """
-    user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
+    if "user" in session:
 
-    if request.method == "POST":
-        shopping_list: request.form.getlist("shopping_list")
+        user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
+        recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-        update = mongo.db.profiles.update(
-            {"users_id": ObjectId(user_id)},
-            {"$addToSet": {"own_shopping_list": shopping_list}}
-        )
-        if update:
-            flash("Shopping List Saved")
-            return redirect("get_recipes")
+        if request.method == "POST":
+            update_list = {
+                shopping_list: request.form.getlist("shopping_list")
+            }
 
-    return render_template("shopping_list.html", shopping_list=shopping_list(recipe_id))
+            update = mongo.db.profiles.insert_one(
+                {"user_id": ObjectId(user_id)},
+                {"$addToSet": {"own_shopping_list": update_list}})
+
+            if update:
+                flash("Shopping List Saved")
+                return redirect("get_recipes")
+
+
+@app.route("/shopping_list", methods=["GET", "POST"])
+def shopping_list():
+    """ Dislays users saved shopping items """
+
+    return render_template("shopping_list.html")
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
