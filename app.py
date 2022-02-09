@@ -29,7 +29,9 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    """ Displays content to user about the site """
+    allergens = mongo.db.allergens.find().sort("allergen_name", 1)
+    return render_template("about.html", allergens=allergens)
 
 @app.route("/get_recipes")
 def get_recipes():
