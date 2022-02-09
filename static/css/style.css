@@ -110,6 +110,14 @@ hr {
     border-bottom: none;
 }
 
+.about-lists li {
+    margin: 10px 0;
+}
+
+.fa-solid {
+    margin: 0 5px;
+}
+
 
 /* recipes */
 .select-wrapper input.select-dropdown, ::placeholder {

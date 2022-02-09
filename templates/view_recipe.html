@@ -8,7 +8,7 @@
             <hr>
         </div>
         <div class="col s12 m8 content-container">
-                <img class="recipe_img" src="{{ recipe.image_url }}">  
+            <img class="recipe_img" src="{{ recipe.image_url }}">
         </div>
         <div class="col s12 m4 content-container">
             <h6>{{ recipe.recipe_description }}</h6>
@@ -17,7 +17,7 @@
 
                 <h6><strong>Free From:</strong>
                     {% for allergen in recipe.allergen_list %}
-                        {{ allergen }},
+                    {{ allergen }},
                     {% endfor %}
                 </h6>
 
@@ -26,18 +26,17 @@
             </div>
             <div class="content-container">
                 {% if session.user|lower == recipe.created_by|lower %}
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
-                        class="waves-effect waves-light btn-small">Edit</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                    class="waves-effect waves-light btn-small">Edit</a>
 
-                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small">Delete</a>
                 {% endif %}
                 {% if session. user %}
-                    <a href=""
-                    class="waves-effect waves-light btn-small">Save</a>
+                <a href="" class="waves-effect waves-light btn-small">Save</a>
                 {% endif %}
             </div>
-  
+
         </div>
 
     </div>
@@ -58,7 +57,7 @@
                     {% endfor %}
                 </ul>
                 {% if session.user %}
-                    <button type="submit" class="btn">Save to Shopping List</button>
+                <button type="submit" class="btn">Save to Shopping List</button>
                 {% endif %}
             </form>
         </div>
@@ -77,32 +76,30 @@
     <div class="row">
         <div class="col s12">
             {% if session.user %}
-                <h5>Leave a comment</h5>
-                <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
-                    <div class="">
-                        <input type="text" id="user_comment" name="user_comment">
-                        <label for="user_comment"></label>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn">Save</button>
-                    </div>
-                   
-                </form>
+            <h5>Leave a comment</h5>
+            <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
+                <div class="col s8">
+                    <input type="text" id="user_comment" name="user_comment">
+                    <label for="user_comment"></label>
+                </div>
+                <div class="col s4">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+
+            </form>
             {% endif %}
         </div>
         <div class="col s12">
             <h5>Comments</h5>
-            {% for comment in recipe.comments %}
-                <div>
-                    {{ comment.author }}
-                </div>
-                <div class="">
-                    {{ comment.comment }}
-                </div>
-            {% endfor %}
         </div>
+        {% for comment in recipe.comments %}
+        <div class="col s12">        
+            <p>{{- comment.author -}}  {{- comment.comment -}}</p>
+        </div>
+        {% endfor %}
     </div>
 </div>
-                
-        
+
+
+
 {% endblock %}
