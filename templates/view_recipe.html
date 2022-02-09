@@ -40,18 +40,23 @@
 
     <div class="row">
         <!--modified from Wanderlust recipes. Full details in README -->
-        <div id="shopping_list" class="col s12 m4 content-container">
-            <h5>Ingredients</h5>
-            <ul>
-                {% for ingredient in recipe.ingredients %}
-                <li class="collection-item">
-                    <label>
-                        <input type="checkbox" class="filled-in">
-                        <span>{{ ingredient }}</span>
-                    </label>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="col s12 m4 content-container">
+            <form action="POST" action="url_for('shopping_list') }}"></form>
+                <h5>Ingredients</h5>
+                <ul id="shopping_list">
+                    {% for ingredient in recipe.ingredients %}
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in add-shopping-list-item">
+                            <span>{{ ingredient }}</span>
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% if session.user %}
+                    <button type="submit" class="btn">Save to Shopping List</button>
+                {% endif %}
+            </form>
         </div>
         <div class="col s12 m8 content-container">
             <h5>Method</h5>

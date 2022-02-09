@@ -95,5 +95,23 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
 // End of Wanderlust code 
 
 
+$('#allergen_list .add-shopping-list-item').click(function (event) {
+    let ShoppingList = `<ul id="shopping_list">
+                            {% for ingredient in recipe.ingredients %}
+                            <li class="collection-item">
+                                <label>
+                                    <input type="checkbox" class="filled-in add-shopping-list-item">
+                                    <span>{{ ingredient }}</span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>`;
+$(this).parent().before(ShoppingList);
+});
+  
+// Remove ingredient list item on click
+$('#shopping_list').on("click", ".remove-list-item", function (event) {
+    $(this).parent().remove();
+});
 
 

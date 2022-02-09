@@ -230,9 +230,23 @@ def delete_recipe(recipe_id):
     return redirect(url_for("saved_recipes"))
 
 
-@app.route("/shopping_list")
-def shopping_list():
-    return render_template("shopping_list.html")
+@app.route("/shopping_list/<recipe_id>", methods=["GET", "POST"])
+def shopping_list(recipe_id):
+    """ Users can select ingredients to save to own profile """
+    user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
+
+    if request.method == "POST":
+        shopping_list: request.form.getlist("shopping_list")
+
+        update = mongo.db.profiles.update(
+            {"users_id": ObjectId(user_id)},
+            {"$addToSet": {"own_shopping_list": shopping_list}}
+        )
+        if update:
+            flash("Shopping List Saved")
+            return redirect("get_recipes")
+
+    return render_template("shopping_list.html", shopping_list=shopping_list(recipe_id))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
