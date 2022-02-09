@@ -78,14 +78,28 @@
         <div class="col s12">
             {% if session.user %}
                 <h5>Leave a comment</h5>
-                <form action="">
-                    <input type="text">
-                    <label for=""></label>
+                <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
+                    <div class="">
+                        <input type="text" id="user_comment" name="user_comment">
+                        <label for="user_comment"></label>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn">Save</button>
+                    </div>
+                   
                 </form>
             {% endif %}
         </div>
         <div class="col s12">
             <h5>Comments</h5>
+            {% for comment in recipe.comments %}
+                <div>
+                    {{ comment.author }}
+                </div>
+                <div class="">
+                    {{ comment.comment }}
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>

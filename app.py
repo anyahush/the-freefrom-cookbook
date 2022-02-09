@@ -132,6 +132,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+
     if session["user"]:
         return render_template("profile.html", username=username)
 
@@ -259,6 +260,24 @@ def shopping_list():
 
     return render_template("shopping_list.html")
 
+
+@app.route("/create_comment/<recipe_id>", methods=["GET", "POST"])
+def create_comment(recipe_id):
+    """ Logged in users can leave a comment on a recipe """
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    if request.method == "POST":
+        comment = {
+            "comment": request.form.get("user_comment"),
+            "author": session["user"]
+        }
+
+        mongo.db.recipes.update_one(
+            {"_id": ObjectId(recipe_id)},
+            {"$push": {"comments": comment}})
+        flash("Comment successfully added")
+        return redirect(url_for("view_recipe", recipe_id=recipe_id))
+    return render_template("view_recipe", comment=comment)
 
 
 if __name__ == "__main__":
