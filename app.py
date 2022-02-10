@@ -135,12 +135,15 @@ def profile(username):
     Displays user profile once logged in
     """
     # get user's username from database
-    username = mongo.db.users.find_one(
+    user = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-
     if session["user"]:
-        return render_template("profile.html", username=username)
+        recipes = list(mongo.db.recipes.find(
+            {"created_by": username}))
+        return render_template(
+            "profile.html", username=username,
+            recipes=recipes)
 
     return redirect(url_for("login"))
 
