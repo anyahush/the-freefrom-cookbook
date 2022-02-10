@@ -6,16 +6,31 @@
     <div class="row">
         <div class="col s12 m6">
             <div class="card-panel">
-                <a href="{{ url_for('saved_recipes') }}"><h3>Recipes</h3></a>
+                    <h3>Recipes</h3>
+                    <a href="{{ url_for('create_recipe') }}">Create Recipe</a>
             </div>
         </div>
         <div class="col s12 m6">
             <div class="card-panel">
-                <a href="{{ url_for('shopping_list') }}"><h3>Shopping List</h3></a>
+                <div class="container">
+                    <h3>Shopping List</h3>
+                    <ul id="shopping_list">
+
+                        <li class="collection-item">
+                            <label>
+                                <input type="checkbox" class="filled-in add-shopping-list-item">
+                                <span> </span>
+                            </label>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
+
 
 
 {% endblock %}

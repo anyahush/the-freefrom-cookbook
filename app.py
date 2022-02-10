@@ -166,14 +166,6 @@ def view_recipe(recipe_id):
     return render_template("view_recipe.html", recipe=recipe)
 
 
-@app.route("/saved_recipes")
-def saved_recipes():
-    """
-    Diplays users own recipes and saved recipes
-    """
-    return render_template("saved_recipes.html")
-
-
 @app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
     """
@@ -264,7 +256,7 @@ def create_shopping_list(recipe_id):
 def shopping_list():
     """ Dislays users saved shopping items """
 
-    return render_template("shopping_list.html")
+    return render_template("profile.html")
 
 
 @app.route("/create_comment/<recipe_id>", methods=["GET", "POST"])
