@@ -136,9 +136,9 @@ def profile(username):
     """
     # get user's username from database
     user = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+        {"username": username})
 
-    if session["user"]:
+    if user['username'] == session['user']:
         recipes = list(mongo.db.recipes.find(
             {"created_by": username}))
         return render_template(

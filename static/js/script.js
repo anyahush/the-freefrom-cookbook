@@ -2,6 +2,7 @@
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.collapsible').collapsible();
+    $('.tabs').tabs();
 
     // used from Code Institute Task Manager full details in README
     validateMaterializeSelect();

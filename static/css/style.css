@@ -131,7 +131,8 @@ hr {
 }
 
 .card .card-content p {
-    margin: 15px 0;
+    margin: 10px 0;
+    font-size: 90%;
 }
 
 .card .card-image img {
@@ -153,6 +154,10 @@ span {
     height: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
+}
+
+.recipe_card_title {
+    font-size: 100%;
 }
 
 .fa-clock, .fa-utensils {
