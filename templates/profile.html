@@ -60,8 +60,42 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div id="test2" class="col s12">Test 2</div>
-                  </div>
+                    <div id="test2" class="col s12">
+                        {% if favourites|length > 0 %}
+                        <div class="row">
+                            {% for favourite in favourites %}
+                            <div class="col s12 m6 l4">
+                                {% if loop.index / 4 %}
+                                <div class="card">
+                                    <div class="card-image">
+                                        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                                            <img src="{{ recipe.image_url }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="col s12">
+                                            <h5 class="recipe_card_title">{{ favourite.recipe_title}}</h5>
+                                            <hr>
+                                            <p>{{ favourite.recipe_description }}</p>
+                                        </div>
+                                        <div class="col s12">
+                                            <p>
+                                                <i class="fas fa-clock"></i> Cook: {{ favourite.cook_time }} mins
+                                            </p>
+                                            <p>
+                                                <i class="fas fa-utensils"></i> Serves: {{ favourite.servings }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="row">
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endif %}
             </div>
         </div>
         <div class="col s12">
