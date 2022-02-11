@@ -300,6 +300,18 @@ def create_comment(recipe_id):
     return render_template("view_recipe", comment=comment)
 
 
+# error handlers
+@app.errorhandler(404)
+def page_not_found(e):
+    """ 404 error handling from flask documentation """
+    return render_template("404.html"), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    """ 500 error handling from flask documentation """
+    return render_template("500.html"), 500
+
+# run the app
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
