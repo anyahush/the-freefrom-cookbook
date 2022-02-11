@@ -272,7 +272,7 @@ def delete_recipe(recipe_id):
 def favourite_recipe(recipe_id):
     """ Users can save recipes to their profile """
     username = mongo.db.users.find_one(
-        {"username": username})
+        {"username": session["user"]})["_id"]
 
     if "user" in session:
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -296,8 +296,8 @@ def create_shopping_list(recipe_id):
                 shopping_list: request.form.getlist("shopping_list")
             }
 
-            update = mongo.db.profiles.insert_one(
-                {"user_id": ObjectId(user_id)},
+            update = mongo.db.profiles.update_one(
+                {"_id": ObjectId(user_id)},
                 {"$addToSet": {"own_shopping_list": update_list}})
 
             if update:
