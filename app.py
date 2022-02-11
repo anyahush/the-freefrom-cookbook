@@ -141,9 +141,12 @@ def profile(username):
     if user['username'] == session['user']:
         recipes = list(mongo.db.recipes.find(
             {"created_by": username}))
+        favourites = list(mongo.db.profiles.find(
+            {"favourites": username}
+        ))
         return render_template(
             "profile.html", username=username,
-            recipes=recipes)
+            recipes=recipes, favourites=favourites)
 
     return redirect(url_for("login"))
 
@@ -232,6 +235,22 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
     flash("Recipe successfully deleted")
     return redirect(url_for("get_recipes"))
+
+
+@app.route("/favourite_recipe/<recipe_id>")
+def favourite_recipe(recipe_id):
+    """ Users can save recipes to their profile """
+    username = mongo.db.users.find_one(
+        {"username": username})
+
+    if "user" in session:
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+        mongo.db.profiles.update_one({"_id": ObjectId(username)}, {
+                "$push": {"favourites": recipe}})
+        flash("Recipe successfully added!")
+        return redirect(url_for(
+            "view_recipe", recipe_id=recipe_id))
 
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
