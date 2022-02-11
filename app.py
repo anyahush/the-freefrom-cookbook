@@ -231,7 +231,7 @@ def delete_recipe(recipe_id):
     """ Users can delete their own recipes from the db """
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
     flash("Recipe successfully deleted")
-    return redirect(url_for("saved_recipes"))
+    return redirect(url_for("get_recipes"))
 
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
