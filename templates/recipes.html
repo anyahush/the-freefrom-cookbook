@@ -49,8 +49,15 @@
             {% if loop.index / 4 %}
             <div class="card">
                 <div class="card-image">
+                    
                     <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
-                        <img src="{{ recipe.image_url }}">
+                        <!--If recipe has an image then displayed-->
+                        {% if recipe.image_url %}
+                            <img src="{{ recipe.image_url }}">
+                        <!-- If recipe doesn't have an image use alternative -->
+                        {% else %}
+                            <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients">
+                        {% endif %}
                     </a>
                 </div>
                 <div class="card-content">

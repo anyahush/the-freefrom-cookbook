@@ -8,7 +8,13 @@
             <hr>
         </div>
         <div class="col s12 m8 content-container">
-            <img class="recipe_img" src="{{ recipe.image_url }}">
+             <!--If recipe has an image then displayed-->
+            {% if recipe.image_url %}
+                <img class="recipe_img" src="{{ recipe.image_url }}">
+            <!-- If recipe doesn't have an image use alternative -->
+            {% else %}
+                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients" class="recipe_img">
+            {% endif %}
         </div>
         <div class="col s12 m4 content-container">
             <h6>{{ recipe.recipe_description }}</h6>
