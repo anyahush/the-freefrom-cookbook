@@ -178,6 +178,7 @@ def view_recipe(recipe_id):
     return render_template("view_recipe.html", recipe=recipe)
 
 
+# recipes
 @app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
     """ Allow users to create a recipe and save """
@@ -214,28 +215,30 @@ def create_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     """ Allow users to edit existing recipe """
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-    # only users can edit a recipe
-    if not session.get("user"):
+    # only users that created the recipe can edit the recipe
+    if session.get("user") == recipe["created_by"]:
+
+        # edit recipe and update db
+        if request.method == "POST":
+            edit = {
+                "recipe_title": request.form.get("recipe_title"),
+                "category_name": request.form.get("category_name"),
+                "image_url": request.form.get("image_url"),
+                "allergen_list": request.form.getlist("allergen_list"),
+                "servings": request.form.get("servings"),
+                "prep_time": request.form.get("prep_time"),
+                "cook_time": request.form.get("cook_time"),
+                "recipe_description": request.form.get("recipe_description"),
+                "ingredients": request.form.getlist("ingredients"),
+                "method_step": request.form.getlist("method_step"),
+                "created_by": session["user"]
+            }
+            mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
+            flash("Recipe successfully updated")
+    else:
         return render_template("404.html")
-
-    # edit recipe and update db
-    if request.method == "POST":
-        edit = {
-            "recipe_title": request.form.get("recipe_title"),
-            "category_name": request.form.get("category_name"),
-            "image_url": request.form.get("image_url"),
-            "allergen_list": request.form.getlist("allergen_list"),
-            "servings": request.form.get("servings"),
-            "prep_time": request.form.get("prep_time"),
-            "cook_time": request.form.get("cook_time"),
-            "recipe_description": request.form.get("recipe_description"),
-            "ingredients": request.form.getlist("ingredients"),
-            "method_step": request.form.getlist("method_step"),
-            "created_by": session["user"]
-        }
-        mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
-        flash("Recipe successfully updated")
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
@@ -249,9 +252,15 @@ def edit_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     """ Users can delete their own recipes from the db """
-    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-    flash("Recipe successfully deleted")
-    return redirect(url_for("get_recipes"))
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    # only users that created the recipe can delete it
+    if session.get("user") == recipe["created_by"]:
+        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+        flash("Recipe successfully deleted")
+        return redirect(url_for("get_recipes"))
+    else:
+        return render_template("404.html")
 
 
 @app.route("/favourite_recipe/<recipe_id>")
