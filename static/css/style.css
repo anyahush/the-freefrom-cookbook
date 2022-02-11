@@ -185,6 +185,12 @@ span {
     background-color: #31625c;
 }
 
+/* error pages */
+
+.error-pages {
+    text-align: center;
+}
+
 /* media queries */
 @media screen and (max-width: 768px) {
     h1 {
