@@ -35,6 +35,11 @@ def about():
     return render_template("about.html", allergens=allergens)
 
 
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @app.route("/get_recipes")
 def get_recipes():
     """ Gets recipes from db and displays """
