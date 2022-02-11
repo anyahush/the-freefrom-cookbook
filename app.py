@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
+#configurations
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -30,14 +30,15 @@ def index():
 @app.route("/about")
 def about():
     """ Displays content to user about the site """
+
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template("about.html", allergens=allergens)
 
+
 @app.route("/get_recipes")
 def get_recipes():
-    """
-    Gets recipes from db and displays 
-    """
+    """ Gets recipes from db and displays """
+
     recipes = list(mongo.db.recipes.find())
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template(
@@ -46,19 +47,19 @@ def get_recipes():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    """
-    Creates search function, so users can search recipe db for
-    specific recipes or ingredients
-    """
+    """ Creates search function, user input matched to recipes in db """
+
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
 
+
+# users
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """ register view, when form submitted database
-    is updated
-    """
+    """ Register view, when form submitted database
+    is updated """
+
     if request.method == "POST":
         # checks if username is already taken
         existing_user = mongo.db.users.find_one(
@@ -99,10 +100,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """
-    Allows users to login into an existing account and verifies 
-    username and password
-    """
+    """ Allows users to login into an existing account and verifies 
+    username and password """
+
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -131,9 +131,12 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    """
-    Displays user profile once logged in
-    """
+    """ Displays user profile once logged in """
+
+    # only users can view profile
+    if not session.get("user"):
+        return render_template("404.html")
+
     # get user's username from database
     user = mongo.db.users.find_one(
         {"username": username})
@@ -153,9 +156,8 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    """
-    Allows users to logout of account
-    """
+    """ Allows users to logout of account """
+
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -164,19 +166,27 @@ def logout():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
-    """
-    Displays selected recipe in seperate page 
-    based on recipe_title
-    """
+    """ Displays selected recipe in seperate page 
+    based on recipe_title """
+    # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    # if recipe not found show error
+    if not recipe:
+        return render_template("404.html")
+
     return render_template("view_recipe.html", recipe=recipe)
 
 
 @app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
-    """
-    Allow users to create a recipe and save
-    """
+    """ Allow users to create a recipe and save """
+
+    # only users can create recipe
+    if not session.get("user"):
+        return render_template("404.html")
+
+    # add recipe to db
     if request.method == "POST":
         recipe = {
             "recipe_title": request.form.get("recipe_title"),
@@ -194,6 +204,7 @@ def create_recipe():
         mongo.db.recipes.insert_one(recipe)
         flash("Task successfully added")
         return redirect(url_for("get_recipes"))
+    # find catergories and allergen list from db
     categories = mongo.db.categories.find().sort("category_name", 1)
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template(
@@ -203,6 +214,12 @@ def create_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     """ Allow users to edit existing recipe """
+
+    # only users can edit a recipe
+    if not session.get("user"):
+        return render_template("404.html")
+
+    # edit recipe and update db
     if request.method == "POST":
         edit = {
             "recipe_title": request.form.get("recipe_title"),
@@ -302,12 +319,12 @@ def create_comment(recipe_id):
 
 # error handlers
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
     """ 404 error handling from flask documentation """
     return render_template("404.html"), 404
 
 @app.errorhandler(500)
-def server_error(e):
+def server_error(error):
     """ 500 error handling from flask documentation """
     return render_template("500.html"), 500
 
