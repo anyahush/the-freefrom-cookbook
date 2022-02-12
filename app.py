@@ -94,10 +94,19 @@ def register():
         }
         # new user created in db
         mongo.db.users.insert_one(register_user)
-
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration is successful!")
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        mongo.db.profiles.insert_one({
+            "user_id": ObjectId(user_id),
+            "favourites": [],
+            "uploaded": [],
+            "shopping_list": []})
+        
+        name = request.form.get("first_name")
+        flash(f'Welcome {name}' +
+         'you have been successfully registered.')
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
