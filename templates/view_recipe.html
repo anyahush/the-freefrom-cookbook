@@ -56,7 +56,7 @@
                     {% for ingredient in recipe.ingredients %}
                     <li class="collection-item">
                         <label>
-                            <input type="checkbox" class="filled-in add-shopping-list-item">
+                            <input type="checkbox" class="filled-in add-shopping-list-item" name="shopping_list" value="{{ ingredient }}">
                             <span>{{ ingredient }}</span>
                         </label>
                     </li>

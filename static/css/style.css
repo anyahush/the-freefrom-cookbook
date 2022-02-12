@@ -35,13 +35,11 @@ h1 {
 h2 {
     color: #9e8464;
     text-transform: uppercase;
-    text-align: center;
     font-size: 120%;
 }
 
 h3, h4 {
     text-transform: uppercase;
-    text-align: center;
 }
 
 h5 {
@@ -92,10 +90,6 @@ hr {
     background-position: center;
     background-size: cover;
 
-}
-
-.message {
-    text-align: center;
 }
 
 /* about page */
@@ -185,11 +179,21 @@ span {
     background-color: #31625c;
 }
 
-/* error pages */
-
-.error-pages {
-    text-align: center;
+/* contact page */
+#required {
+    float: right;
 }
+
+textarea {
+    height: auto;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4caf50;
+    border-width: 2px;
+}
+
 
 /* media queries */
 @media screen and (max-width: 768px) {
