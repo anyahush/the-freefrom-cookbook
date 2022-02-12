@@ -287,7 +287,6 @@ def favourite_recipe(recipe_id):
         {"username": session["user"]})["_id"]
     recipe = mongo.db.recipes.find_one(
         {"_id": ObjectId(recipe_id)})
-    print(recipe)
     favourites = mongo.db.profiles.find_one(
         {"user_id": ObjectId(user_id)})["favourites"]
     user_profile = mongo.db.profiles.find_one(
@@ -298,7 +297,6 @@ def favourite_recipe(recipe_id):
         mongo.db.profiles.update_one(
             {"user_id": ObjectId(user_id)},
             {"$addToSet": {"favourites": recipe}})
-        print(user_profile)
         flash("Recipe successfully added!")
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
@@ -306,30 +304,27 @@ def favourite_recipe(recipe_id):
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
     """ Users can select ingredients to save to own profile """
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    recipe = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    user_profile = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})
+
     if "user" in session:
 
-        user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
-        recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
         if request.method == "POST":
-            update_list = {
-                shopping_list: request.form.getlist("shopping_list")
-            }
-
+            shopping_list = request.form.getlist('shopping_list')
+            
             update = mongo.db.profiles.update_one(
-                {"_id": ObjectId(user_id)},
-                {"$addToSet": {"own_shopping_list": update_list}})
-
+                {"user_id": ObjectId(user_id)},
+                {"$addToSet": {"shopping_list": shopping_list}})
+            
             if update:
                 flash("Shopping List Saved")
-                return redirect("get_recipes")
+                return redirect(url_for(
+                    "view_recipe", recipe_id=recipe_id))
 
-
-@app.route("/shopping_list", methods=["GET", "POST"])
-def shopping_list():
-    """ Dislays users saved shopping items """
-
-    return render_template("profile.html")
 
 
 @app.route("/create_comment/<recipe_id>", methods=["GET", "POST"])
