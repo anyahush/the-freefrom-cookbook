@@ -106,7 +106,7 @@ def register():
         
         name = request.form.get("first_name")
         flash(f'Welcome {name}' +
-         'you have been successfully registered.')
+            'you have been successfully registered.')
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -147,25 +147,25 @@ def login():
 def profile(username):
     """ Displays user profile once logged in """
 
+
     # only users can view profile
-    if not session.get("user"):
-        return render_template("404.html")
-
-    # get user's username from database
-    user = mongo.db.users.find_one(
-        {"username": username})
-
-    if user['username'] == session['user']:
-        recipes = list(mongo.db.recipes.find(
-            {"created_by": username}))
-        favourites = list(mongo.db.profiles.find(
-            {"favourites": username}
-        ))
+    if "user" in session:
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        user_profile = mongo.db.profiles.find_one(
+            {"user_id": ObjectId(user_id)})
+        recipes = user_profile["uploaded"]
+        favourites = user_profile["favourites"]
+        shopping_list = user_profile["shopping_list"]
+ 
         return render_template(
-            "profile.html", username=username,
-            recipes=recipes, favourites=favourites)
-
-    return redirect(url_for("login"))
+            "profile.html",
+            recipes=recipes, favourites=favourites, 
+            shopping_list=shopping_list)
+    
+    else:
+        flash("You need to be signed in for that")
+        return redirect(url_for("login"))
 
 
 @app.route("/logout")
@@ -280,17 +280,21 @@ def delete_recipe(recipe_id):
 @app.route("/favourite_recipe/<recipe_id>")
 def favourite_recipe(recipe_id):
     """ Users can save recipes to their profile """
-    username = mongo.db.users.find_one(
+    user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
+    recipe = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    favourites = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["favourites"]
 
     if "user" in session:
-        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-        mongo.db.profiles.update_one({"_id": ObjectId(username)}, {
-                "$push": {"favourites": recipe}})
+        mongo.db.profiles.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$addToSet": {"favourites": recipe}})
         flash("Recipe successfully added!")
         return redirect(url_for(
-            "view_recipe", recipe_id=recipe_id))
+            "view_recipe", recipe_id=recipe_id, favourites=favourites))
 
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
