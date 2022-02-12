@@ -3,6 +3,7 @@
     $('select').formSelect();
     $('.collapsible').collapsible();
     $('.tabs').tabs();
+    $('.modal').modal();
 
     // used from Code Institute Task Manager full details in README
     validateMaterializeSelect();

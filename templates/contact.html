@@ -18,6 +18,7 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- contact form -->
                         <form class="col s12" id="contact-form">
                                 <div class="input-field col s12">
                                     <p id="required"><em>* required</em></p>
@@ -32,7 +33,7 @@
                                 </div>
                                 <div class="input-field col s12">
                                     <p>Message *</p>
-                                    <textarea  id="message" name="message" cols="40" rows="10" placeholder="Message" required></textarea>
+                                    <textarea  id="message" name="message" cols="40" rows="10" placeholder="Message" min="20" max="500" required></textarea>
                                     <label for="message"></label>
                                 </div>
                                 <div class="col s12">
@@ -46,11 +47,26 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <!-- Modal on successful submission of form from Materialize -->
+                <div class="modal" id="submit-modal">
+                    <div class="modal-content">
+                        <h5 id="response-header" class="center-align"><i class="fa-solid fa-envelope"></i>Thank you for contacting us!</h5>
+                        <p id="response-message"class="center-align">We will be in touch soon. <br>
+                            In the meantime, we hope you get inspired and enjoy cooking!
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{url_for('index') }}" class="modal-close waves-effect waves-green btn-flat"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
 
 {% endblock %}
 
+<!-- Page specific scripts -->
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
