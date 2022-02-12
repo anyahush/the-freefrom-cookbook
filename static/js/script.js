@@ -94,19 +94,3 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
   $(this).parent().remove();
 });
 // End of Wanderlust code 
-
-
-$('#shopping_list .add-shopping-list-item').click(function (event) {
-    let ShoppingList = `<li class="collection-item">
-                            <label>
-                                <input type="checkbox" class="filled-in add-shopping-list-item">
-                                <span>{{ ingredient }}</span>
-                            </label>
-                        </li>;`
-    $(this).parent().before(ShoppingList);
-});
-  
-// Remove ingredient list item on click
-$('#shopping_list').on("click", ".remove-list-item", function (event) {
-    $(this).parent().remove();
-});
