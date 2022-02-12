@@ -101,7 +101,6 @@ def register():
         mongo.db.profiles.insert_one({
             "user_id": ObjectId(user_id),
             "favourites": [],
-            "uploaded": [],
             "shopping_list": []})
         
         name = request.form.get("first_name")
@@ -288,14 +287,18 @@ def favourite_recipe(recipe_id):
         {"username": session["user"]})["_id"]
     recipe = mongo.db.recipes.find_one(
         {"_id": ObjectId(recipe_id)})
+    print(recipe)
     favourites = mongo.db.profiles.find_one(
         {"user_id": ObjectId(user_id)})["favourites"]
+    user_profile = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})
 
     if "user" in session:
 
         mongo.db.profiles.update_one(
-            {"_id": ObjectId(user_id)},
+            {"user_id": ObjectId(user_id)},
             {"$addToSet": {"favourites": recipe}})
+        print(user_profile)
         flash("Recipe successfully added!")
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
