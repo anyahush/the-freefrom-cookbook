@@ -152,16 +152,20 @@ def profile(username):
     if "user" in session:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
+        user = mongo.db.users.find_one(
+            {"username": session["user"]}["username"]
+        )
         user_profile = mongo.db.profiles.find_one(
             {"user_id": ObjectId(user_id)})
-        recipes = user_profile["uploaded"]
+        recipes = list(mongo.db.recipes.find(
+            {"created_by": username}))
         favourites = user_profile["favourites"]
         shopping_list = user_profile["shopping_list"]
  
         return render_template(
             "profile.html",
-            recipes=recipes, favourites=favourites, 
-            shopping_list=shopping_list)
+            recipes=recipes, favourites=favourites,
+            shopping_list=shopping_list, username=username)
     
     else:
         flash("You need to be signed in for that")
