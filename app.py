@@ -52,20 +52,34 @@ def get_recipes():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    """ Creates search function, user input matched to recipes in db """
-
+    """ Creates search function based on input and/
+    or checkboxes selected """
 
     if request.method == "POST":
+        # get search bar input
         query = request.form.get("query")
+        # get allergen checkboxes selected
         allergen_query = request.form.getlist("allergen-query")
-        print(allergen_query)
+        # if input and checkbox filled in
+        if query and allergen_query:
+            recipes = list(mongo.db.recipes.find({
+                "$and": [
+                    {"allergen_list": {"$in": allergen_query}},
+                    {"$text": {"$search": query}}]
+            }))
+        # if just search input
+        elif query:
+            recipes = list(mongo.db.recipes.find(
+                {"$text": {"$search": query}}))
+        # if just checkbox selected
+        elif allergen_query:
+            recipes = list(mongo.db.recipes.find(
+                {"allergen_list": {"$in": allergen_query}}))
 
-        recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+        return render_template("recipes.html", recipes=recipes)
 
-        free_from_recipes = list(mongo.db.recipes.find({"allergen_list": {"$in": allergen_query}}))
-        print(free_from_recipes)
-
-        return render_template("recipes.html", recipes=recipes, free_from_recipes=free_from_recipes)
+    else:
+        return redirect(url_for("404.html"))
 
 
 # users
