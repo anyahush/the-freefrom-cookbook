@@ -54,9 +54,18 @@ def get_recipes():
 def search():
     """ Creates search function, user input matched to recipes in db """
 
-    query = request.form.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("recipes.html", recipes=recipes)
+
+    if request.method == "POST":
+        query = request.form.get("query")
+        allergen_query = request.form.getlist("allergen-query")
+        print(allergen_query)
+
+        recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+
+        free_from_recipes = list(mongo.db.recipes.find({"allergen_list": {"$in": allergen_query}}))
+        print(free_from_recipes)
+
+        return render_template("recipes.html", recipes=recipes, free_from_recipes=free_from_recipes)
 
 
 # users
@@ -145,7 +154,6 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     """ Displays user profile once logged in """
-
 
     # only users can view profile
     if "user" in session:
