@@ -1,7 +1,8 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
+from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -43,11 +44,23 @@ def contact():
 @app.route("/get_recipes")
 def get_recipes():
     """ Gets recipes from db and displays """
-
     recipes = list(mongo.db.recipes.find())
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
+
+    def display_recipes(offset=0, per_page=6):
+        return recipes[offset: offset + per_page]
+
+    page, per_page, offset = get_page_args(
+        page_parameter='page', per_page_parameter='per_page')
+    per_page = 6
+    total=len(recipes)
+    pagination_recipes = display_recipes(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total,
+    css_framework='materialize')
+
     return render_template(
-        "recipes.html", recipes=recipes, allergens=allergens)
+        "recipes.html", recipes=pagination_recipes, page=page,
+        per_page=per_page, pagination=pagination, allergens=allergens)
 
 
 @app.route("/search", methods=["GET", "POST"])
