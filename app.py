@@ -397,6 +397,29 @@ def create_comment(recipe_id):
     return render_template("view_recipe", comment=comment)
 
 
+# newsletter subscription
+@app.route("/subscribe", methods=["GET", "POST"])
+def subscribe():
+    """ Uploads user email to db for newsletter subscription """
+    if request.method == "POST":
+        # check if email already exists in db
+        existing_email = mongo.db.subscribers.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_email:
+            flash("You have already subscribed!")
+            return redirect(url_for("index"))
+        
+        # add new email to db
+        subscribe = {
+            "email": request.form.get("email").lower()
+        }
+        mongo.db.subscribers.insert_one(subscribe)
+    
+    flash("You have successfully subscribed!")
+    return redirect(url_for("index"))
+
+
 # error handlers
 @app.errorhandler(404)
 def page_not_found(error):
