@@ -92,18 +92,32 @@ As admin:
 ## Credits
 
 ### Code
-- User Authentication and validating the Materialize select dropdown used from Code Institute's Task Manager mini project https://github.com/Code-Institute-Solutions/TaskManagerAuth
-- Regex pattern for users to submit an image url used from https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631
-- Code for users to submit ingredients and method steps when creating a recipe and scheme design was used from https://github.com/RussOakham/wanderlust-recipes
-- 
+- User Authentication and validating the Materialize select dropdown used from Code Institute's Task Manager mini project (Code Institute Task Manager)[https://github.com/Code-Institute-Solutions/TaskManagerAuth]
+- Regex pattern for users to submit an image url used from (Stackoverflow)[https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631]
+- Code for users to submit ingredients and method steps when creating a recipe and scheme design was used from (Wanderlust Recipes)[https://github.com/RussOakham/wanderlust-recipes]
+- Pagination code used from (Sustainable Supper Club)[https://github.com/timmorrisdev/MS3-sustainable-supper-club/blob/main/app.py]
+- (Pretty Pinted)[https://www.youtube.com/watch?v=_sgVt16Q4O4&ab_channel=PrettyPrinted] YouTube tutorial and code to capture checkbox activity into Flask.
+- (SQL Server Guide)[https://sqlserverguides.com/mongodb-find-multiple-conditions/#:~:text=In%20Python%2C%20we%20can%20easily,use%20the%20find()%20method.] on MongoDb find multiple conditions to use multiple conditions in the search function.
+- (Pocket Bookcase)[https://github.com/natalie-kate/pocket-bookcase] for help with profile view and contact form modal.
+
 
 ### Content
 Recipes added by the developer/ admin are a mixture of their own recipes, modified and used from various sites, as shown below:
-- https://www.bbcgoodfood.com/
--  https://www.twopeasandtheirpod.com/
-- https://realfood.tesco.com/
+- (BBC Good Food)[https://www.bbcgoodfood.com/]
+- (Two Pease and their Pod)[https://www.twopeasandtheirpod.com/]
+- (Tesco)[https://realfood.tesco.com/]
+
+Content about allergens from:
+- (Foods Standards Agency)[https://www.food.gov.uk/sites/default/files/media/document/top-allergy-types.pdf]
+- (Allergy UK)[https://www.allergyuk.org/types-of-allergies/food-allergy/]
 
 
 ### Media
+
+#### Images
+- Image on About page from (Shutterstock)[https://www.shutterstock.com/image-photo/balanced-diet-cooking-culinary-food-concept-300553067]
+- Recipe images used to start the database used from (Pexels)[https://www.pexels.com/]
+- Hero image used from (Pexels)[https://www.pexels.com/photo/red-and-white-round-fruits-on-brown-wooden-bowl-4099237/]
+
 
 ## Acknowledgements
