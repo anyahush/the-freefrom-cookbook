@@ -48,14 +48,14 @@ def get_recipes():
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
 
     def display_recipes(offset=0, per_page=6):
+        offset = page * per_page - per_page
         return recipes[offset: offset + per_page]
 
     page, per_page, offset = get_page_args(
         page_parameter='page', per_page_parameter='per_page')
     per_page = 6
-    total=len(recipes)
     pagination_recipes = display_recipes(offset=offset, per_page=per_page)
-    pagination = Pagination(page=page, per_page=per_page, total=total,
+    pagination = Pagination(page=page, per_page=per_page, total=len(recipes),
     css_framework='materialize')
 
     return render_template(
