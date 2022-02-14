@@ -234,16 +234,21 @@ def logout():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
-    """ Displays selected recipe in seperate page 
+    """ Displays selected recipe in seperate page
     based on recipe_title """
     # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    favourites = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["favourites"]
 
     # if recipe not found show error
     if not recipe:
         return render_template("404.html")
 
-    return render_template("view_recipe.html", recipe=recipe)
+    return render_template("view_recipe.html", recipe=recipe,
+        favourites=favourites)
 
 
 # recipes
@@ -343,34 +348,62 @@ def favourite_recipe(recipe_id):
     user_profile = mongo.db.profiles.find_one(
         {"user_id": ObjectId(user_id)})
 
+    # check is user logged in
     if "user" in session:
-
-        mongo.db.profiles.update_one(
+        # if recipe already exists in user favourites
+        if recipe in user_profile["favourites"]:
+            flash("You have already saved this recipe")
+        # updates user favourites with recipe
+        else:
+            mongo.db.profiles.update_one(
             {"user_id": ObjectId(user_id)},
             {"$addToSet": {"favourites": recipe}})
-        flash("Recipe successfully added!")
+            flash("Recipe successfully added!")
+
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
+
+
+@app.route("/remove_favourite/<recipe_id>")
+def remove_favourite(recipe_id):
+    """ Remove recipe from users favourite section in profile """
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    recipe = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    favourites = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["favourites"]
+
+    # check if user is logged in
+    if "user" in session:
+        # pull recipe in users favourite recipes field
+        mongo.db.profiles.update_one(
+            {"user_id": ObjectId(user_id)},
+            {"$pull": {"favourites": recipe}})
+        flash("Recipe successfully removed from favourites!")
+
+    return redirect(url_for("view_recipe", recipe_id=recipe_id,
+        favourites=favourites))
+
+
+
 
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
     """ Users can select ingredients to save to own profile """
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
-    recipe = mongo.db.recipes.find_one(
-        {"_id": ObjectId(recipe_id)})
-    user_profile = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})
 
+    # checks if user is in session
     if "user" in session:
 
         if request.method == "POST":
             shopping_list = request.form.getlist('shopping_list')
-            
+            # updates user shopping list with selected ingredients 
             update = mongo.db.profiles.update_one(
                 {"user_id": ObjectId(user_id)},
                 {"$addToSet": {"shopping_list": shopping_list}})
-            
+
             if update:
                 flash("Shopping List Saved")
                 return redirect(url_for(
@@ -388,12 +421,13 @@ def create_comment(recipe_id):
             "comment": request.form.get("user_comment"),
             "author": session["user"]
         }
-
+        # updates comment field in recipe with user comments
         mongo.db.recipes.update_one(
             {"_id": ObjectId(recipe_id)},
             {"$push": {"comments": comment}})
         flash("Comment successfully added")
         return redirect(url_for("view_recipe", recipe_id=recipe_id))
+
     return render_template("view_recipe", comment=comment)
 
 
