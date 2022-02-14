@@ -102,42 +102,52 @@
             </div>
             {% else %}
             <div>
-                <h2>No results found</h2>
+                <h2>No recipes created yet</h2>
+                <div>
+                    <a href="{{ url_for('create_recipe') }}" class="btn profile-btns">Create Recipe</a>
+                </div>
             </div>
             {% endif %}
         </div>
         <div id="test2" class="col s12">
             {% if favourites|length > 0 %}
-            <div class="row">
-                {% for favourite in favourites %}
-                <div class="col s12 m6 l4">
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="{{ url_for('view_recipe', recipe_id=favourite._id) }}">
-                                <img src="{{ favourite.image_url }}">
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <div class="col s12">
-                                <h5 class="recipe_card_title">{{ favourite.recipe_title}}</h5>
-                                <hr>
-                                <p>{{ favourite.recipe_description }}</p>
+                <div class="row">
+                    {% for favourite in favourites %}
+                    <div class="col s12 m6 l4">
+                        <div class="card">
+                            <div class="card-image">
+                                <a href="{{ url_for('view_recipe', recipe_id=favourite._id) }}">
+                                    <img src="{{ favourite.image_url }}">
+                                </a>
                             </div>
-                            <div class="col s12">
-                                <p>
-                                    <i class="fas fa-clock"></i> Cook: {{ favourite.cook_time }} mins
-                                </p>
-                                <p>
-                                    <i class="fas fa-utensils"></i> Serves: {{ favourite.servings }}
-                                </p>
-                                <h6><strong>Created By:</strong> {{ favourite.created_by }}</h6>
+                            <div class="card-content">
+                                <div class="col s12">
+                                    <h5 class="recipe_card_title">{{ favourite.recipe_title}}</h5>
+                                    <hr>
+                                    <p>{{ favourite.recipe_description }}</p>
+                                </div>
+                                <div class="col s12">
+                                    <p>
+                                        <i class="fas fa-clock"></i> Cook: {{ favourite.cook_time }} mins
+                                    </p>
+                                    <p>
+                                        <i class="fas fa-utensils"></i> Serves: {{ favourite.servings }}
+                                    </p>
+                                    <h6><strong>Created By:</strong> {{ favourite.created_by }}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
 
-            </div>
+                </div>
+                {% else %}
+                <div>
+                    <h2>No recipes saved yet</h2>
+                    <div>
+                        <a href="{{ url_for('create_recipe') }}" class="btn profile-btns">Create Recipe</a>
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>
