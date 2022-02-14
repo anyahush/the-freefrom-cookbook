@@ -179,6 +179,11 @@ span {
     background-color: #31625c;
 }
 
+/* profile page */
+.profile-btns {
+    margin: 10px;
+}
+
 /* contact page */
 #required {
     float: right;
