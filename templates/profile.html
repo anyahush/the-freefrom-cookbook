@@ -26,25 +26,24 @@
                 <hr>
             </div>
             <div class="card-panel">
-                <div class="container">
-                    <ul id="shopping_list">
-                        {% for list in shopping_list %}
-                        {% for ingredient in list %}
-                        <li class="collection-item">
-                            <label>
-                                <input type="checkbox" class="filled-in add-shopping-list-item"
-                                    value="{{ ingredient }}">
-                                <span>{{ ingredient }}</span>
-                            </label>
-                        </li>
-                        {% endfor %}
-                        {% endfor %}
+                    <form action="{{ url_for('remove_shopping_list') }}" method="POST">
+                        <ul id="shopping_list">
+                            {% for list in shopping_list %}
+                            {% for ingredient in list %}
+                            <li class="collection-item">
+                                <label>
+                                    <input type="checkbox" class="filled-in" value="{{ ingredient }}">
+                                    <span>{{ ingredient }}</span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                            {% endfor %}
+                        </ul>
 
-                    </ul>
-                </div>
-                <div class="center-align">
-                    <a href="" class="btn red">Delete</a>
-                </div>
+                        <div class="center-align">
+                            <button type="submit" class="btn red">Delete</button>
+                        </div>
+                    </form>
             </div>
 
         </div>

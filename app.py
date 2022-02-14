@@ -410,6 +410,36 @@ def create_shopping_list(recipe_id):
                     "view_recipe", recipe_id=recipe_id))
 
 
+@app.route("/remove_shopping_list/<username>", methods=["GET", "POST"])
+def remove_shopping_list(username):
+    """ Users can remove ingredients from shopping list on profile """
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+
+    favourites = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["favourites"]
+    shopping_list = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["shopping_list"]
+    recipes = list(mongo.db.recipes.find(
+            {"created_by": username}))
+
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]}["username"])
+
+        if request.method == "POST":
+            remove_items = request.form.getlist('shopping_list')
+            update = mongo.db.profiles.update_one(
+                {"user_id": ObjectId(user_id)},
+                {"$pull": {"shopping_list": remove_items}})
+            if update:
+                flash("Ingredients have been removed")
+                return redirect(url_for(
+                    "profile", favourites=favourites,
+                    shopping_list=shopping_list,
+                    recipes=recipes, username=username))
+
+
 
 @app.route("/create_comment/<recipe_id>", methods=["GET", "POST"])
 def create_comment(recipe_id):
