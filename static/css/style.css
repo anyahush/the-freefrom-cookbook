@@ -167,8 +167,17 @@ span {
 }
 
 .collapsible-header {
-    justify-content: center;
     border-bottom: none;
+    justify-content: center;
+}
+
+.collapsible-body {
+    border-bottom: none;
+}
+
+.align-allergens {
+    display: grid;
+    justify-content: flex-start;
 }
 
 .recipe_card_title {
