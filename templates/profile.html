@@ -56,8 +56,8 @@
         </div>
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#test1" class="active">Uploaded</a></li>
-                <li class="tab col s3"><a href="#test2">Favourites</a></li>
+                <li class="tab col s3"><a href="#test1" class="active">Created <i class="fa-solid fa-circle-plus"></i></a></li>
+                <li class="tab col s3"><a href="#test2">Favourites <i class="fa-solid fa-heart"></i></a></li>
             </ul>
         </div>
         <div id="test1" class="col s12">
@@ -93,13 +93,11 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     {% endif %}
-                    {% endfor %}
+                {% endfor %}
                 </div>
-
             </div>
             {% else %}
             <div>
@@ -112,7 +110,6 @@
             <div class="row">
                 {% for favourite in favourites %}
                 <div class="col s12 m6 l4">
-                    {% if loop.index / 4 %}
                     <div class="card">
                         <div class="card-image">
                             <a href="{{ url_for('view_recipe', recipe_id=favourite._id) }}">
@@ -135,12 +132,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                {% endfor %}
 
-                </div>
-                <div class="row">
-                    {% endif %}
-                    {% endfor %}
-                </div>
             </div>
             {% endif %}
         </div>
