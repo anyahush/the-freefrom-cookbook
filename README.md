@@ -124,12 +124,14 @@ As admin:
 
 ### Code
 - User Authentication and validating the Materialize select dropdown used from Code Institute's Task Manager mini project (Code Institute Task Manager)[https://github.com/Code-Institute-Solutions/TaskManagerAuth]
-- Regex pattern for users to submit an image url used from (Stackoverflow)[https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631]
+- Regex pattern for users to submit an image url used from (Stack Overflow)[https://stackoverflow.com/questions/169625/regex-to-check-if-valid-url-that-ends-in-jpg-png-or-gif/169631]
 - Code for users to submit ingredients and method steps when creating a recipe and scheme design was used from (Wanderlust Recipes)[https://github.com/RussOakham/wanderlust-recipes]
 - Pagination code used from (Sustainable Supper Club)[https://github.com/timmorrisdev/MS3-sustainable-supper-club/blob/main/app.py]
 - (Pretty Pinted)[https://www.youtube.com/watch?v=_sgVt16Q4O4&ab_channel=PrettyPrinted] YouTube tutorial and code to capture checkbox activity into Flask.
 - (SQL Server Guide)[https://sqlserverguides.com/mongodb-find-multiple-conditions/#:~:text=In%20Python%2C%20we%20can%20easily,use%20the%20find()%20method.] on MongoDb find multiple conditions to use multiple conditions in the search function.
 - (Pocket Bookcase)[https://github.com/natalie-kate/pocket-bookcase] for help with profile view and contact form modal.
+- (Stack Overflow)[https://stackoverflow.com/questions/6382023/changing-the-color-of-an-hr-element] used to style horizontal lines.
+- (Materialize)[https://materializecss.com/] used for styling and responsiveness throughout including card panels, tabs and collapsibles.
 
 
 ### Content
