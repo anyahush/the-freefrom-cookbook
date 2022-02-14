@@ -154,9 +154,8 @@ def register():
             "favourites": [],
             "shopping_list": []})
 
-        name = request.form.get("first_name")
-        flash(f'Welcome {name}' +
-            'you have been successfully registered.')
+        name = request.form.get("first-name")
+        flash(f'Welcome {name} ' + ' you have been successfully registered')
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -177,8 +176,6 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}". format(
-                        request.form.get("username")))
                 return redirect(url_for(
                         "profile", username=session["user"]))
             else:
@@ -279,7 +276,7 @@ def create_recipe():
             "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
-        flash("Task successfully added")
+        flash("You created a recipe!")
         return redirect(url_for("get_recipes"))
     # find catergories and allergen list from db
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -312,7 +309,7 @@ def edit_recipe(recipe_id):
                 "created_by": session["user"]
             }
             mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
-            flash("Recipe successfully updated")
+            flash("You edited your recipe!")
     else:
         return render_template("404.html")
 
@@ -333,7 +330,7 @@ def delete_recipe(recipe_id):
     # only users that created the recipe can delete it
     if session.get("user") == recipe["created_by"]:
         mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-        flash("Recipe successfully deleted")
+        flash("You deleted a recipe!")
         return redirect(url_for("get_recipes"))
     else:
         return render_template("404.html")
@@ -359,8 +356,8 @@ def favourite_recipe(recipe_id):
         # updates user favourites with recipe
         else:
             mongo.db.profiles.update_one(
-            {"user_id": ObjectId(user_id)},
-            {"$addToSet": {"favourites": recipe}})
+                {"user_id": ObjectId(user_id)},
+                {"$addToSet": {"favourites": recipe}})
             flash("Recipe successfully added!")
 
         return redirect(url_for(
