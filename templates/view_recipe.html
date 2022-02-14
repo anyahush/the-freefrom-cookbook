@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h4>{{ recipe.recipe_title }}</h4>
+            <h4 class="center-align">{{ recipe.recipe_title }}</h4>
             <hr>
         </div>
         <div class="col s12 m8 content-container">
@@ -31,6 +31,7 @@
                 <h6><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</h6>
             </div>
             <div class="content-container">
+                <!-- Users that created recipe can edit or delete the recipe -->
                 {% if session.user|lower == recipe.created_by|lower %}
                 <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small">Edit</a>
@@ -38,6 +39,7 @@
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small red">Delete</a>
                 {% endif %}
+                <!-- Users that did not create recipe can add to favourites -->
                 {% if session.user != recipe.created_by %}
                     <a href="{{ url_for('favourite_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small pink accent-2">Add to Favourites<i class="fa-solid fa-heart"></i></a>
                 {% endif %}
@@ -48,11 +50,13 @@
     </div>
 
     <div class="row">
-        <!--modified from Wanderlust recipes. Full details in README -->
+        <!--Modified from Wanderlust recipes. Full details in README -->
         <div class="col s12 m4 content-container">
             <form method="POST" action="{{ url_for('create_shopping_list', recipe_id=recipe._id) }}">
                 <h5>Ingredients</h5>
                 <ul id="shopping_list">
+                    <!-- Logged in users can add ingredients and save to profile -->
+                    <!-- Checkbox capture used from Pretty Pinted, in README -->
                     {% for ingredient in recipe.ingredients %}
                     <li class="collection-item">
                         <label>
@@ -76,36 +80,39 @@
                 </li>
                 {% endfor %}
             </ol>
-
         </div>
     </div>
-    <div class="row">
+    <!-- End of modified code -->
+
+    <div class="row comments">
         <div class="col s12">
+            <!-- Logged in users can leave a comment -->
             {% if session.user %}
             <h5>Leave a comment</h5>
             <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
-                <div class="col s8">
+                <div class="col s12">
                     <input type="text" id="user_comment" name="user_comment">
                     <label for="user_comment"></label>
                 </div>
-                <div class="col s4">
-                    <button type="submit" class="btn">Save</button>
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn">Submit <i class="fa-solid fa-caret-right"></i></button>
                 </div>
-
             </form>
             {% endif %}
         </div>
+    </div>
+    <!-- Comments displayed to all users -->
+    <div class="row comments">
         <div class="col s12">
             <h5>Comments</h5>
         </div>
         {% for comment in recipe.comments %}
-        <div class="col s12">        
-            <p>{{- comment.author -}}  {{- comment.comment -}}</p>
+        <div class="col s12">
+            <h6><i class="fa-solid fa-user"></i>{{- comment.author -}} </h6>
+            <p>{{- comment.comment -}}</p>
+            <hr class="comment-divider">
         </div>
         {% endfor %}
     </div>
 </div>
-
-
-
 {% endblock %}
