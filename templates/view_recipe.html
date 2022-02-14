@@ -39,12 +39,14 @@
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small red">Delete</a>
                 {% endif %}
-                <!-- Users that did not create recipe can add to favourites -->
-                {% if session.user != recipe.created_by %}
-                    {% if recipe in favourites %}
-                        <a href="{{ url_for('remove_favourite', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small red">Remove from Favourites<i class="fa-solid fa-circle-minus"></i></a>
-                    {% else %}
-                        <a href="{{ url_for('favourite_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small pink accent-2">Add to Favourites<i class="fa-solid fa-heart"></i></a>
+                <!-- Logged in users that did not create recipe can add to favourites -->
+                {% if session.user %}
+                    {% if session.user != recipe.created_by %}
+                        {% if recipe in favourites %}
+                            <a href="{{ url_for('remove_favourite', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small red">Remove from Favourites<i class="fa-solid fa-circle-minus"></i></a>
+                        {% else %}
+                            <a href="{{ url_for('favourite_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small pink accent-2">Add to Favourites<i class="fa-solid fa-heart"></i></a>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             </div>
