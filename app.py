@@ -238,17 +238,12 @@ def view_recipe(recipe_id):
     based on recipe_title """
     # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-    favourites = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})["favourites"]
 
     # if recipe not found show error
     if not recipe:
         return render_template("404.html")
 
-    return render_template("view_recipe.html", recipe=recipe,
-        favourites=favourites)
+    return render_template("view_recipe.html", recipe=recipe)
 
 
 # recipes
