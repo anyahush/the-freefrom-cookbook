@@ -108,8 +108,7 @@ def search():
                 recipes_paginated = paginated(recipe_results)
                 pagination = pagination_args(recipe_results)
 
-        return render_template("recipes.html",
-            recipes=recipes_paginated, pagination=pagination)
+        return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
 
 # users
 @app.route("/register", methods=["GET", "POST"])
@@ -134,7 +133,7 @@ def register():
             # not met, flash message displayed and reloads page
             flash("Your password did not match, please try again")
             return redirect(url_for("register"))
-        
+
         register_user = {
             # gets user information from registration form
             "username": request.form.get("username").lower(),
@@ -154,7 +153,7 @@ def register():
             "user_id": ObjectId(user_id),
             "favourites": [],
             "shopping_list": []})
-        
+
         name = request.form.get("first_name")
         flash(f'Welcome {name}' +
             'you have been successfully registered.')
@@ -177,10 +176,10 @@ def login():
             # check hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}". format(
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}". format(
                         request.form.get("username")))
-                    return redirect(url_for(
+                return redirect(url_for(
                         "profile", username=session["user"]))
             else:
                 # if password does not match
@@ -211,12 +210,12 @@ def profile(username):
             {"created_by": username}))
         favourites = user_profile["favourites"]
         shopping_list = user_profile["shopping_list"]
- 
+
         return render_template(
             "profile.html",
             recipes=recipes, favourites=favourites,
             shopping_list=shopping_list, username=username)
-    
+
     else:
         flash("You need to be signed in for that")
         return redirect(url_for("login"))
@@ -238,12 +237,21 @@ def view_recipe(recipe_id):
     based on recipe_title """
     # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    # if user not logges in renders recipe page
+    if "user" not in session:
+        return render_template("view_recipe.html", recipe=recipe)
+    # if user logges in renders recipe page with tailored buttons
+    else:
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        favourites = mongo.db.profiles.find_one({"user_id": ObjectId(user_id)})["favourites"]
 
     # if recipe not found show error
     if not recipe:
         return render_template("404.html")
 
-    return render_template("view_recipe.html", recipe=recipe)
+    return render_template("view_recipe.html", recipe=recipe,
+        favourites=favourites)
 
 
 # recipes
