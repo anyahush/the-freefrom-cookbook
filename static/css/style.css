@@ -63,6 +63,10 @@ hr {
 }
 
 
+.pagination li.active {
+    background-color: #a22843;
+}
+
 /* footer */
 .page-footer {
     background-color: #a22843;
