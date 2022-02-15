@@ -18,26 +18,26 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!-- contact form -->
+                        <!-- Contact form -->
                         <form class="col s12" id="contact-form">
                                 <div class="input-field col s12">
                                     <p id="required"><em>* required</em></p>
-                                    <p>Name *</p>
-                                    <input id="name" name="name" type="text" class="validate" placeholder="Name" required>
-                                    <label for="name"></label>
+                                    <p>Full Name *</p>
+                                    <input id="name" name="name" type="text" class="validate" placeholder="Name" title="Full name with letters" pattern="^[a-zA-Z ]+[a-zA-Z]\S+$" required>
+                                    <label for="name" class="sr-only">Full Name</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <p>Email *</p>
                                     <input id="email" name="email" type="email" class="validate" placeholder="Email" required>
-                                    <label for="email"></label>
+                                    <label for="email" class="sr-only">Email</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <p>Message *</p>
-                                    <textarea  id="message" name="message" cols="40" rows="10" placeholder="Message" min="20" max="500" required></textarea>
-                                    <label for="message"></label>
+                                    <textarea  id="message" name="message" cols="40" rows="10" placeholder="Message" title="Message between 20 and 500 characters" minlength="20" maxlength="500" required></textarea>
+                                    <label for="message" class="sr-only">Message</label>
                                 </div>
                                 <div class="col s12">
-
+                                <!-- Send Button -->
                                 </div>
                                 <div class="col s12 center-align">
                                     <button id="submit-button" type="submit" class="btn">Send</button>

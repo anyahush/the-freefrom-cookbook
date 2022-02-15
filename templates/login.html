@@ -4,19 +4,19 @@
     <h3 class="center-align">Login</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2 l6 offset-l3" method="POST" action="{{ url_for('login') }}">
+        <form class="col s12 m8 offset-m2 l6 offset-l3" action="{{ url_for('login') }}" method="POST">
             <div class="card-panel">
                 <!--username-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" title="Username between 5 and 15 characters" pattern="^\S+$"  class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
                 <!--password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" title="Password between 5 and 15 characters" pattern="^\S+$"  class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>

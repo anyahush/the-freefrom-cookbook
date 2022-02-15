@@ -4,51 +4,46 @@
     <h3 class="center-align">Register</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2 l6 offset-l3" method="POST" action="{{ url_for('register') }}">
+        <!-- Register Form -->
+        <form class="col s12 m8 offset-m2 l6 offset-l3" action="{{ url_for('register') }}" method="POST">
             <div class="card-panel">
-                <!--username-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" title="Username between 5 and 15 characters" pattern="^\S+$"  class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
-                <!--first name-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first-name" name="first-name" type="text" minlength="3" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="first-name" name="first-name" type="text" minlength="1" maxlength="20" title="First name between 1 and 20 letters" pattern="^[a-zA-Z ]+[a-zA-Z]\S+$"  class="validate" required>
                         <label for="first-name">First Name</label>
                     </div>
                 </div>
-                <!--surname-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="surname" name="surname" type="text" minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="surname" name="surname" type="text" minlength="1" maxlength="20" title="Surname between 1 and 20 letters" pattern="^[a-zA-Z ]+[a-zA-Z]\S+$"  class="validate" required>
                         <label for="surname">Surname</label>
                     </div>
                 </div>
-                <!--email-->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" name="email" type="email" pattern="^\S+$" class="validate" required>
                         <label for="email">Email</label>
                     </div>
                 </div>
-                <!--password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" pattern="^\S+$"  class="validate" required>
+                        <input id="password" name="password" type="password"  minlength="5" maxlength="15" title="Password between 5 and 15 characters" pattern="^\S+$"  class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!--confirm password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="15" pattern="^\S+$"  class="validate">
+                        <input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="15" title="Confirm password to match password"  pattern="^\S+$"  class="validate">
                         <label for="confirm-password">Confirm password</label>
                     </div>
                 </div>
-                <!--register-->
+                <!-- Register Button -->
                 <div class="row">
                     <button type="submit" class="col s8 offset-s2 l6 offset-l3 btn-large">
                         Register 
@@ -57,7 +52,7 @@
             </div>
         </form>
     </div>
-
+    <!-- Option to login if user already registered -->
     <div class="row">
         <div class="col s12">
             <p class="center-align">
