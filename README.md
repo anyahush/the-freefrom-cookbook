@@ -101,10 +101,23 @@ As admin:
 ## Surface Plane
 
 ### Colour Scheme
+During development I explored different colour palettes and options. I wanted to use a colour scheme that was both pleasing to the using, and contributed to an overall stylish and simple design. Using [Coolors](https://coolors.co/), a colour palette was chosen. 
+
+Initially this palette was chosen:
+![Colour palette](static/images/readme_images/original_coolors.png)
+
+After further exploration and development these colours were chosen:
+
+![Image of pink colour](static/images/readme_images/colour_pink.png)
+![Image of gray colour](static/images/readme_images/colour_gray.png)
+![Image of blue colour](static/images/readme_images/colour_blue.png)
+![Image of liver colour](static/images/readme_images/colour_liver.png)
+
 
 ### Images
 
 ### Typography
+[Google Fonts](https://fonts.google.com/) was used to choose fonts for the site. Lobster was chosen as the brand logo font, with its flowing, cursive design. Roboto Condensed was chosen for the rest of the site, as it is clear and easy to read. 
 
 ## Technologies
 
@@ -115,6 +128,8 @@ As admin:
 - JavaScript
 
 ### Frameworks and Libraries
+- [Coolors](https://coolors.co/) was used to help form a colour palette for the website.
+- [Google Fonts](https://fonts.google.com/) was used to choose the fonts.
 
 ## Testing
 
