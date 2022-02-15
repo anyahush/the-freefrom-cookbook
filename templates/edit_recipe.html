@@ -1,31 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h3>Edit Recipe</h3>
+    <h3 class="center-align">Edit Recipe</h3>
     <div class="row">
-        <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
+        <form class="col s12 l8 offset-l2" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}" method="POST">
         <div class="card-panel">
-             <!-- recipe title -->
+             <!-- Recipe title -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" minlength="5" maxlength="50" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9_ ]*$" required>
+                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" minlength="5" maxlength="25" class="validate" pattern="^[A-Za-z0-9][A-Za-z0-9_ ]*$" title="5-25 characters including letters and numbers" required>
                 <label for="recipe_title">Recipe Title</label>
             </div>
         </div>
-        
+        <!-- Recipe form-->
         <div class="row">
-            <!-- recipe image -->
             <div class="input-field col s8">
                 <input id="image_url" name="image_url" type="text"  value="{{ recipe.image_url }}" placeholder="Optional" class="validate">
                 <label for="image_url">Upload image url</label>
             </div>
-            <!-- number of servings -->
             <div class="input-field col s4">
-                <input id="servings" name="servings" type="text" value="{{ recipe.servings }}" minlength="1" maxlength="20" pattern="^[0-9]*$" class="validate" required>
+                <input id="servings" name="servings" type="number" value="{{ recipe.servings }}" min="1" max="20" title="Servings 1-20 using numeric values" pattern="^[0-9]*$" class="validate" required>
                 <label for="servings">Servings</label>
             </div>
         </div>
-        <!-- recipe category -->
         <div class="row">
             <div class="input-field col s6">
                 <select id="category_name" name="category_name" class="validate" required>
@@ -42,7 +39,7 @@
             </div>
             <div class="input-field col s6">
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
-                    <option value="" disabled>Select</option>
+                    <option value="" disabled></option>
                     {% for allergen in allergens %}
                         {% if allergen.allergen_name in recipe.allergen_list %}
                             <option value="{{ allergen.allergen_name }}" selected>{{ allergen.allergen_name }}</option>
@@ -54,31 +51,28 @@
                 <label for="allergen_list">Free From</label>
             </div>
         </div>
-        <!-- recipe prep and cook time -->
         <div class="row">
             <div class="input-field col s6">
-                <input id="prep_time" name="prep_time" type="text" value="{{ recipe.prep_time }}" minlength="1" maxlength="5" class="validate" pattern="^[0-9]*$" required>
+                <input id="prep_time" name="prep_time" type="text" value="{{ recipe.prep_time }}" minlength="1" maxlength="5" title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$" required>
                 <label for="prep_time">Prep Time</label>
                 <p>Time in minutes</p>
             </div>
             <div class="input-field col s6">
-                <input id="cook_time" name="cook_time" type="text" value="{{ recipe.cook_time }}" minlength="1" maxlength="5" class="validate" pattern="^[0-9]*$"  required>
+                <input id="cook_time" name="cook_time" type="text" value="{{ recipe.cook_time }}" minlength="1" maxlength="5" title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"  required>
                 <label for="cook_time">Cook Time</label>
             </div>
         </div>
-        <!-- recipe description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="recipe_description" name="recipe_description" type="text" minlength="10" maxlength="250"
-                    pattern="^[A-Za-z][A-Za-z_ ]*$" class="validate" required>
+                <textarea id="recipe_description" name="recipe_description" type="text" title="Description between 10 and 250 characters"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{10,250})$" class="validate" required>
                 {{- recipe.recipe_description -}}
                 </textarea>
                 <label for="recipe_description">Description</label>
                 <p>Between 10 and 250 characters</p>
             </div>
         </div>
-        <!--used from Wanderlust Recipes full details in README -->
-        <!-- edit ingredients -->
+        <!--Modified from Wanderlust Recipes full details in README -->
         <div class="row">
             <div class="col s12">
                 <h6>Ingredients</h6>
@@ -88,7 +82,7 @@
                     {% for ingredient in recipe.ingredients %}
                     <li class="collection-item">
                         <div class="input-field">
-                            <input name="ingredients" type="text" maxlength="100" required value="{{ ingredient }}">
+                            <input name="ingredients" type="text" maxlength="100" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{10,250})$" class="validate" required value="{{ ingredient }}">
                         </div>
                         <a class="remove-list-item">
                             <i class="fas fa-times"></i>
@@ -105,7 +99,6 @@
                 </ul>
             </div>
         </div>
-        <!-- edit method -->
         <div class="row">
             <div class="col s12">
                 <h6>Method</h6>
@@ -134,7 +127,8 @@
             </div>
         </div>
         <!--End of Wanderlust code -->
-        <!-- edit recipe button -->
+
+        <!-- Action buttons -->
         <div class="row">
             <div class="col s12 m6 center-align">
                 <a href="{{ url_for('get_recipes') }}" class="btn-large red">Cancel</a>
@@ -150,7 +144,5 @@
        
         </form>
     </div>
-
 </div>
-
 {% endblock%}

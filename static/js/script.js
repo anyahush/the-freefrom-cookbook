@@ -59,7 +59,7 @@ $('#allergen_list .add-allergern-list-item').click(function (event) {
 $('#ingredients .add-ingredient-list-item').click(function (event) {
   let IngredientItem = `<li class="collection-item">
                               <div class="input-field">
-                                  <input name="ingredients" type="text" maxlength="100" pattern="^[A-Za-z0-9 ]*[A-Za-z0-9][A-Za-z0-9 ]*$" required>
+                                  <input name="ingredients" type="text" class="validate" title="1-100 characters" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{,100})$" required>
                                   <label for="ingredients">Ingredient</label>
                               </div>
                               <a class="remove-list-item">
