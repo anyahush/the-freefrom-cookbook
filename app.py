@@ -71,44 +71,57 @@ def get_recipes():
         "recipes.html", recipes=recipes_paginated,
         pagination=pagination, allergens=allergens)
 
+search_query = None
+allergen_search_query = None
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    """ Creates search function based on input and/
-    or checkboxes selected """
+    """ Creates search function based on input and or checkboxes selected """
+    global search_query
+    global allergen_search_query
+    page = 1
 
-    if request.method == "POST":
-        # get search bar input
+    # if its not the first search query
+    if request.method == 'GET':
+        query = search_query
+        allergen_query = allergen_search_query
+        page = request.args.get('page')
+
+    # if it is the first search query
+    elif request.method == 'POST':
         query = request.form.get("query")
-        # get allergen checkboxes selected
         allergen_query = request.form.getlist("allergen-query")
 
-        # if input and checkbox filled in
-        if query and allergen_query:
-            recipe_results = list(mongo.db.recipes.find({
-                "$and": [
-                    {"allergen_list": {"$in": allergen_query}},
-                    {"$text": {"$search": query}}]
-            }))
-            if recipe_results:
-                recipes_paginated = paginated(recipe_results)
-                pagination = pagination_args(recipe_results)
-        # if just search input
-        elif query:
-            recipe_results = list(mongo.db.recipes.find(
-                {"$text": {"$search": query}}))
-            if recipe_results:
-                recipes_paginated = paginated(recipe_results)
-                pagination = pagination_args(recipe_results)
-        # if just checkbox selected
-        elif allergen_query:
-            recipe_results = list(mongo.db.recipes.find(
-                {"allergen_list": {"$in": allergen_query}}))
-            if recipe_results:
-                recipes_paginated = paginated(recipe_results)
-                pagination = pagination_args(recipe_results)
+        # save for next search query
+        search_query = query
+        allergen_search_query = allergen_query
 
-        return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
+
+     # if input and checkbox filled in
+    if query and allergen_query:
+        recipe_results = list(mongo.db.recipes.find({
+            "$and": [
+                {"allergen_list": {"$in": allergen_query}},
+                {"$text": {"$search": query}}]
+        }))
+    # if just search input
+    elif query:
+        recipe_results = list(mongo.db.recipes.find(
+            {"$text": {"$search": query}}))
+    # if just checkbox selected
+    elif allergen_query:
+        recipe_results = list(mongo.db.recipes.find(
+            {"allergen_list": {"$in": allergen_query}}))
+
+    # paginate the results - need to handle a no results case
+    if recipe_results:
+        recipes_paginated = paginated(recipe_results)
+        pagination = pagination_args(recipe_results)
+    else:
+        flash("Sorry no results found")
+        return redirect(url_for("get_recipes"))
+
+    return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
 
 # users
 @app.route("/register", methods=["GET", "POST"])
