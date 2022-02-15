@@ -442,15 +442,14 @@ def remove_shopping_list(username):
 
         if request.method == "POST":
             remove_items = request.form.getlist('shopping_list')
-            update = mongo.db.profiles.update_one(
+            
+            update = mongo.db.profiles.update_many(
                 {"user_id": ObjectId(user_id)},
-                {"$pull": {"shopping_list": remove_items}})
+                {"$pull": {"shopping_list": { "$in": remove_items}}})
+            # update = True
             if update:
                 flash("Ingredients have been removed")
-                return redirect(url_for(
-                    "profile", favourites=favourites,
-                    shopping_list=shopping_list,
-                    recipes=recipes, username=username))
+                return redirect(url_for("profile", username=session["user"]))
 
 
 

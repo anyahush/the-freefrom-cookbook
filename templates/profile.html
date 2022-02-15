@@ -26,13 +26,13 @@
                 <hr>
             </div>
             <div class="card-panel">
-                    <form action="{{ url_for('remove_shopping_list') }}" method="POST">
+                    <form action="{{ url_for('remove_shopping_list', username=username) }}" method="POST">
                         <ul id="shopping_list">
                             {% for list in shopping_list %}
                             {% for ingredient in list %}
                             <li class="collection-item">
                                 <label>
-                                    <input type="checkbox" class="filled-in" value="{{ ingredient }}">
+                                    <input type="checkbox" class="filled-in" value="{{ ingredient }}" name="shopping_list">
                                     <span>{{ ingredient }}</span>
                                 </label>
                             </li>
