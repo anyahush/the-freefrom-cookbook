@@ -299,7 +299,9 @@ def view_recipe(recipe_id):
     based on recipe_title """
     # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    # if user not logges in renders recipe page
+    admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+    # if user not logged in renders recipe page
     if "user" not in session:
         return render_template("view_recipe.html", recipe=recipe)
     # if user logges in renders recipe page with tailored buttons
@@ -313,7 +315,7 @@ def view_recipe(recipe_id):
         return render_template("404.html")
 
     return render_template("view_recipe.html", recipe=recipe,
-        favourites=favourites)
+        favourites=favourites, admin=admin)
 
 
 
@@ -406,7 +408,6 @@ def delete_recipe(recipe_id):
         else:
             flash("Oops you need to be logged in for that!")
             return redirect(url_for("login"))
-
     else:
         return render_template("404.html")
 
