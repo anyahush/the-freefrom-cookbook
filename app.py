@@ -299,8 +299,7 @@ def view_recipe(recipe_id):
     based on recipe_title """
     # find recipe in db by id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    admin = mongo.db.users.find_one(
-        {"username": session["user"]})["admin"]
+
     # if user not logged in renders recipe page
     if "user" not in session:
         return render_template("view_recipe.html", recipe=recipe)
@@ -310,13 +309,15 @@ def view_recipe(recipe_id):
             {"username": session["user"]})["_id"]
         favourites = mongo.db.profiles.find_one(
             {"user_id": ObjectId(user_id)})["favourites"]
+        admin_user = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
 
     # if recipe not found show error
     if not recipe:
         return render_template("404.html")
 
     return render_template("view_recipe.html", recipe=recipe,
-        favourites=favourites, admin=admin)
+        favourites=favourites, admin=admin_user)
 
 
 
