@@ -37,8 +37,8 @@
                 <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
                     class="waves-effect waves-light btn-small">Edit</a>
 
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
-                    class="waves-effect waves-light btn-small red">Delete</a>
+                <button data-target="delete-recipe-modal" type="submit" class="waves-effect waves-light btn-small red modal-trigger">Delete</button>
+                
                 {% endif %}
                 <!-- Logged in users that did not create recipe can add to favourites -->
                 {% if session.user %}
@@ -121,5 +121,17 @@
         </div>
         {% endfor %}
     </div>
+    <div class="row">
+        <!-- Deletion confirmation modal from Materialize -->
+        <div class="modal" id="delete-recipe-modal">
+            <div class="modal-content">
+                <h5 id="response-header" class="center-align"><i class="fa-solid fa-circle-exclamation"></i>Are you sure you want to delete your recipe?</h5>
+                <div class="center-align"> 
+                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small red">Delete</a>
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small">Cancel</a>
+                </div>
+            </div>
+        </div>
+</div>
 </div>
 {% endblock %}
