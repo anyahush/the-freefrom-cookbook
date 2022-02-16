@@ -308,7 +308,8 @@ def view_recipe(recipe_id):
     else:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
-        favourites = mongo.db.profiles.find_one({"user_id": ObjectId(user_id)})["favourites"]
+        favourites = mongo.db.profiles.find_one(
+            {"user_id": ObjectId(user_id)})["favourites"]
 
     # if recipe not found show error
     if not recipe:
@@ -357,8 +358,8 @@ def edit_recipe(recipe_id):
     """ Allow users to edit existing recipe """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-    # only users that created the recipe can edit the recipe
-    if session.get("user") == recipe["created_by"]:
+    # admin or users that created the recipe can edit the recipe
+    if admin or session.get("user") == recipe["created_by"]:
 
         # edit recipe and update db
         if request.method == "POST":
@@ -395,13 +396,8 @@ def delete_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     if "user" in session:
-        # admin can delete any recipe
-        if admin():
-            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-            flash("You deleted a recipe!")
-            return redirect(url_for("get_recipes"))
-        # users that created the recipe can delete it
-        elif session.get("user") == recipe["created_by"]:
+        # admin or users that created the recipe can delete it
+        if admin or session.get("user") == recipe["created_by"]:
             mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
             flash("You deleted a recipe!")
             return redirect(url_for("get_recipes"))
