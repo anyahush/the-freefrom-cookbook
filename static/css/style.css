@@ -125,9 +125,14 @@ hr {
     font-family: 'Roboto Condensed';
 }
 
+.card {
+    overflow-y: auto;
+}
+
 .card .card-content {
-    height: 250px;
+    height: 270px;
     padding: 15px;
+    overflow-y: auto;
 }
 
 .card .card-content p {
