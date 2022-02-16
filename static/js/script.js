@@ -59,7 +59,7 @@ $('#allergen_list .add-allergern-list-item').click(function (event) {
 $('#ingredients .add-ingredient-list-item').click(function (event) {
   let IngredientItem = `<li class="collection-item">
                               <div class="input-field">
-                                  <input name="ingredients" type="text" class="validate" title="1-100 characters" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{,100})$" required>
+                                  <input name="ingredients" type="text" class="validate" title="1-100 characters" pattern="^(?=.*[a-zA-Z0-9_ ]){1,100})$" required>
                                   <label for="ingredients">Ingredient</label>
                               </div>
                               <a class="remove-list-item">
@@ -83,7 +83,7 @@ $('#method_step .add-method-step-item').click(function (event) {
                               <span class="sr-only">Remove Method Step</span>
                           </a>
                           <div class="input-field">
-                          <textarea name="method_step" class="materialize-textarea" required></textarea>
+                          <textarea name="method_step" class="materialize-textarea" pattern="^(?=.*[a-zA-Z0-9_ ]){1,100})$" required></textarea>
                           <label for="method_step">Step Description</label>
                           </div>
                       </li>`;
@@ -95,3 +95,5 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
   $(this).parent().remove();
 });
 // End of Wanderlust code 
+
+

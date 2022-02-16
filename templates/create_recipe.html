@@ -8,7 +8,7 @@
         <div class="card-panel">
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" minlength="5" maxlength="25" class="validate" pattern="^[A-Za-z][A-Za-z_ ]*$" title="5-25 letters" required>
+                <input id="recipe_title" name="recipe_title" type="text" class="validate" pattern="^(?=.*[a-zA-Z0-9_ ]){5,25})$" title="5-25 characters" required>
                 <label for="recipe_title">Recipe Title</label>
             </div>
         </div>
@@ -55,10 +55,10 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_description" name="recipe_description" type="text" title="Description between 10 and 250 characters"
-                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{10,250})$" class="validate" required>
+                <input id="recipe_description" name="recipe_description" type="text" title="Description between 10 and 100 characters"
+                pattern="^(?=.*[a-zA-Z0-9_ ]){10,100})$" class="validate" required>
                 <label for="recipe_description">Description</label>
-                <p>Between 10 and 250 characters</p>
+                <p>Between 10 and 100 characters</p>
             </div>
         </div>
         <!--Modified from Wanderlust Recipes full details in README -->
