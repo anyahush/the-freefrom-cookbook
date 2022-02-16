@@ -131,13 +131,17 @@ hr {
 }
 
 .card .card-content p {
-    margin: 10px 0;
+    margin: 8px 0;
     font-size: 90%;
 }
 
 .card .card-image img {
     height: 200px;
     object-fit: cover;
+}
+
+.card-content hr {
+    margin: auto;
 }
 
 span {
