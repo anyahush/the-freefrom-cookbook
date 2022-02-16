@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-#configurations
+# Configurations
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -19,6 +19,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# Variables
+search_query = None
+allergen_search_query = None
+
+# Pagination functions
+# Pagination used from https://github.com/timmorrisdev/MS3-sustainable-supper-club/blob/main/app.py
 def paginated(recipes):
     PER_PAGE = 6
     page, per_page, offset = get_page_args(
@@ -29,7 +35,7 @@ def paginated(recipes):
 
 
 def pagination_args(recipes):
-    PER_PAGE = 6
+    PER_PAGE= 6
     page, per_page, offset = get_page_args(
         page_parameter='page', per_page_parameter='per_page')
     total = len(recipes)
@@ -37,6 +43,8 @@ def pagination_args(recipes):
     return Pagination(
         page=page, per_page=PER_PAGE, total=total, css_framework="materialize")
 
+
+# Pages
 @app.route("/")
 def index():
     """
@@ -71,8 +79,6 @@ def get_recipes():
         "recipes.html", recipes=recipes_paginated,
         pagination=pagination, allergens=allergens)
 
-search_query = None
-allergen_search_query = None
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
@@ -123,7 +129,7 @@ def search():
 
     return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
 
-# users
+# Users
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """ Register view, when form submitted database
@@ -241,6 +247,46 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/remove_shopping_list/<username>", methods=["GET", "POST"])
+def remove_shopping_list(username):
+    """ Users can remove ingredients from shopping list on profile """
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]}["username"])
+
+        if request.method == "POST":
+            remove_items = request.form.getlist('shopping_list')
+            
+            update = mongo.db.profiles.update_many(
+                {"user_id": ObjectId(user_id)},
+                {"$pull": {"shopping_list": { "$in": remove_items}}})
+            # update = True
+            if update:
+                flash("Ingredients have been removed")
+                return redirect(url_for("profile", username=session["user"]))
+
+
+@app.route("/delete_account")
+def delete_account():
+    """ Allows users to delete account from db"""
+    # Delete user account, display confirmation and redirect to register view
+    if "user" in session:
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        mongo.db.profiles.delete_one({"user_id": ObjectId(user_id)})
+        mongo.db.users.delete_one({"username": session["user"]})
+        session.pop("user")
+        flash("Account successfully deleted")
+        return redirect("register")
+    else:
+        flash("Sorry you need to be logged in to view this")
+        return redirect("register")
+
+
+# Recipes
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
     """ Displays selected recipe in seperate page
@@ -264,7 +310,7 @@ def view_recipe(recipe_id):
         favourites=favourites)
 
 
-# recipes
+
 @app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
     """ Allow users to create a recipe and save """
@@ -421,35 +467,6 @@ def create_shopping_list(recipe_id):
                 flash("Shopping List Saved")
                 return redirect(url_for(
                     "view_recipe", recipe_id=recipe_id))
-
-
-@app.route("/remove_shopping_list/<username>", methods=["GET", "POST"])
-def remove_shopping_list(username):
-    """ Users can remove ingredients from shopping list on profile """
-    user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-
-    favourites = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})["favourites"]
-    shopping_list = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})["shopping_list"]
-    recipes = list(mongo.db.recipes.find(
-            {"created_by": username}))
-
-    if "user" in session:
-        username = mongo.db.users.find_one(
-            {"username": session["user"]}["username"])
-
-        if request.method == "POST":
-            remove_items = request.form.getlist('shopping_list')
-            
-            update = mongo.db.profiles.update_many(
-                {"user_id": ObjectId(user_id)},
-                {"$pull": {"shopping_list": { "$in": remove_items}}})
-            # update = True
-            if update:
-                flash("Ingredients have been removed")
-                return redirect(url_for("profile", username=session["user"]))
 
 
 
