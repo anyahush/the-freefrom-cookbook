@@ -358,34 +358,33 @@ def create_recipe():
 def edit_recipe(recipe_id):
     """ Allow users to edit existing recipe """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    allergens = mongo.db.allergens.find().sort("allergen_name", 1)
 
-    # admin or users that created the recipe can edit the recipe
-    if admin or session.get("user") == recipe["created_by"]:
-
-        # edit recipe and update db
-        if request.method == "POST":
-            edit = {
-                "recipe_title": request.form.get("recipe_title"),
-                "category_name": request.form.get("category_name"),
-                "image_url": request.form.get("image_url"),
-                "allergen_list": request.form.getlist("allergen_list"),
-                "servings": request.form.get("servings"),
-                "prep_time": request.form.get("prep_time"),
-                "cook_time": request.form.get("cook_time"),
-                "recipe_description": request.form.get("recipe_description"),
-                "ingredients": request.form.getlist("ingredients"),
-                "method_step": request.form.getlist("method_step"),
-                "created_by": session["user"]
-            }
-            mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
-            flash("You edited your recipe!")
+    if "user" in session:
+        # admin or users that created the recipe can edit the recipe
+        if admin or session.get("user") == recipe["created_by"]:
+            # edit recipe and update db
+            if request.method == "POST":
+                edit = {
+                    "recipe_title": request.form.get("recipe_title"),
+                    "category_name": request.form.get("category_name"),
+                    "image_url": request.form.get("image_url"),
+                    "allergen_list": request.form.getlist("allergen_list"),
+                    "servings": request.form.get("servings"),
+                    "prep_time": request.form.get("prep_time"),
+                    "cook_time": request.form.get("cook_time"),
+                    "recipe_description": request.form.get("recipe_description"),
+                    "ingredients": request.form.getlist("ingredients"),
+                    "method_step": request.form.getlist("method_step"),
+                    "created_by": session["user"]
+                }
+                mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
+                flash("You successfully edited the recipe!")
+                return redirect(url_for("get_recipes"))
     else:
         return render_template("404.html")
 
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template(
         "edit_recipe.html", recipe=recipe,
         categories=categories, allergens=allergens)
