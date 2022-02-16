@@ -19,7 +19,7 @@
                 <a href="{{ url_for('get_recipes') }}" class="btn profile-btns">Find Recipes</a>
             </div>
             <div>
-                <a href="" class="btn red profile-btns">Delete Account</a>
+                <button data-target="delete-user-modal" type="submit" class="waves-effect waves-light btn-small red modal-trigger profile-btns">Delete Account</button>
             </div>
             
         </div>
@@ -153,6 +153,17 @@
             {% endif %}
         </div>
     </div>
+    <div class="row">
+        <!-- Delete account confirmation modal from Materialize -->
+        <div class="modal" id="delete-user-modal">
+            <div class="modal-content">
+                <h5 id="response-header" class="center-align"><i class="fa-solid fa-circle-exclamation"></i>Are you sure you want to leave us?</h5>
+                <div class="center-align"> 
+                    <a href="" class="waves-effect waves-light btn-small red">Delete</a>
+                    <a href="{{ url_for('profile', username=username) }}" class="waves-effect waves-light btn-small">Cancel</a>
+                </div>
+            </div>
+        </div>
 </div>
 </div>
 
