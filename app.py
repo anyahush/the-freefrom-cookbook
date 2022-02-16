@@ -19,6 +19,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+def admin():
+    """ Admin function to distinguish admin user """
+    admin_user = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+    return admin_user
+
 # Variables
 search_query = None
 allergen_search_query = None
@@ -386,11 +392,21 @@ def delete_recipe(recipe_id):
     """ Users can delete their own recipes from the db """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-    # only users that created the recipe can delete it
-    if session.get("user") == recipe["created_by"]:
-        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-        flash("You deleted a recipe!")
-        return redirect(url_for("get_recipes"))
+    if "user" in session:
+        # admin can delete any recipe
+        if admin():
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("You deleted a recipe!")
+            return redirect(url_for("get_recipes"))
+        # users that created the recipe can delete it
+        elif session.get("user") == recipe["created_by"]:
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("You deleted a recipe!")
+            return redirect(url_for("get_recipes"))
+        else:
+            flash("Oops you need to be logged in for that!")
+            return redirect(url_for("login"))
+
     else:
         return render_template("404.html")
 
