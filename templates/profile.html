@@ -13,13 +13,13 @@
             <p>Check out your saved ingredients, favourites recipes and recipes you have created. <br>
             Happy cooking!</p>
             <div>
-                <a href="{{ url_for('create_recipe') }}" class="btn profile-btns">Create Recipe</a>
+                <a href="{{ url_for('create_recipe') }}" class="waves-effect btn profile-btns">Create Recipe</a>
             </div>
             <div>
-                <a href="{{ url_for('get_recipes') }}" class="btn profile-btns">Find Recipes</a>
+                <a href="{{ url_for('get_recipes') }}" class="waves-effect btn profile-btns">Find Recipes</a>
             </div>
             <div>
-                <button data-target="delete-user-modal" type="submit" class="waves-effect waves-light btn-small red modal-trigger profile-btns">Delete Account</button>
+                <button data-target="delete-user-modal" type="submit" class="waves-effect btn delete-btns modal-trigger profile-btns">Delete Account</button>
             </div>
             
         </div>
@@ -44,7 +44,7 @@
                         </ul>
 
                         <div class="center-align">
-                            <button type="submit" class="btn red">Delete</button>
+                            <button type="submit" class="btn delete-btns">Remove Ingredients</button>
                         </div>
                     </form>
             </div>
@@ -155,8 +155,8 @@
             <div class="modal-content">
                 <h5 id="response-header" class="center-align"><i class="fa-solid fa-circle-exclamation"></i>Are you sure you want to leave us?</h5>
                 <div class="center-align"> 
-                    <a href="{{ url_for('delete_account') }}" class="waves-effect waves-light btn-small red">Delete</a>
-                    <a href="{{ url_for('profile', username=username) }}" class="waves-effect waves-light btn-small">Cancel</a>
+                    <a href="{{ url_for('delete_account') }}" class="waves-effect btn-small delete-btns">Delete Account</a>
+                    <a href="{{ url_for('profile', username=username) }}" class="waves-effect btn-small">Cancel</a>
                 </div>
             </div>
         </div>

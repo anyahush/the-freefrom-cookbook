@@ -24,6 +24,11 @@ nav ul a, .fa-bars, .sidenav li>a {
     text-transform: uppercase;
 }
 
+
+nav ul li a:focu {
+    color: #a22843;
+}
+
 h1 {
     font-family: "Lobster";
     text-transform: lowercase;
@@ -58,14 +63,14 @@ hr {
     margin-bottom: 25px;
 }
 
-.btn-large {
+.btn, .btn-small, .btn-large {
     background-color: #31625c;
 }
 
-
-.pagination li.active {
+.delete-btns, .pagination li.active {
     background-color: #a22843;
 }
+
 
 /* footer */
 .page-footer {
@@ -173,6 +178,11 @@ span {
 .fa-clock, .fa-utensils {
     margin-right: 10px;
     color: #31625c;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid #31625c;
+    background-color: #31625c;
 }
 
 /* search bar */
