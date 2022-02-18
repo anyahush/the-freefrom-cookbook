@@ -41,7 +41,7 @@
                             </li>
                             {% endfor %}
                             {% endfor %}
-                            {% if shopping_list|length %}
+                            {% if shopping_list|length > 1 %}
                             <div class="select-div">
                                 <label for="select-all">
                                     <input type="checkbox" name="select-all" id="select-all">
@@ -50,7 +50,7 @@
                             </div>
                             {% endif %}
                         </ul>
-                        {% if shopping_list|length  %}
+                        {% if shopping_list|length > 1 %}
                         <div class="center-align">
                             <button type="submit" class="btn delete-btns">Remove Ingredients</button>
                         </div>
