@@ -62,14 +62,23 @@ def index():
 @app.route("/about")
 def about():
     """ Displays content to user about the site """
-
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
     return render_template("about.html", allergens=allergens)
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    """ Display contact form and populate with user information
+    if logged in """
+    if "user" in session:
+        first_name = mongo.db.users.find_one({"username": session["user"]})["first-name"]
+        surname = mongo.db.users.find_one({"username": session["user"]})["surname"]
+
+        name = first_name + " " + surname
+        email = mongo.db.users.find_one({"username": session["user"]})["email"]
+        return render_template("contact.html", name=name, email=email)
+    else:
+        return render_template("contact.html")
 
 
 @app.route("/get_recipes")

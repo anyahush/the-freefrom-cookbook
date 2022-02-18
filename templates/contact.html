@@ -23,12 +23,12 @@
                                 <div class="input-field col s12">
                                     <p id="required"><em>* required</em></p>
                                     <p>Full Name *</p>
-                                    <input id="name" name="name" type="text" class="validate" placeholder="Full Name" title="Full name with letters" pattern="^[a-zA-Z ]+[a-zA-Z]\S+$" required>
+                                    <input id="name" name="name" type="text" class="validate" placeholder="Full Name" value="{{ name }}" title="Full name with letters" pattern="^[a-zA-Z ]+[a-zA-Z]\S+$" required>
                                     <label for="name" class="sr-only">Full Name</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <p>Email *</p>
-                                    <input id="email" name="email" type="email" class="validate" placeholder="Email" required>
+                                    <input id="email" name="email" type="email" class="validate" placeholder="Email" value="{{ email }}" required>
                                     <label for="email" class="sr-only">Email</label>
                                 </div>
                                 <div class="input-field col s12">
