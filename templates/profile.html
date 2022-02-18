@@ -28,7 +28,7 @@
                 <h4 class="center-align">Shopping List</h4>
                 <hr>
             </div>
-            <div class="shopping-list card-panel">
+            <div id="shopping-container" class="shopping-list card-panel">
                     <form action="{{ url_for('remove_shopping_list', username=username) }}" method="POST">
                         <ul id="shopping_list">
                             {% for list in shopping_list %}
@@ -41,8 +41,16 @@
                             </li>
                             {% endfor %}
                             {% endfor %}
+                            {% if shopping_list|length %}
+                            <div class="select-div">
+                                <label for="select-all">
+                                    <input type="checkbox" name="select-all" id="select-all">
+                                    <span class="select-all">Select all</span>
+                                </label>
+                            </div>
+                            {% endif %}
                         </ul>
-                        {% if shopping_list|length > 1 %}
+                        {% if shopping_list|length  %}
                         <div class="center-align">
                             <button type="submit" class="btn delete-btns">Remove Ingredients</button>
                         </div>

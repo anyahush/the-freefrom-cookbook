@@ -97,3 +97,16 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
 // End of Wanderlust code 
 
 
+// Listen for click on toggle checkbox
+$('#select-all').click(function(event) {   
+  if(this.checked) {
+      // Iterate each checkbox
+      $(':checkbox').each(function() {
+          this.checked = true;                        
+      });
+  } else {
+      $(':checkbox').each(function() {
+          this.checked = false;                       
+      });
+  }
+}); 

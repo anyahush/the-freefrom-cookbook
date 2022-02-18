@@ -195,6 +195,17 @@ span {
     background-color: #31625c;
 }
 
+.select-all {
+    text-transform: uppercase;
+    color:#31625c;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.select-div {
+    margin: 20px 0;
+}
+
 /* search bar */
 .collapsible {
     box-shadow: none;
