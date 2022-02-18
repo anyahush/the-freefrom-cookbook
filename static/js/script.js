@@ -5,7 +5,7 @@
     $('.tabs').tabs();
     $('.modal').modal();
 
-    // used from Code Institute Task Manager full details in README
+    // Used from Code Institute Task Manager, full details in README
     validateMaterializeSelect();
     function validateMaterializeSelect() {
       let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
@@ -37,9 +37,10 @@
 //End of CI code
 
 
+// Create and Edit Recipes
 
-// Add list item to ingredients list when '+' button hit
-// Modified from https://github.com/RussOakham/wanderlust-recipes/blob/master/static/js/script.js
+// Add allergen to list if selected in drop down
+// Modified from Wanderlust Recipes, full details in README
 $('#allergen_list .add-allergern-list-item').click(function (event) {
     let AllergenItem = `<select multiple id="allergen_list" name="allergen_list" class="validate" required>
                             <option value="" disabled selected>Select</option>
@@ -51,11 +52,13 @@ $('#allergen_list .add-allergern-list-item').click(function (event) {
     $(this).parent().before(AllergenItem);
 });
   
-  // Remove ingredient list item on click
+  // Remove allergen from list if selected
   $('#allergen_list').on("click", ".remove-list-item", function (event) {
     $(this).parent().remove();
   });
 
+
+// Add ingredient to list when + button is clicked
 $('#ingredients .add-ingredient-list-item').click(function (event) {
   let IngredientItem = `<li class="collection-item">
                               <div class="input-field">
@@ -75,7 +78,7 @@ $('#ingredients').on("click", ".remove-list-item", function (event) {
   $(this).parent().remove();
 });
 
-// Add Method Step item to ingredients list when '+' button hit
+// Add Method Step item to method step list when '+' button hit
 $('#method_step .add-method-step-item').click(function (event) {
   let methodStep = `<li class="collection-item">
                           <div class="input-field">
@@ -97,7 +100,9 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
 // End of Wanderlust code 
 
 
-// Listen for click on toggle checkbox
+// Checkbox toggle to select all checkboxes in create and
+// remove shopping list items
+// Used from Stack Overflow, full details in README
 $('#select-all').click(function(event) {   
   if(this.checked) {
       // Iterate each checkbox
