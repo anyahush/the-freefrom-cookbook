@@ -28,7 +28,7 @@
                 <h4 class="center-align">Shopping List</h4>
                 <hr>
             </div>
-            <div class="card-panel">
+            <div class="shopping-list card-panel">
                     <form action="{{ url_for('remove_shopping_list', username=username) }}" method="POST">
                         <ul id="shopping_list">
                             {% for list in shopping_list %}
@@ -42,10 +42,11 @@
                             {% endfor %}
                             {% endfor %}
                         </ul>
-
+                        {% if shopping_list|length > 1 %}
                         <div class="center-align">
                             <button type="submit" class="btn delete-btns">Remove Ingredients</button>
                         </div>
+                        {% endif %}
                     </form>
             </div>
 

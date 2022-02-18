@@ -235,6 +235,10 @@ span {
     margin: 10px;
 }
 
+.shopping-list.card-panel {
+    min-height: 200px;
+}
+
 /* contact page */
 #required {
     float: right;
