@@ -34,7 +34,7 @@
             </div>
             <div class="input-field col s6">
                 <select multiple id="allergen_list" name="allergen_list" class="validate" required>
-                    <option value="" disabled selected>Select One or More</option>
+                    <option value="" disabled>Select One or More</option>
                     {% for allergen in allergens %}
                     <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                     {% endfor %}
