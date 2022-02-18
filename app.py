@@ -219,6 +219,8 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     """ Displays user profile once logged in """
+    name = mongo.db.users.find_one(
+        {"username": session["user"]})["first-name"]
 
     # only users can view profile
     if "user" in session:
@@ -237,7 +239,7 @@ def profile(username):
         return render_template(
             "profile.html",
             recipes=recipes, favourites=favourites,
-            shopping_list=shopping_list, username=username)
+            shopping_list=shopping_list, username=username, name=name)
 
     else:
         flash("You need to be signed in for that")
