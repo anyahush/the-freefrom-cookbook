@@ -201,6 +201,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                flash("Welcome, you have logged in")
                 return redirect(url_for(
                         "profile", username=session["user"]))
             else:
@@ -430,7 +431,7 @@ def favourite_recipe(recipe_id):
             mongo.db.profiles.update_one(
                 {"user_id": ObjectId(user_id)},
                 {"$addToSet": {"favourites": recipe}})
-            flash("Recipe successfully added!")
+            flash("Recipe saved to your favourites!")
 
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
@@ -477,7 +478,7 @@ def create_shopping_list(recipe_id):
                 {"$addToSet": {"shopping_list": shopping_list}})
 
             if update:
-                flash("Shopping List Saved")
+                flash("Ingredients added to your shopping list!")
                 return redirect(url_for(
                     "view_recipe", recipe_id=recipe_id))
 
