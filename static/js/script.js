@@ -60,11 +60,11 @@ $('#ingredients .add-ingredient-list-item').click(function (event) {
   let IngredientItem = `<li class="collection-item">
                               <div class="input-field">
                                   <input name="ingredients" type="text" class="validate" title="1-100 characters" pattern="^(?=.*[a-zA-Z0-9_ ]){1,100})$" required>
-                                  <label for="ingredients">Ingredient</label>
+                                  <label for="ingredients">Add quantity and ingredient</label>
                               </div>
                               <a class="remove-list-item">
                                   <i class="fas fa-times"></i>
-                                  <span class="sr-only">Remove Ingredient</span>
+                                  <span class="sr-only">Remove ingredient</span>
                               </a>
                           </li>`;
   $(this).parent().before(IngredientItem);
@@ -78,14 +78,14 @@ $('#ingredients').on("click", ".remove-list-item", function (event) {
 // Add Method Step item to ingredients list when '+' button hit
 $('#method_step .add-method-step-item').click(function (event) {
   let methodStep = `<li class="collection-item">
-                          <a class="remove-list-item">
-                              <i class="fas fa-times"></i>
-                              <span class="sr-only">Remove Method Step</span>
-                          </a>
                           <div class="input-field">
                           <textarea name="method_step" class="materialize-textarea" pattern="^(?=.*[a-zA-Z0-9_ ]){1,100})$" required></textarea>
-                          <label for="method_step">Step Description</label>
+                          <label for="method_step">Step description</label>
                           </div>
+                          <a class="remove-list-item">
+                          <i class="fas fa-times"></i>
+                          <span class="sr-only">Remove method step</span>
+                      </a>
                       </li>`;
   $(this).parent().before(methodStep);
 });
