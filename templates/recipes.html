@@ -64,7 +64,7 @@
                         {% if session.user %}
                         {% if session.user != recipe.created_by %}
                             {% if recipe  not in favourites %}
-                                <a href="{{ url_for('favourite_recipe', recipe_id=recipe._id) }}" class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top" data-tooltip="Add to favourites"><i class="fa-solid fa-heart"></i></a>
+                                <a href="{{ url_for('favourite_recipe_multi', recipe_id=recipe._id) }}" class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top" data-tooltip="Add to favourites"><i class="fa-solid fa-heart"></i></a>
                             {% endif %}
                         {% endif %}
                         {% endif %}

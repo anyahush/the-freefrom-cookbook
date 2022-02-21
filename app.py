@@ -94,7 +94,7 @@ def get_recipes():
         return render_template(
         "recipes.html", recipes=recipes_paginated,
         pagination=pagination, allergens=allergens)
-    # if user logges in renders recipe page with tailored buttons
+    # if user logged in renders recipe page with tailored buttons
     else:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
@@ -152,8 +152,21 @@ def search():
     else:
         flash("Sorry no results found")
         return redirect(url_for("get_recipes"))
+    
+     # if user not logged in renders recipe page
+    if "user" not in session:
+        return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
+    # if user logged in renders recipe page with tailored buttons
+    else:
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        favourites = mongo.db.profiles.find_one(
+            {"user_id": ObjectId(user_id)})["favourites"]
 
-    return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
+        return render_template(
+        "recipes.html", recipes=recipes_paginated,
+        pagination=pagination, favourites=favourites)
+
 
 # Users
 @app.route("/register", methods=["GET", "POST"])
@@ -457,6 +470,33 @@ def favourite_recipe(recipe_id):
 
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
+
+@app.route("/favourite_recipe_multi/<recipe_id>")
+def favourite_recipe_multi(recipe_id):
+    """ Users can save recipes to their profile """
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    recipe = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    favourites = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["favourites"]
+    user_profile = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})
+
+    # check is user logged in
+    if "user" in session:
+        # if recipe already exists in user favourites
+        if recipe in user_profile["favourites"]:
+            flash("You have already saved this recipe")
+        # updates user favourites with recipe
+        else:
+            mongo.db.profiles.update_one(
+                {"user_id": ObjectId(user_id)},
+                {"$addToSet": {"favourites": recipe}})
+            flash("Recipe saved to your favourites!")
+
+        return redirect(url_for(
+            "get_recipes", recipe_id=recipe_id, favourites=favourites))
 
 
 @app.route("/remove_favourite/<recipe_id>")
