@@ -89,10 +89,21 @@ def get_recipes():
 
     recipes_paginated = paginated(recipes)
     pagination = pagination_args(recipes)
-
-    return render_template(
+    # if user not logged in renders recipe page
+    if "user" not in session:
+        return render_template(
         "recipes.html", recipes=recipes_paginated,
         pagination=pagination, allergens=allergens)
+    # if user logges in renders recipe page with tailored buttons
+    else:
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        favourites = mongo.db.profiles.find_one(
+            {"user_id": ObjectId(user_id)})["favourites"]
+
+        return render_template(
+        "recipes.html", recipes=recipes_paginated,
+        pagination=pagination, allergens=allergens, favourites=favourites)
 
 
 @app.route("/search", methods=["GET", "POST"])

@@ -4,6 +4,7 @@
     $('.collapsible').collapsible();
     $('.tabs').tabs();
     $('.modal').modal();
+    $('.tooltipped').tooltip();
 
     // Used from Code Institute Task Manager, full details in README
     validateMaterializeSelect();

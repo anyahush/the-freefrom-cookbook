@@ -25,7 +25,7 @@ nav ul a, .fa-bars, .sidenav li>a {
 }
 
 
-a:hover {
+nav a:hover {
     color: #31625c;
     text-decoration: underline;
 }
@@ -189,6 +189,19 @@ span {
     margin-right: 10px;
     color: #31625c;
 }
+
+.favourite-btns {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+.favourite-btns:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid #31625c;
