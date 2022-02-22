@@ -6,6 +6,9 @@ Insert deployed link here
 
 ## Project Goals
 
+Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances. Food allergies can be isolating and stressful, so I wanted to create something that a community-feel and helped make free-from easier.
+The FreeFrom CookBook has been developed as part of my Full Stack Software Development Diploma with Code Insitute. 
+
 
 ## UX Design
 
@@ -27,35 +30,29 @@ As first-time or casual user (as someone who has not registered):
 * As a user I want to experience good responsive design, so I can access the site on different devices.
 * As a user I want to enjoy stylish, clean design and style that is inline with the subject of the site.
 * As a user I want a variety of recipes for different meals of the day.
-* As a user I want a to search for allergen specific recipes.
+* As a user I want to search for allergen specific recipes.
 * As a user I want to be able to view recipes without having to create an account.
 * As a user I want the option to register for an account, if I want to return later.
 
 As a returning or registered user:
 * As a user I want to log into my account.
-* As a user I want to edit my account, including password and personal details.
 * As a user I want to be able to delete my account.
 * As a user I want to save recipes to my profile.
 * As a user I want to create my own recipes.
 * As a user I want to edit the recipes I have added.
 * As a user I want to delete the recipes I have added.
 * As a user I want to save ingredients to my shopping list.
+* As a user I want to delete ingredients from my shopping list.
 * As a user I want to sign up for a newsletter, so I can stay informed about new recipes.
 * As a user I want to find social media links, so I can follow them on different platforms.
 * As a user I want to contact admin with queries or feedback.
 * As a user I want to find pagination on the recipe pages, so I do not experience endless scrolling.
+* As a user I want to leave comments on recipes, so I can share my opinion with other users.
 
 As admin:
-* As admin I want to edit existing meal type categories.
-* As admin I want to add meal type categories.
-* As admin I want to delete existing meal type categories.
-* As admin I want to edit existing recipes.
+* As admin I want to edit existing recipes created by any user.
 * As admin I want to add new recipes.
-* As admin I want to delete existing recipes.
-* As admin I want to be able to delete a user.
-* As admin I want to be able to reset user passwords if users have trouble logging in.
-* As admin I want to be able to give another user admin rights. 
-
+* As admin I want to delete existing recipes created by any user.
 
 
 ## Scope Plane
