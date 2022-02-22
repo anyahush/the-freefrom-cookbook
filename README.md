@@ -92,6 +92,26 @@ As admin:
 - Recipes to display a rating on recipe card based on the average ratings given.
 
 ## Structure Plane
+This structure of the site has been developed to enable users to access and use the site with ease.
+- Home Page- accessible by all users, whether logged in or not. 
+- Navbar- accessible to all users. The navbar changes to a sidenav on tablet screens and smaller for responsiveness. The options available in the navbar change depending on whether a user is logged in or not.
+    * For logged in users:  
+![Navbar for logged in users](static/images/readme_images/navbar_logged_in.png)
+    * For not logged in users:  
+![Navbar for not logged in users](static/images/readme_images/navbar_logged_out.png)
+- About Page and Contact Page- accessible to all users, whether logged in or not.
+- Recipes library- accessible to all users, whether logged in or not. 
+- On recipe card in the recipes library and on individual recipe pages an 'Add to favourites' button is available to logged in users. This allows logged in users, that did not create the recipe, to save recipes to their profile.
+- View Recipe Page- Each recipe can be viewed in full and accessible to all users, whether logged in or not. This page has edit, delete and 'Add to favourites' buttons, 'Save to Shopping List' and comment section.
+- The edit button on the View Recipe Page, is available to admin or the user that created the recipe. This allows the user or admin to edit any part of the recipe and save it.
+- The delete button on the View Recipe Page, is available to admin or the user that created the recipe. This allows the user or admin to delete the recipe from the database.
+- The 'Save to Shopping List' button allows all logged in users to select ingredients in a recipe and save to a shopping list on their profile.
+- Profile Page- this has the users name displayed in the welcome message. On the users profile there are buttons to create a recipe, find recipes in the library and delete account, as well as their shopping list, recipes the user has created and recipes they have saved to their favourites.
+- Error Pages have been created incase a user tries to access a page that isn't available to them, doesn't exist or there is an issue. 
+![404 Error Page Example](static/images/readme_images/error_page_example.png) 
+- Database schema design was created using (dbdiagram)[https://dbdiagram.io/home], see below.
+
+INSERT SCHEMA DIAGRAM
 
 ## Skeleton Plane
 
