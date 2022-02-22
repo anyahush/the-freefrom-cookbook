@@ -132,15 +132,37 @@ After further exploration and development these colours were chosen:
 
 ## Technologies
 
-### Languages
-
-- HTML
-- CSS3
-- JavaScript
-
-### Frameworks and Libraries
-- [Coolors](https://coolors.co/) was used to help form a colour palette for the website.
+### Languages and Libraries
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://www.javascript.com/)
+- [Python](https://www.python.org/)
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)- Flask dependency and used security helpers.
+- [MongoDb](https://www.mongodb.com/) used to store database.
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/) Micro framework for building applications.
+- [Jinga](https://jinja.palletsprojects.com/en/3.0.x/) was used as templating language for all pages throughout. 
+- [jQuery](https://jquery.com/) was used for some Materialize elements.
+- [Font Awesome](https://fontawesome.com/) was used for icons throughout the site.
 - [Google Fonts](https://fonts.google.com/) was used to choose the fonts.
+- [Materialize](https://materializecss.com/) was used for responsiveness, styling and elements such as forms, collapasible tables and tabs.
+
+### IDE and Version Control
+- [Git](https://git-scm.com/) was used for version control.
+- [GitHub](https://github.com/) used for storing the project.
+- [GitPod](https://www.gitpod.io/) was used for editing code.
+- [Code Institute GitPod Template]() provided GitPod extensions.
+
+### Design and Development
+- [dbdiagram](https://dbdiagram.io/home) was used to create database schema diagram.
+- [RandomKeygen](https://randomkeygen.com/) was used to generate secret key.
+- [Balsamiq](https://balsamiq.com/) was used to create wireframes.
+- [Coolors](https://coolors.co/) was used to help form a colour palette for the website.
+- [Favicon](https://favicon.io/) was used to create a favicon for the site.
+
+### Validating and Testing
+- [Am I Responsive?](http://ami.responsivedesign.is/) used for creating mock ups.
+- [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) was used throughout development to troubleshoot and whilst testing.
+
 
 ## Testing
 
