@@ -43,13 +43,13 @@ h1 {
     color: #31625c;
 }
 
-h2 {
+#home-title {
     color: #5f4019;
     text-transform: uppercase;
     font-size: 120%;
 }
 
-h3, h4 {
+h2, h3, h4 {
     text-transform: uppercase;
 }
 

@@ -3,13 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h3 class="center-align">Profile </h3>
+            <h2 class="center-align">Profile </h2>
             <hr>
         </div>
     </div>
     <div class="row">
         <div class="col s12 m4 offset-m1 center-align">
-            <h5>Welcome {{ name }}</h5>
+            <h3>Welcome {{ name }}</h3>
             <p>Check out your saved ingredients, favourites recipes and recipes you have created. <br>
             Happy cooking!</p>
             <div>
@@ -25,7 +25,7 @@
         </div>
         <div class="col s12 m6">
             <div class="col s12">
-                <h4 class="center-align">Shopping List</h4>
+                <h3 class="center-align">Shopping List</h3>
                 <hr>
             </div>
             <div id="shopping-container" class="shopping-list card-panel">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="card-content">
                             <div class="col s12">
-                                <h5 class="recipe_card_title">{{ recipe.recipe_title}}</h5>
+                                <h4 class="recipe_card_title">{{ recipe.recipe_title}}</h4>
                                 <hr>
                                 <p>{{ recipe.recipe_description }}</p>
                             </div>
@@ -98,7 +98,7 @@
                                 <p>
                                     <i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}
                                 </p>
-                                <h6><strong>Created By:</strong> {{ recipe.created_by }}</h6>
+                                <h5><strong>Created By:</strong> {{ recipe.created_by }}</h5>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
             </div>
             {% else %}
             <div>
-                <h2>No recipes created yet</h2>
+                <h4>No recipes created yet</h4>
                 <div>
                     <a href="{{ url_for('create_recipe') }}" class="btn profile-btns">Create Recipe</a>
                 </div>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="col s12">
-                                    <h5 class="recipe_card_title">{{ favourite.recipe_title}}</h5>
+                                    <h4 class="recipe_card_title">{{ favourite.recipe_title}}</h4>
                                     <hr>
                                     <p>{{ favourite.recipe_description }}</p>
                                 </div>
@@ -138,7 +138,7 @@
                                     <p>
                                         <i class="fas fa-utensils"></i> Serves: {{ favourite.servings }}
                                     </p>
-                                    <h6><strong>Created By:</strong> {{ favourite.created_by }}</h6>
+                                    <h5><strong>Created By:</strong> {{ favourite.created_by }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                 </div>
                 {% else %}
                 <div>
-                    <h2>No recipes saved yet</h2>
+                    <h4>No recipes saved yet</h4>
                     <div>
                         <a href="{{ url_for('create_recipe') }}" class="btn profile-btns">Create Recipe</a>
                     </div>

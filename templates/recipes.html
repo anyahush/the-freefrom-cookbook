@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <div class="col s12">
-        <h4 class="center-align">Recipes</h4>
+        <h2 class="center-align">Recipes</h2>
     </div>
     <!-- search bar -->
     <div class="row">
@@ -52,19 +52,19 @@
             <div class="card">
                 <div class="card-image">
                     
-                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" aria-label="Click here to view full recipe">
                         <!--If recipe has an image then displayed-->
                         {% if recipe.image_url %}
-                            <img src="{{ recipe.image_url }}">
+                            <img src="{{ recipe.image_url }}" alt="Image of recipe">
                         <!-- If recipe doesn't have an image use alternative -->
                         {% else %}
-                            <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients">
+                            <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
                         {% endif %}
                     </a>
                         {% if session.user %}
                         {% if session.user != recipe.created_by %}
                             {% if recipe  not in favourites %}
-                                <a href="{{ url_for('favourite_recipe_multi', recipe_id=recipe._id) }}" class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top" data-tooltip="Add to favourites"><i class="fa-solid fa-heart"></i></a>
+                                <a href="{{ url_for('favourite_recipe_multi', recipe_id=recipe._id) }}" class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top" data-tooltip="Add to favourites" aria-label="Add recipe to favourites"><i class="fa-solid fa-heart"></i></a>
                             {% endif %}
                         {% endif %}
                         {% endif %}
