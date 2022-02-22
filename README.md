@@ -93,6 +93,20 @@ As admin:
 
 ### Wireframes
 
+- [Home Page](static/images/readme_images/wireframes/home_page.png)
+- [About Page](static/images/readme_images/wireframes/about_page.png)
+- [Recipe Search Page](static/images/readme_images/wireframes/recipes.png)
+- [Recipe Page](static/images/readme_images/wireframes/view_recipe.png)
+- [Create Recipe Page](static/images/readme_images/wireframes/create_recipe.png)
+- [Edit Recipe Page](static/images/readme_images/wireframes/edit_recipe.png)
+- [Login Page](static/images/readme_images/wireframes/login.png)
+- [Register Page](static/images/readme_images/wireframes/register.png)
+- [Contact Page](static/images/readme_images/wireframes/contact_page.png)
+- [User Profile Page](static/images/readme_images/wireframes/user_profile.png)
+- [User Profile Favourite Recipes Page](static/images/readme_images/wireframes/user_profile_favourites.png)
+- [User Profile Own Recipes Page](static/images/readme_images/wireframes/user_profile_recipes.png)
+- [User Profile Shopping List Page](static/images/readme_images/wireframes/user_profile_shopping.png)
+
 ### Changes to Wireframes
 
 ## Surface Plane
