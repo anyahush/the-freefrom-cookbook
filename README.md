@@ -127,6 +127,8 @@ After further exploration and development these colours were chosen:
 
 ### Images
 
+The images in the site have been selected to showcase delcious, inviting free-from food. The site consists of a hero image on the Home page, an image displaying examples of food intollerances on the About Page and each recipe image. If the user does not upload an image, an image is provided. Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](https://www.shutterstock.com/).
+
 ### Typography
 [Google Fonts](https://fonts.google.com/) was used to choose fonts for the site. Lobster was chosen as the brand logo font, with its flowing, cursive design. Roboto Condensed was chosen for the rest of the site, as it is clear and easy to read. 
 
@@ -200,6 +202,7 @@ Content about allergens from:
 #### Images
 - Image on About page from (Shutterstock)[https://www.shutterstock.com/image-photo/balanced-diet-cooking-culinary-food-concept-300553067]
 - Recipe images used to start the database used from (Pexels)[https://www.pexels.com/]
+- Image used when user does not upload an image used from (Pexels)[https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/]
 - Hero image used from (Pexels)[https://www.pexels.com/photo/red-and-white-round-fruits-on-brown-wooden-bowl-4099237/]
 
 
