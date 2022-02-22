@@ -191,6 +191,7 @@ The images in the site have been selected to showcase delcious, inviting free-fr
 
 
 ## Testing
+Testing section for this project can be found [here](testing.md)
 
 ## Deployment
 
