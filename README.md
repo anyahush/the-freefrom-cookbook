@@ -174,6 +174,65 @@ The images in the site have been selected to showcase delcious, inviting free-fr
 
 ## Deployment
 
+This project used GitPod for developement, GitHub to storage the repository, Git for version control and deployed using Heroku.
+
+
+### Forking the GitHub Repository
+The repository can be forked on GitHub, this creates a copy of the repository that can be viewed or amended without affecting the original repository. This can be done using the following steps:
+
+- Login to GitHub and locate the repository as before.
+- At the top right of the repository (under your avatar) locate the Fork button and click this button.
+- There should now be a copy of the repository in your own GitHub account, which you can amend.
+
+### Cloning the GitHub Repository
+A clone of the repository can be made, which will create a local copy on your own computer. Changes can be made to this local copy and it will not affect the original repository. Follow these steps to clone the Sunrise Yoga repository.
+
+- Login to GitHub and locate the repository as before.
+- Click the button called "Code".
+- Under HTTPS copy the link provided, in this case (https://github.com/anyahush/the-freefrom-cookbook).
+- Go to Gitpod or whichever IDE you are using and open the Terminal.
+- Change the current working directory to the location where you want the cloned directory to be made.
+- Type 'git clone' followed by the url you copied in step 3.
+- Press "Enter" to create the local clone.
+- You can refer to the GitHub documentation for more detailed information on the above process [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+
+### Create MongoDB Database
+A MongoDB account will be required for this.
+- Create a new database in MongoDB
+- Within database you can create collections. The database for this project was called cookbook and the first collection was called recipes.
+- The collections within the database for this project are:
+    * allergens
+    * categories
+    * users
+    * subscribers
+    * recipes
+    * profiles
+
+### Environment Variables and Setting up the App
+- Create env.py file containing sensitive information and add to .gitignore. 
+- The env.py should contain the following, replacing placeholder text with secret k.ey, MongoDB URI and database name.
+- [RandomKeygen](https://randomkeygen.com/) was used to generate the secret key.
+
+![](static/images/readme_images/environment_variables.png)
+
+- Create a requirements.txt file and Procfile by using these commands. 
+
+![](static/images/readme_images/procfile_commands.png)
+
+- These are both required by Heroku. Commit and push your repository.
+
+### Heroku
+A Heroku account will be required for this.
+1. Log into Heroku account and create a new app.
+2. Create an original name and choose the region closest.
+3. Go to Deploy tab and select your chosen deployment method. For this project GitHub was selected.
+4. Enter repository name ("the-freefrom-cookbook) in the Connect to GitHub search box, and select the repository when it appears.
+5. Go to Settings and go to Config Vars and click to reveal Config Vars.
+6. Add environment variables, matching those entered into the env.py filr.
+![](static/images/readme_images/config_vars.png)
+7. Go back to Deploy and select Enable Automatic Deploys. Below you can select to deploy a branch in the manual deploy section.
+8. Click to Open App.
+
 ## Credits
 
 ### Code
