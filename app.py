@@ -304,7 +304,8 @@ def remove_shopping_list(username):
             
             update = mongo.db.profiles.update_many(
                 {"user_id": ObjectId(user_id)},
-                {"$pull": {"shopping_list": { "$in": remove_items}}})
+                {"$pull": {"shopping_list": {"$in": remove_items}}})
+            print(remove_items)
             # update = True
             if update:
                 flash("Ingredients have been removed")
@@ -537,7 +538,8 @@ def create_shopping_list(recipe_id):
             # updates user shopping list with selected ingredients 
             update = mongo.db.profiles.update_one(
                 {"user_id": ObjectId(user_id)},
-                {"$addToSet": {"shopping_list": shopping_list}})
+                {"$push": {"shopping_list": {"$each":shopping_list}}})
+            print(shopping_list)
 
             if update:
                 flash("Ingredients added to your shopping list!")

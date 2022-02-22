@@ -31,15 +31,13 @@
             <div id="shopping-container" class="shopping-list card-panel">
                     <form action="{{ url_for('remove_shopping_list', username=username) }}" method="POST">
                         <ul id="shopping_list">
-                            {% for list in shopping_list %}
-                            {% for ingredient in list %}
+                            {% for ingredient in shopping_list %}
                             <li class="collection-item">
                                 <label>
                                     <input type="checkbox" class="filled-in" value="{{ ingredient }}" name="shopping_list">
                                     <span>{{ ingredient }}</span>
                                 </label>
                             </li>
-                            {% endfor %}
                             {% endfor %}
                             {% if shopping_list|length > 1 %}
                             <div class="select-div">
