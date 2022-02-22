@@ -1,14 +1,18 @@
 # The FreeFrom CookBook
-Insert introduction
-Insert deployed link here
+
+The FreeFrom CookBook is an online recipe book specifically catering for those with food allergies and intollerances. Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances. Food allergies can be isolating and stressful, so I wanted to create something with a community-feel and help make free-from cooking easier.
+
+The FreeFrom CookBook has been developed for my Backend Development Milestone 3 Project, as part of my Full Stack Software Development Diploma with Code Insitute. 
+
+Deployed site can be viewed [here](https://the-freefrom-cookbook.herokuapp.com/)
 
 ## Table of Contents
 
 ## Project Goals
-
-Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances. Food allergies can be isolating and stressful, so I wanted to create something that a community-feel and helped make free-from easier.
-The FreeFrom CookBook has been developed as part of my Full Stack Software Development Diploma with Code Insitute. 
-
+- To promote understanding of food allergies and intollerances
+- To create a site where users can easily access information and recipes, in addition to creating and saving their own.
+- To build a mobile-first responsive site that can be accessed across all devices.
+- To display information in user-friendly way, contributing to an overall good user experience.
 
 ## UX Design
 
