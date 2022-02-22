@@ -272,6 +272,15 @@ span {
     color: #a22843;
 }
 
+.rating-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.fa-star {
+    color: #F5DB36;
+}
+
 /* profile page */
 .profile-btns {
     margin: 10px;
@@ -298,12 +307,17 @@ textarea:focus {
 
 
 /* media queries */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     h1 {
         font-size: 80%;
         text-align: center;
     }
-  
+    .rating-btns {
+        display: inline;
+    }
+    .rating-btns p {
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
