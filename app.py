@@ -556,8 +556,11 @@ def create_comment(recipe_id):
     if request.method == "POST":
         comment = {
             "comment": request.form.get("user_comment"),
+            "rating": int(request.form.get("rating")),
             "author": session["user"]
         }
+        rating = request.form.get("rating")
+        print(rating)
         # updates comment field in recipe with user comments
         mongo.db.recipes.update_one(
             {"_id": ObjectId(recipe_id)},

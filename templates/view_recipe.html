@@ -101,8 +101,40 @@
         <div class="col s12">
             <!-- Logged in users can leave a comment -->
             {% if session.user %}
-            <h5>Leave a comment</h5>
+            <h5 class="center-align">Leave a comment</h5>
             <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
+                <div class="col s12 rating-btns">
+                    <p>
+                        <label>
+                          <input class="with-gap" type="radio" id="1" value="1" name="rating"/>
+                          <span>1</span>
+                        </label for="1">
+                      </p>
+                      <p>
+                        <label>
+                          <input class="with-gap" type="radio" id="2" value="2" name="rating"/>
+                          <span>2</span>
+                        </label for="2">
+                      </p>
+                      <p>
+                        <label>
+                          <input class="with-gap" type="radio" id="3" value="3" name="rating"/>
+                          <span>3</span>
+                        </label for="3">
+                      </p>
+                      <p>
+                        <label>
+                          <input class="with-gap" type="radio" id="4" value="4" name="rating" />
+                          <span>4</span>
+                        </label for="4">
+                      </p>
+                      <p>
+                        <label>
+                          <input class="with-gap" type="radio" id="5" value="5" name="rating"/>
+                          <span>5</span>
+                        </label for="5">
+                      </p>
+                </div>
                 <div class="col s12">
                     <input type="text" id="user_comment" name="user_comment">
                     <label for="user_comment"></label>
@@ -122,6 +154,29 @@
         {% for comment in recipe.comments %}
         <div class="col s12">
             <h6><i class="fa-solid fa-user"></i>{{- comment.author -}} </h6>
+            <p>
+                {% if comment.rating == 5 %}
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                {% elif comment.rating == 4 %}
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                {% elif comment.rating == 3 %}
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                {% elif comment.rating == 2 %}
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                {% elif comment.rating == 1 %}
+                <i class="fa-solid fa-star"></i>
+                {% endif %}
+            </p>
             <p>{{- comment.comment -}}</p>
             <hr class="comment-divider">
         </div>
