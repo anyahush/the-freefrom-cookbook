@@ -40,12 +40,13 @@
                             </li>
                             {% endfor %}
                             {% if shopping_list|length > 1 %}
-                            <div class="select-div">
+                            <li  class="select-all-checkboxes">
                                 <label for="select-all">
                                     <input type="checkbox" name="select-all" id="select-all">
                                     <span class="select-all">Select all</span>
                                 </label>
-                            </div>
+                            </li>
+                                
                             {% endif %}
                         </ul>
                         {% if shopping_list|length > 1 %}
