@@ -174,79 +174,86 @@ def register():
     """ Register view, when form submitted database
     is updated """
 
-    if request.method == "POST":
-        # checks if username is already taken
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    if "user" in session:
+        flash("You are already logged in")
+        return redirect(url_for("index"))
+    else:
+        if request.method == "POST":
+            # checks if username is already taken
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-        if existing_user:
-            # if username is taken, message displayed and reloads page
-            flash("Username already exists")
-            return redirect(url_for("register"))
+            if existing_user:
+                # if username is taken, message displayed and reloads page
+                flash("Username already exists")
+                return redirect(url_for("register"))
 
-        if request.form.get("password") != request.form.get(
-                "confirm-password"):
-            # checks if confirmed password matches original password
-            # If confirmation
-            # not met, flash message displayed and reloads page
-            flash("Your password did not match, please try again")
-            return redirect(url_for("register"))
+            if request.form.get("password") != request.form.get(
+                    "confirm-password"):
+                # checks if confirmed password matches original password
+                # If confirmation
+                # not met, flash message displayed and reloads page
+                flash("Your password did not match, please try again")
+                return redirect(url_for("register"))
 
-        register_user = {
-            # gets user information from registration form
-            "username": request.form.get("username").lower(),
-            "first-name": request.form.get("first-name"),
-            "surname": request.form.get("surname"),
-            "email": request.form.get("email"),
-            "password": generate_password_hash(request.form.get("password")),
-            "admin": bool("")
-        }
-        # new user created in db
-        mongo.db.users.insert_one(register_user)
-        # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        user_id = mongo.db.users.find_one(
-            {"username": session["user"]})["_id"]
-        mongo.db.profiles.insert_one({
-            "user_id": ObjectId(user_id),
-            "favourites": [],
-            "shopping_list": []})
+            register_user = {
+                # gets user information from registration form
+                "username": request.form.get("username").lower(),
+                "first-name": request.form.get("first-name"),
+                "surname": request.form.get("surname"),
+                "email": request.form.get("email"),
+                "password": generate_password_hash(request.form.get("password")),
+                "admin": bool("")
+            }
+            # new user created in db
+            mongo.db.users.insert_one(register_user)
+            # put the new user into 'session' cookie
+            session["user"] = request.form.get("username").lower()
+            user_id = mongo.db.users.find_one(
+                {"username": session["user"]})["_id"]
+            mongo.db.profiles.insert_one({
+                "user_id": ObjectId(user_id),
+                "favourites": [],
+                "shopping_list": []})
 
-        name = request.form.get("first-name")
-        flash(f'Welcome {name} ' + ' you have been successfully registered')
-        return redirect(url_for("profile", username=session["user"]))
+            name = request.form.get("first-name")
+            flash(f'Welcome {name} ' + ' you have been successfully registered')
+            return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html")
+        return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """ Allows users to login into an existing account and verifies 
     username and password """
+    if "user" in session:
+        flash("You are already logged in")
+        return redirect(url_for("index"))
+    else:
+        if request.method == "POST":
+            # check if username exists in db
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-    if request.method == "POST":
-        # check if username exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            if existing_user:
+                # check hashed password matches user input
+                if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, you have logged in")
+                    return redirect(url_for(
+                            "profile", username=session["user"]))
+                else:
+                    # if password does not match
+                    flash("Incorrect Username and/or Password")
+                    return redirect(url_for("login"))
 
-        if existing_user:
-            # check hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, you have logged in")
-                return redirect(url_for(
-                        "profile", username=session["user"]))
             else:
-                # if password does not match
+                # if username doesn't exist
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
-        else:
-            # if username doesn't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
-    return render_template("login.html")
+        return render_template("login.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
