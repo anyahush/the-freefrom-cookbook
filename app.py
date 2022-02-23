@@ -364,7 +364,8 @@ def create_recipe():
 
     # only users can create recipe
     if not session.get("user"):
-        return render_template("404.html")
+        flash("Please login in to create a recipe")
+        return redirect(url_for("login"))
 
     # add recipe to db
     if request.method == "POST":
@@ -420,7 +421,8 @@ def edit_recipe(recipe_id):
                 flash("You successfully edited the recipe!")
                 return redirect(url_for("get_recipes"))
     else:
-        return render_template("404.html")
+        flash("You are not authorised to edit this recipe")
+        return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
     return render_template(
         "edit_recipe.html", recipe=recipe,
@@ -439,10 +441,11 @@ def delete_recipe(recipe_id):
             flash("You deleted a recipe!")
             return redirect(url_for("get_recipes"))
         else:
-            flash("Oops you need to be logged in for that!")
-            return redirect(url_for("login"))
+            flash("You are not authorised to delete this recipe")
+            return redirect(url_for("view_recipe", recipe_id=recipe_id))
     else:
-        return render_template("404.html")
+        flash("You are not authorised to delete this recipe")
+        return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
 @app.route("/favourite_recipe/<recipe_id>")
@@ -522,8 +525,6 @@ def remove_favourite(recipe_id):
         favourites=favourites))
 
 
-
-
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
 def create_shopping_list(recipe_id):
     """ Users can select ingredients to save to own profile """
@@ -545,6 +546,9 @@ def create_shopping_list(recipe_id):
                 flash("Ingredients added to your shopping list!")
                 return redirect(url_for(
                     "view_recipe", recipe_id=recipe_id))
+    else:
+        flash("Please login to add ingredients to your shopping list")
+        return redirect(url_for("login"))
 
 
 
@@ -553,22 +557,25 @@ def create_comment(recipe_id):
     """ Logged in users can leave a comment on a recipe """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
-    if request.method == "POST":
-        comment = {
-            "comment": request.form.get("user_comment"),
-            "rating": int(request.form.get("rating")),
-            "author": session["user"]
-        }
-        rating = request.form.get("rating")
-        print(rating)
-        # updates comment field in recipe with user comments
-        mongo.db.recipes.update_one(
-            {"_id": ObjectId(recipe_id)},
-            {"$push": {"comments": comment}})
-        flash("Comment successfully added")
-        return redirect(url_for("view_recipe", recipe_id=recipe_id))
+    if "user" in session:
+        if request.method == "POST":
+            comment = {
+                "comment": request.form.get("user_comment"),
+                "rating": int(request.form.get("rating")),
+                "author": session["user"]
+            }
+            rating = request.form.get("rating")
+            print(rating)
+            # updates comment field in recipe with user comments
+            mongo.db.recipes.update_one(
+                {"_id": ObjectId(recipe_id)},
+                {"$push": {"comments": comment}})
+            flash("Comment successfully added")
+            return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
-    return render_template("view_recipe", comment=comment)
+    else:
+        flash("Please login to leave a comment")
+        return redirect(url_for("login"))
 
 
 # newsletter subscription
