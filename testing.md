@@ -2,6 +2,52 @@
 
 ## Code Validation
 
+### HTML Validation
+All HTML pages were tested using [W3C Markup Validation](https://validator.w3.org/). 
+    - URLs were passed through the validator to prevent errors appearing as Jinga Templating was used throughout. 
+    - One error is displayed on all pages. This refers to the section element that holds the flash messages.
+
+![Example of HTML Validation](static/images/readme_images/testing/validation/html_validation_final.png)
+
+* Profile Page
+    - One error displayed highlight a <div> element had been used inside a list. This was changed to an <li> element.
+    - Additionally the profile page code was checked by text input, due to sensitive data being stored on the user's profile. This shows errors relating to Jinga templating.
+
+![Example of Profile page validation](static/images/readme_images/testing/validation/html_errors.png)
+![Example of Profile page validation](static/images/readme_images/testing/validation/html_errors-profile.png)
+
+### CSS Validation
+The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to test the style.css file. No changes were required.
+
+![CSS Validation](static/images/readme_images/testing/validation/css_final.png)
+
+### JavaScript Validation
+[JSHint Validator]() was used to validate all JavaScript files. 
+- On both files errors displayed due to the version of JavaScript being used. 
+- Unused variables were detected, this is due to jQuery being used to find variables and emailJS, which is an external API.
+- In contact.js, an unused variable was removed and missed semi-colon added.
+
+![JSHint Validation](static/images/readme_images/testing/validation/jshint_errors.png)
+![JSHint Validation Contact page](static/images/readme_images/testing/validation/jshint_errors_contact.png)
+
+### Python Validation
+[PEP8 Online](http://pep8online.com/) validator was used to test the app.py file.
+- Initially it came back with errors relating to trailing whitespace, lines too long and incorrect indentation. This was resolved and the validation came back with no errors.
+
+![PEP8 online validation](static/images/readme_images/testing/validation/pep8_errors.png)
+
+### Final Validation
+Final validation results for those with errors.
+
+- JSHint
+
+![JSHint final validation](static/images/readme_images/testing/validation/jshint_final.png)
+![JSHint final validation contact page](static/images/readme_images/testing/validation/jshint_final_contact.png)
+
+- PEP8 online
+
+![PEP8 online validation](static/images/readme_images/testing/validation/pep8_final.png)
+
 ## User Stories
 ### User Stories
 
