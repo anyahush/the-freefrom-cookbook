@@ -223,6 +223,10 @@ span {
     color: #a22843;
 }
 
+.recipe-view h3, .recipe-view h4 {
+    text-transform: none;
+}
+
 
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {

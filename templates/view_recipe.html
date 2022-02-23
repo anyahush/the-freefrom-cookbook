@@ -10,27 +10,27 @@
         <div class="col s12 m8 content-container">
              <!--If recipe has an image then displayed-->
             {% if recipe.image_url %}
-                <img class="recipe_img" src="{{ recipe.image_url }}">
+                <img class="recipe_img" src="{{ recipe.image_url }}" alt="Image of recipe">
             <!-- If recipe doesn't have an image use alternative -->
             {% else %}
                 <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients" class="recipe_img">
             {% endif %}
         </div>
-        <div class="col s12 m4 content-container">
-            <h6>{{ recipe.recipe_description }}</h6>
+        <div class="col s12 m4 content-container recipe-view">
+            <h3>{{ recipe.recipe_description }}</h3>
             <div class="content-container">
-                <h6><strong>Category: </strong>{{ recipe.category_name }}</h6>
-                <h6><strong>Serves: </strong>{{ recipe.servings }}</h6>
+                <h4><strong>Category: </strong>{{ recipe.category_name }}</h4>
+                <h4><strong>Serves: </strong>{{ recipe.servings }}</h4>
 
-                <h6><strong>Free From:</strong>
+                <h4><strong>Free From:</strong>
                     {% for allergen in recipe.allergen_list %}
                     {{ allergen }},
                     {% endfor %}
-                </h6>
+                </h4>
 
-                <h6><strong>Prep Time: </strong>{{ recipe.prep_time }} minutes</h6>
-                <h6><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</h6>
-                <h6><strong>Created By:</strong> {{ recipe.created_by }}</h6>
+                <h4><strong>Prep Time: </strong>{{ recipe.prep_time }} minutes</h4>
+                <h4><strong>Cook Time:</strong> {{ recipe.cook_time }} minutes</h4>
+                <h4><strong>Created By:</strong> {{ recipe.created_by }}</h4>
             </div>
             <div class="content-container">
                 <!-- Admin or users that created recipe can edit or delete the recipe -->
@@ -136,8 +136,8 @@
                       </p>
                 </div>
                 <div class="col s12">
-                    <input type="text" id="user_comment" name="user_comment" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{2,30}$" class="validate" required>
-                    <label for="user_comment"></label>
+                    <input type="text" id="user_comment" name="user_comment" placeholder="Comment here" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{2,30}$" class="validate" required>
+                    <label for="user_comment" class="sr-only">Comment here</label>
                 </div>
                 <div class="col s12 center-align">
                     <button type="submit" class="btn">Submit <i class="fa-solid fa-caret-right"></i></button>
