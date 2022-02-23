@@ -227,7 +227,13 @@ span {
     text-transform: none;
 }
 
+.tabs .indicator {
+    background-color: #a22843;
+}
 
+.tabs .tab a.active {
+    color: #a22843;
+}
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid #31625c;

@@ -65,23 +65,23 @@
         </div>
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#test1" class="active">Created <i class="fa-solid fa-circle-plus"></i></a></li>
-                <li class="tab col s3"><a href="#test2">Favourites <i class="fa-solid fa-heart"></i></a></li>
+                <li class="tab col s3"><a href="#uploaded" >Created <i class="fa-solid fa-circle-plus"></i></a></li>
+                <li class="tab col s3"><a href="#favourites" class="active">Favourites <i class="fa-solid fa-heart"></i></a></li>
             </ul>
         </div>
-        <div id="test1" class="col s12">
+        <div id="uploaded" class="col s12">
             {% if recipes|length > 0 %}
             <div class="row">
                 {% for recipe in recipes %}
                 <div class="col s12 m6 l4">
                     <div class="card">
                         <div class="card-image">
-                            <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                            <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" aria-label="Click to view full recipe">
                                 {% if recipe.image_url %}
-                                <img src="{{ recipe.image_url }}">
+                                <img src="{{ recipe.image_url }}" alt="Image of recipe">
                                 {% else %}
                                 <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}"
-                                    alt="Image of ingredients" class="recipe_img">
+                                    alt="Image of recipe" class="recipe_img">
                                 {% endif %}
                             </a>
                         </div>
@@ -114,15 +114,15 @@
             </div>
             {% endif %}
         </div>
-        <div id="test2" class="col s12">
+        <div id="favourites" class="col s12">
             {% if favourites|length > 0 %}
                 <div class="row">
                     {% for favourite in favourites %}
                     <div class="col s12 m6 l4">
                         <div class="card">
                             <div class="card-image">
-                                <a href="{{ url_for('view_recipe', recipe_id=favourite._id) }}">
-                                    <img src="{{ favourite.image_url }}">
+                                <a href="{{ url_for('view_recipe', recipe_id=favourite._id) }}" aria-label="Click to view full recipe">
+                                    <img src="{{ favourite.image_url }}" alt="Image of recipe">
                                 </a>
                             </div>
                             <div class="card-content">
