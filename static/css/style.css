@@ -49,16 +49,14 @@ h1 {
     font-size: 120%;
 }
 
-h2, h3, h4 {
+h3, h4 {
+    font-size: 150%;
     text-transform: uppercase;
 }
 
 h2 {
+    text-transform: uppercase;
     font-size: 250%;
-}
-
-h3 {
-    font-size: 150%;
 }
 
 h5 {
@@ -244,6 +242,10 @@ span {
 }
 
 /* search bar */
+#search-input, #search-bar {
+    color: #45454a;
+}
+
 .collapsible {
     box-shadow: none;
     border: none;
@@ -311,6 +313,10 @@ span {
 }
 
 /* contact page */
+#contact-intro {
+    text-transform: none;
+
+}
 #required {
     float: right;
 }
