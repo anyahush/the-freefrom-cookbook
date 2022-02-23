@@ -15,8 +15,8 @@ function sendForm(event) {
 
 // Personalised response message displayed
 
-    responseHeader.innerHTML = `Thank-you ${name}!`;
-    response.innerHTML = `
+    response.innerHTML = `<h5>Thank-you ${name}!</h5><br>
+        <p>
         The message you sent is:
         "${message}" <br>
         We will get back to you as soon as possible
