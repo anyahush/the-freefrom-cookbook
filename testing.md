@@ -143,27 +143,35 @@
 [Google Chrome Lighthouse]() was used to test performance of all pages.
 
 - Home page
+
 ![Home Page](static/images/readme_images/testing/home_page_performance.png)
 
 - About Page
+
 ![About Page](static/images/readme_images/testing/about_page_performance.png)
 
 - Recipes Library
+
 ![Recipes Library](static/images/readme_images/testing/recipe_library_performance.png)
 
 - Individual Recipe Page
-![Indvidual Recipe Page]()
+
+![Indvidual Recipe Page](static/images/readme_images/testing/recipe_page_performance.png)
 
 - Profile Page
-![Profile Page]()
+
+![Profile Page](static/images/readme_images/testing/profile_perfomance.png)
 
 - Contact Page
+
 ![Contact Page](static/images/readme_images/testing/contact_page_performance.png)
 
 - Register Page
-![Register Page]()
+
+![Register Page](static/images/readme_images/testing/register_performance.png)
 
 - Login Page
-![Login Page]()
+
+![Login Page](static/images/readme_images/testing/login_performance.png)
 
 ## Bugs
