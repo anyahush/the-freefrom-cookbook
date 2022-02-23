@@ -1,7 +1,7 @@
+/*jshint esversion: 8 */
 // Declared constant variables
 const contactForm = document.getElementById("contact-form");
 const response = document.getElementById("response-message");
-const responseHeader = document.getElementById("response-header");
 
 // Submit event listener for contact form
 contactForm.addEventListener("submit", sendForm);
@@ -60,4 +60,4 @@ $('#submit-button').click(function(event) {
     } else {
         return true;
     }
-})
+});
