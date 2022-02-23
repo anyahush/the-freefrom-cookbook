@@ -1,6 +1,6 @@
 // Declared constant variables
 const contactForm = document.getElementById("contact-form");
-const response = document.getElementById("response-text");
+const response = document.getElementById("response-message");
 const responseHeader = document.getElementById("response-header");
 
 // Submit event listener for contact form
@@ -15,14 +15,14 @@ function sendForm(event) {
 
 // Personalised response message displayed
 
-    // response.innerHTML = `Thank-you ${name}!`;
-    // responseHeader.innerHTML = `
-    //     The message you sent is:
-    //     "${message}" <br>
-    //     We will get back to you as soon as possible
-    //     via your email ${email}. <br>
-    //     In the mean time, enjoy getting inspired and 
-    //     getting cooking!</p>`;
+    responseHeader.innerHTML = `Thank-you ${name}!`;
+    response.innerHTML = `
+        The message you sent is:
+        "${message}" <br>
+        We will get back to you as soon as possible
+        via your email ${email}. <br>
+        In the mean time, enjoy getting inspired and 
+        getting cooking!</p>`;
 
 // Display personalised modal
     $('#submit-modal').modal('open');
