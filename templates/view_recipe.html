@@ -136,7 +136,7 @@
                       </p>
                 </div>
                 <div class="col s12">
-                    <input type="text" id="user_comment" name="user_comment">
+                    <input type="text" id="user_comment" name="user_comment" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{2,30}$" class="validate" required>
                     <label for="user_comment"></label>
                 </div>
                 <div class="col s12 center-align">

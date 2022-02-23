@@ -8,7 +8,7 @@
              <!-- Recipe title -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" class="validate" pattern="^(?=.*[a-zA-Z0-9_ ]){5,25})$" title="5-25 characters" required>
+                <input id="recipe_title" name="recipe_title" type="text" value="{{ recipe.recipe_title }}" class="validate" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{5,25}$" title="5-25 characters" required>
                 <label for="recipe_title">Recipe Title</label>
             </div>
         </div>
@@ -65,7 +65,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <textarea id="recipe_description" name="recipe_description" type="text" title="Description between 10 and 100 characters"
-                pattern="^(?=.*[a-zA-Z0-9_ ]){10,100})$" class="validate" required>
+                pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{10,100}$" class="validate" required>
                 {{- recipe.recipe_description -}}
                 </textarea>
                 <label for="recipe_description">Description</label>
