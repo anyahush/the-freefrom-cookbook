@@ -85,6 +85,9 @@ hr {
     background-color: #a22843;
 }
 
+.favourite-view-btns {
+    margin: 15px 0;
+}
 
 /* footer */
 .page-footer {
