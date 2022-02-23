@@ -53,6 +53,14 @@ h2, h3, h4 {
     text-transform: uppercase;
 }
 
+h2 {
+    font-size: 250%;
+}
+
+h3 {
+    font-size: 150%;
+}
+
 h5 {
     text-transform: uppercase;
     font-size: 130%;
@@ -81,6 +89,10 @@ hr {
 /* footer */
 .page-footer {
     background-color: #a22843;
+}
+
+.footer-heading {
+    text-transform: uppercase;
 }
 
 #social-media-links {
@@ -287,6 +299,10 @@ span {
     margin: 10px;
 }
 
+#profile-intro {
+    text-transform: none;
+}
+
 .shopping-list.card-panel {
     min-height: 200px;
 }
@@ -313,6 +329,9 @@ textarea:focus {
         font-size: 80%;
         text-align: center;
     }
+    h2 {
+        font-size: 150%;
+    }
     .rating-btns {
         display: inline;
     }
@@ -326,9 +345,6 @@ textarea:focus {
         font-size: 130%;
         text-align: center;
     }
-    h2 {
-        font-size: 150%;
-    }
     #hero_image {
         height: 350px;
     }
@@ -341,9 +357,6 @@ textarea:focus {
 @media screen and (min-width: 1440px) {
     h1 {
         font-size: 150%;
-    }
-    h2 {
-        font-size: 200%;
     }
     #hero_image {
         height: 500px;
