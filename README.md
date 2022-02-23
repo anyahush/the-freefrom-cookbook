@@ -52,6 +52,7 @@ As a returning or registered user:
 * As a user I want to contact admin with queries or feedback.
 * As a user I want to find pagination on the recipe pages, so I do not experience endless scrolling.
 * As a user I want to leave comments on recipes, so I can share my opinion with other users.
+* As a user, I want to leave a rating on a recipe.
 
 As admin:
 * As admin I want to edit existing recipes created by any user.
