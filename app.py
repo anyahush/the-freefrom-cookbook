@@ -19,6 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 def admin():
     """ Admin function to distinguish admin user """
     admin_user = mongo.db.users.find_one(
@@ -29,8 +30,10 @@ def admin():
 search_query = None
 allergen_search_query = None
 
+
 # Pagination functions
-# Pagination used from https://github.com/timmorrisdev/MS3-sustainable-supper-club/blob/main/app.py
+# Pagination used from
+# https://github.com/timmorrisdev/MS3-sustainable-supper-club/blob/main/app.py
 def paginated(recipes):
     PER_PAGE = 6
     page, per_page, offset = get_page_args(
@@ -41,7 +44,7 @@ def paginated(recipes):
 
 
 def pagination_args(recipes):
-    PER_PAGE= 6
+    PER_PAGE = 6
     page, per_page, offset = get_page_args(
         page_parameter='page', per_page_parameter='per_page')
     total = len(recipes)
@@ -71,8 +74,10 @@ def contact():
     """ Display contact form and populate with user information
     if logged in """
     if "user" in session:
-        first_name = mongo.db.users.find_one({"username": session["user"]})["first-name"]
-        surname = mongo.db.users.find_one({"username": session["user"]})["surname"]
+        first_name = mongo.db.users.find_one(
+            {"username": session["user"]})["first-name"]
+        surname = mongo.db.users.find_one(
+            {"username": session["user"]})["surname"]
 
         name = first_name + " " + surname
         email = mongo.db.users.find_one({"username": session["user"]})["email"]
@@ -92,8 +97,8 @@ def get_recipes():
     # if user not logged in renders recipe page
     if "user" not in session:
         return render_template(
-        "recipes.html", recipes=recipes_paginated,
-        pagination=pagination, allergens=allergens)
+            "recipes.html", recipes=recipes_paginated,
+            pagination=pagination, allergens=allergens)
     # if user logged in renders recipe page with tailored buttons
     else:
         user_id = mongo.db.users.find_one(
@@ -102,8 +107,8 @@ def get_recipes():
             {"user_id": ObjectId(user_id)})["favourites"]
 
         return render_template(
-        "recipes.html", recipes=recipes_paginated,
-        pagination=pagination, allergens=allergens, favourites=favourites)
+            "recipes.html", recipes=recipes_paginated,
+            pagination=pagination, allergens=allergens, favourites=favourites)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -128,8 +133,7 @@ def search():
         search_query = query
         allergen_search_query = allergen_query
 
-
-     # if input and checkbox filled in
+    # if input and checkbox filled in
     if query and allergen_query:
         recipe_results = list(mongo.db.recipes.find({
             "$and": [
@@ -152,10 +156,13 @@ def search():
     else:
         flash("Sorry no results found")
         return redirect(url_for("get_recipes"))
-    
-     # if user not logged in renders recipe page
+
+    # if user not logged in renders recipe page
     if "user" not in session:
-        return render_template("recipes.html", recipes=recipes_paginated, pagination=pagination)
+        return render_template(
+                "recipes.html",
+                recipes=recipes_paginated,
+                pagination=pagination)
     # if user logged in renders recipe page with tailored buttons
     else:
         user_id = mongo.db.users.find_one(
@@ -164,8 +171,8 @@ def search():
             {"user_id": ObjectId(user_id)})["favourites"]
 
         return render_template(
-        "recipes.html", recipes=recipes_paginated,
-        pagination=pagination, favourites=favourites)
+            "recipes.html", recipes=recipes_paginated,
+            pagination=pagination, favourites=favourites)
 
 
 # Users
@@ -202,7 +209,8 @@ def register():
                 "first-name": request.form.get("first-name"),
                 "surname": request.form.get("surname"),
                 "email": request.form.get("email"),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(
+                    request.form.get("password")),
                 "admin": bool("")
             }
             # new user created in db
@@ -217,7 +225,9 @@ def register():
                 "shopping_list": []})
 
             name = request.form.get("first-name")
-            flash(f'Welcome {name} ' + ' you have been successfully registered')
+            flash(
+                    f'Welcome {name} ' +
+                    'you have been successfully registered')
             return redirect(url_for("profile", username=session["user"]))
 
         return render_template("register.html")
@@ -225,7 +235,7 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """ Allows users to login into an existing account and verifies 
+    """ Allows users to login into an existing account and verifies
     username and password """
     if "user" in session:
         flash("You are already logged in")
@@ -239,11 +249,13 @@ def login():
             if existing_user:
                 # check hashed password matches user input
                 if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, you have logged in")
-                    return redirect(url_for(
-                            "profile", username=session["user"]))
+                            existing_user["password"],
+                            request.form.get("password")):
+                            session["user"] = request.form.get(
+                                "username").lower()
+                            flash("Welcome, you have logged in")
+                            return redirect(url_for(
+                                "profile", username=session["user"]))
                 else:
                     # if password does not match
                     flash("Incorrect Username and/or Password")
@@ -266,9 +278,6 @@ def profile(username):
     if "user" in session:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
-        user = mongo.db.users.find_one(
-            {"username": session["user"]}["username"]
-        )
         user_profile = mongo.db.profiles.find_one(
             {"user_id": ObjectId(user_id)})
         recipes = list(mongo.db.recipes.find(
@@ -308,7 +317,7 @@ def remove_shopping_list(username):
 
         if request.method == "POST":
             remove_items = request.form.getlist('shopping_list')
-            
+
             update = mongo.db.profiles.update_many(
                 {"user_id": ObjectId(user_id)},
                 {"$pull": {"shopping_list": {"$in": remove_items}}})
@@ -360,9 +369,9 @@ def view_recipe(recipe_id):
     if not recipe:
         return render_template("404.html")
 
-    return render_template("view_recipe.html", recipe=recipe,
-        favourites=favourites, admin=admin_user)
-
+    return render_template(
+            "view_recipe.html", recipe=recipe,
+            favourites=favourites, admin=admin_user)
 
 
 @app.route("/create_recipe", methods=["GET", "POST"])
@@ -384,7 +393,8 @@ def create_recipe():
             "servings": request.form.get("servings"),
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
-            "recipe_description": request.form.get("recipe_description"),
+            "recipe_description": request.form.get(
+                "recipe_description"),
             "ingredients": request.form.getlist("ingredients"),
             "method_step": request.form.getlist("method_step"),
             "created_by": session["user"]
@@ -419,12 +429,14 @@ def edit_recipe(recipe_id):
                     "servings": request.form.get("servings"),
                     "prep_time": request.form.get("prep_time"),
                     "cook_time": request.form.get("cook_time"),
-                    "recipe_description": request.form.get("recipe_description"),
+                    "recipe_description": request.form.get(
+                        "recipe_description"),
                     "ingredients": request.form.getlist("ingredients"),
                     "method_step": request.form.getlist("method_step"),
                     "created_by": session["user"]
                 }
-                mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit, True)
+                mongo.db.recipes.replace_one(
+                    {"_id": ObjectId(recipe_id)}, edit, True)
                 flash("You successfully edited the recipe!")
                 return redirect(url_for("get_recipes"))
     else:
@@ -482,6 +494,7 @@ def favourite_recipe(recipe_id):
         return redirect(url_for(
             "view_recipe", recipe_id=recipe_id, favourites=favourites))
 
+
 @app.route("/favourite_recipe_multi/<recipe_id>")
 def favourite_recipe_multi(recipe_id):
     """ Users can save recipes to their profile """
@@ -528,8 +541,9 @@ def remove_favourite(recipe_id):
             {"$pull": {"favourites": recipe}})
         flash("Recipe successfully removed from favourites!")
 
-    return redirect(url_for("view_recipe", recipe_id=recipe_id,
-        favourites=favourites))
+    return redirect(url_for(
+            "view_recipe", recipe_id=recipe_id,
+            favourites=favourites))
 
 
 @app.route("/create_shopping_list/<recipe_id>", methods=["GET", "POST"])
@@ -543,10 +557,10 @@ def create_shopping_list(recipe_id):
 
         if request.method == "POST":
             shopping_list = request.form.getlist('shopping_list')
-            # updates user shopping list with selected ingredients 
+            # updates user shopping list with selected ingredients
             update = mongo.db.profiles.update_one(
                 {"user_id": ObjectId(user_id)},
-                {"$push": {"shopping_list": {"$each":shopping_list}}})
+                {"$push": {"shopping_list": {"$each": shopping_list}}})
             print(shopping_list)
 
             if update:
@@ -556,7 +570,6 @@ def create_shopping_list(recipe_id):
     else:
         flash("Please login to add ingredients to your shopping list")
         return redirect(url_for("login"))
-
 
 
 @app.route("/create_comment/<recipe_id>", methods=["GET", "POST"])
@@ -597,13 +610,13 @@ def subscribe():
         if existing_email:
             flash("You have already subscribed!")
             return redirect(url_for("index"))
-        
+
         # add new email to db
         subscribe = {
             "email": request.form.get("email").lower()
         }
         mongo.db.subscribers.insert_one(subscribe)
-    
+
     flash("You have successfully subscribed!")
     return redirect(url_for("index"))
 
@@ -613,6 +626,7 @@ def subscribe():
 def page_not_found(error):
     """ 404 error handling from flask documentation """
     return render_template("404.html"), 404
+
 
 @app.errorhandler(500)
 def server_error(error):
