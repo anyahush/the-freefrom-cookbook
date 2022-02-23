@@ -49,3 +49,15 @@ function sendForm(event) {
     }
 }
 
+// Textarea validation
+// Modified from Stack Overflow, details in README
+$('#submit-button').click(function(event) {
+    var message = document.getElementById("message");
+
+    if ($.trim(message.value) == '') {
+        alert("Please write a message to send");
+        return false;
+    } else {
+        return true;
+    }
+})
