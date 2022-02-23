@@ -389,9 +389,9 @@ def create_recipe():
             "method_step": request.form.getlist("method_step"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.insert_one(recipe)
+        recipe_id = mongo.db.recipes.insert_one(recipe).inserted_id
         flash("You created a recipe!")
-        return redirect(url_for("get_recipes"))
+        return redirect(url_for("view_recipe", recipe_id=recipe_id))
     # find catergories and allergen list from db
     categories = mongo.db.categories.find().sort("category_name", 1)
     allergens = mongo.db.allergens.find().sort("allergen_name", 1)
