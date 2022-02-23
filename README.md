@@ -110,9 +110,9 @@ This structure of the site has been developed to enable users to access and use 
 - Profile Page- this has the users name displayed in the welcome message. On the users profile there are buttons to create a recipe, find recipes in the library and delete account, as well as their shopping list, recipes the user has created and recipes they have saved to their favourites.
 - Error Pages have been created incase a user tries to access a page that isn't available to them, doesn't exist or there is an issue. 
 ![404 Error Page Example](static/images/readme_images/error_page_example.png) 
-- Database schema design was created using (dbdiagram)[https://dbdiagram.io/home], see below.
+- Database schema design was created using [dbdiagram](https://dbdiagram.io/home), see below.
 
-INSERT SCHEMA DIAGRAM
+![Database Schema Diagram](static/images/readme_images/database_schema.png)
 
 ## Skeleton Plane
 
