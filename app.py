@@ -441,7 +441,7 @@ def edit_recipe(recipe_id):
                 mongo.db.recipes.replace_one(
                     {"_id": ObjectId(recipe_id)}, edit, True)
                 flash("You successfully edited the recipe!")
-                return redirect(url_for("get_recipes"))
+                return redirect(url_for("view_recipe", recipe_id=recipe_id))
     else:
         flash("You are not authorised to edit this recipe")
         return redirect(url_for("view_recipe", recipe_id=recipe_id))
