@@ -137,7 +137,7 @@ def search():
     if query and allergen_query:
         recipe_results = list(mongo.db.recipes.find({
             "$and": [
-                {"allergen_list": {"$in": allergen_query}},
+                {"allergen_list": {"$all": allergen_query}},
                 {"$text": {"$search": query}}]
         }))
     # if just search input
@@ -147,7 +147,7 @@ def search():
     # if just checkbox selected
     elif allergen_query:
         recipe_results = list(mongo.db.recipes.find(
-            {"allergen_list": {"$in": allergen_query}}))
+            {"allergen_list": {"$all": allergen_query}}))
 
     # paginate the results - need to handle a no results case
     if recipe_results:
