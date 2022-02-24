@@ -102,9 +102,11 @@ $('#method_step').on("click", ".remove-list-item", function (event) {
 // End of Wanderlust code 
 
 
-// Checkbox toggle to select all checkboxes in create and
-// remove shopping list items
-// Used from Stack Overflow, full details in README
+/* 
+Checkbox toggle to select all checkboxes in create and
+remove shopping list items
+Used from Stack Overflow, full details in README
+*/
 $('#select-all').click(function(event) {   
   if(this.checked) {
       // Iterate each checkbox
@@ -116,4 +118,17 @@ $('#select-all').click(function(event) {
           this.checked = false;                       
       });
   }
-}); 
+});
+
+/*
+Ensures user selects an ingredient in shopping list
+before submitting
+Modified from (https://www.allphptricks.com/submit-form-atleast-one-checkbox-checked/)
+*/
+$('#checkBtn').click(function() {
+   if($('input:checkbox').filter (':checked').length < 1){
+    alert("You haven't selected any ingredients")
+    return false;
+   }
+
+});
