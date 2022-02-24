@@ -42,7 +42,6 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to test t
 ![PEP8 online validation](static/images/readme_images/testing/validation/pep8_final.png)
 
 ## User Stories
-### User Stories
 
 1. As a user I want to be able to understand the purpose of the site easily.
     * The landing page greets users with a welcome message introducing the site. The site name 'The FreeFrom Cookbook' is also displayed on the home page, in the navbar.
@@ -189,21 +188,21 @@ After fixing this error, The FreeFrom CookBook has no responsive design errors.
 [Lambdatest](https://accounts.lambdatest.com/dashboard) was used to test browser compatability for the site. 
 
 The following browsers were tested:
-    * Chrome 91 (Windows 10)- good
-    * Firefox 89 (Windows 10)- good
-    * Edge 91 (Windows 10)- good
-    * Opera 74 (Windows 10)- good
-    * Safari 12 (macOS Mojave)- good
-    * IE 11 (Windows 8.1)- issues
+* Chrome 91 (Windows 10)- good
+* Firefox 89 (Windows 10)- good
+* Edge 91 (Windows 10)- good
+* Opera 74 (Windows 10)- good
+* Safari 12 (macOS Mojave)- good
+* IE 11 (Windows 8.1)- issues
 
 Additionally the site was developed using Google Chrome 98 on macOS Monterey and crosschecked with Safari 15.
 
 All browswers, except IE, returned good results and displayed the site well.
 
 There were compatability issues with IE:
-    * Rendering some of the images
-    * Displaying Materialize components such as the footer
-    * Keeping the responsive layout of the site.
+* Rendering some of the images
+* Displaying Materialize components such as the footer
+* Keeping the responsive layout of the site.
 
 ## Performance
 
@@ -211,86 +210,103 @@ There were compatability issues with IE:
 
 Overall the site performs well on desktop. For mobile devices the site performs well but has scored lower on performance, primarily due to large media content. Currently the site performs well but in the future may have issues if the database grows, which could affect app performance. Further development coudl include limits on image sizes on the URL and compressing the images on the server.
 
-Below are the Lighthouse results.
+Below are the Lighthouse results:
 
-- Home page 
-    * Mobile
+<details>
+<summary>Home page</summary>
 
-![Home Page](static/images/readme_images/testing/home_page_performance_mobile.png)
+* Mobile
 
-    * Desktop
+![Home Page](static/images/readme_images/testing/home_performance_mobile.png)
 
-![Home Page](static/images/readme_images/testing/home_page_performance.png)
+* Desktop
 
-- About Page
+![Home Page](static/images/readme_images/testing/home_performance.png)
+</details>
 
-    * Mobile
+<details>
+<summary>About Page</summary>
+
+* Mobile
 
 ![About Page](static/images/readme_images/testing/about_performance_mobile.png)
 
-    * Desktop 
+* Desktop 
 
-![About Page](static/images/readme_images/testing/about_page_performance.png)
+![About Page](static/images/readme_images/testing/about_performance.png)
+</details>
 
-- Recipes Library 
+<details>
+<summary>Recipes Library </summary>
 
-    * Mobile
+* Mobile
 
 ![Recipes Library](static/images/readme_images/testing/recipe_library_mobile.png)
 
-    * Desktop
+* Desktop
 
 ![Recipes Library](static/images/readme_images/testing/recipe_library_performance.png)
+</details>
 
-- Individual Recipe Page
+<details>
+<summary>Individual Recipe Page</summary>
 
-    * Mobile
+* Mobile
 
 ![Indvidual Recipe Page](static/images/readme_images/testing/recipe_page_performance_mobile.png)
 
-    * Desktop
+* Desktop
 
 ![Indvidual Recipe Page](static/images/readme_images/testing/recipe_page_performance.png)
+</details>
 
-- Profile Page 
+<details>
+<summary>Profile Page </summary>
 
-    * Mobile
+* Mobile
 
 ![Profile Page](static/images/readme_images/testing/profile_perfomance_mobile.png)
 
-    * Desktop
+* Desktop
 
 ![Profile Page](static/images/readme_images/testing/profile_perfomance.png)
+</details>
 
-- Contact Page 
+<details>
+<summary>Contact Page </summary>
 
-    * Mobile
+* Mobile
 
 ![Contact Page](static/images/readme_images/testing/contact_performance_mobile.png)
 
-    * Desktop
+* Desktop
 
 ![Contact Page](static/images/readme_images/testing/contact_page_performance.png)
+</details>
 
-- Register Page 
+<details>
+<summary>Register Page </summary>
 
-    * Mobile 
+* Mobile 
 
 ![Register Page](static/images/readme_images/testing/register_performance_mobile.png)
 
-    * Desktop
+* Desktop
 
 ![Register Page](static/images/readme_images/testing/register_performance.png)
+</details>
 
-- Login Page
+<details>
+<summary>Login Page</summary>
 
-    * Mobile
+* Mobile
 
 ![Login Page](static/images/readme_images/testing/login_performance_mobile.png)
 
-    * Desktop 
+* Desktop 
 
 ![Login Page](static/images/readme_images/testing/login_performance.png)
+</details>
 
 ## Manual Testing
 Throughout development manual testing was carried out, in addition to futher testing at the end of the project. Testing was carried out on Google Chrom 98 and Safari 15.1
