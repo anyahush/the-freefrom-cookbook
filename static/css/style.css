@@ -251,6 +251,10 @@ span {
     margin: 20px 0;
 }
 
+li.select-all-checkboxes::marker{
+    list-style-type: none;
+}
+
 /* search bar */
 #search-input, #search-bar {
     color: #45454a;

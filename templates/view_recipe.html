@@ -74,13 +74,13 @@
                     {% endfor %}
                 </ul>
                 {% if session.user %}
-                <li class="select-div">
                     <label for="select-all">
                         <input type="checkbox" name="select-all" id="select-all">
                         <span class="select-all">Select all</span>
                     </label>
-                </li>
-                <button type="submit" class="btn">Save to Shopping List</button>
+                <div class="select-all-checkboxes">
+                    <button type="submit" class="btn">Save to Shopping List</button>
+                </div>
                 {% endif %}
             </form>
         </div>
