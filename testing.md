@@ -333,6 +333,9 @@ Throughout development manual testing was carried out, in addition to futher tes
 - Profile page
     * All buttons work, and complete action that they are labelled to do
     * Delete account- confirmation modal pops up first, so users cannot accidentally delete their account.
+- Shopping List
+    * Whilst testing I discovered that a user could click 'Save to Shopping List' or 'Remove from Shopping List' and regardless if a user selected an ingredient it would flash saying it was successful.
+    * A JavaScript function was added to check if the length of checked boxes is less than 1 and if so alert the user to select an ingredient. 
 - Create Recipe
     * Form is validated throughout. Has labels and prompts were requried, to guide the user on how to fill the form out.
     * Image remains optional and image provided if user does not upload one
@@ -382,6 +385,7 @@ Throughout development manual testing was carried out, in addition to futher tes
     * Whilst testing performance I discovered that the hero image and image on the About page were causing performance issues due to their size. I subsequently used [Cloud Converter](https://cloudconvert.com/) to compress the images.
     * This has improved the performance of both pages on mobile and desktop.
     * Additionally, alt attributes were missed on some images and the order of header elements needed attention. These were fixed during testing.
+
 
 ### Existing
 - Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked
