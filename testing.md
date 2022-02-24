@@ -1,5 +1,19 @@
 # Testing
 
+## Table of Contents
+1. [Code Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#code-validation)
+    * [HTML Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#html-validation)
+    * [CSS Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#css-validation)
+    * [JavaScript Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#javascript-validation)
+    * [Python Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#python-validation)
+2. [User Stories](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#user-stories)
+3. [Responsiveness](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#responsiveness)
+4. [Browser Compatability](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#browser-compatibility)
+5. [Performance](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#performance)
+6. [Manual Testing](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#manual-testing)
+7. [Bugs](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#bugs)
+
+
 ## Code Validation
 
 ### HTML Validation

@@ -9,6 +9,22 @@ The FreeFrom CookBook has been developed for my Backend Development Milestone 3 
 Deployed site can be viewed [here](https://the-freefrom-cookbook.herokuapp.com/)
 
 ## Table of Contents
+1. [Project Goals](https://github.com/anyahush/the-freefrom-cookbook#project-goals)
+2. [UX](https://github.com/anyahush/the-freefrom-cookbook#ux-design)
+3. [Strategy Plane](https://github.com/anyahush/the-freefrom-cookbook#strategy-plane)
+    * [User Stories](https://github.com/anyahush/the-freefrom-cookbook#user-stories)
+4. [Scope Plane](https://github.com/anyahush/the-freefrom-cookbook#scope-plane)
+    * [Existing Features](https://github.com/anyahush/the-freefrom-cookbook#existing-features)
+    * [Future Features]()
+5. [Structure Plane](https://github.com/anyahush/the-freefrom-cookbook#structure-plane)
+6. [Skeleton Plane](https://github.com/anyahush/the-freefrom-cookbook#skeleton-plane)
+    * [Wireframes](https://github.com/anyahush/the-freefrom-cookbook#wireframes)
+7. [Surface Plane](https://github.com/anyahush/the-freefrom-cookbook#surface-plane)
+8. [Technologies](https://github.com/anyahush/the-freefrom-cookbook#technologies)
+9. [Testing](testing.md)
+10. [Deployment](https://github.com/anyahush/the-freefrom-cookbook#deployment)
+11. [Credits](https://github.com/anyahush/the-freefrom-cookbook#credits)
+12. [Acknowledgements](https://github.com/anyahush/the-freefrom-cookbook#acknowledgements)
 
 ## Project Goals
 - To promote understanding of food allergies and intollerances
