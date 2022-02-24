@@ -299,6 +299,56 @@ Below are the Lighthouse results.
 
 ![Login Page](static/images/readme_images/testing/login_performance.png)
 
+## Manual Testing
+Throughout development manual testing was carried out, in addition to futher testing at the end of the project. Testing was carried out on Google Chrom 98 and Safari 15.1
+- Nav links take user to relevant page
+- Brand logo takes user back to the home page
+- Email subscription input works and flash message appears
+- Social media links open in a seperate tab to relevant site
+- Search bar allows users to input word search and/ or select an allergen from drop down.
+    * Reset button is required to be clicked in order to reset allergen drop down.
+    * When users clicked more than one allergen to search for, the recipe results were showing all recipes that had a least one allergen listed in the free from section. The $in operator
+    was changed to $all. This has resolved the isssue. Now users can search for multiple allergens and it will show recipes that are free from all of them.
+    * When users clicked the search button without typing or selecting an allergen it was showing an unbound local error. A else statement was added to the search function, adding a flash message asking users to type or select and redirecting them back to the recipes library.
+- Recipes library
+    * Displays all recipes. Those logged in and did not create recipe can add recipe to favourites. This button works and flashes a messaged to the user.
+- Recipe page
+    * Add to favourites button and remove from favourites button works and flashes a message to the user.
+    * Shopping list displayed, users can select an item, multiple or all and add to shopping list. This flashes to the user it has been successful.
+    * A ::marker class was being displaying on the select all checkbox, making the checkbox sit to the right. The checkbox was taken out of the li element. This has removed the marker.
+    * User comments section- users can't submit a comment without typing comment and selecting a rating. This prompts user if they don't select one or both when clicking submit.
+    * For users that created the recipe, edit and delete buttons are displayed. Both work and flash messages once completed. A confirmation modal pops up before deleting a recipe, to prevent accidental deletion.
+- About page
+    * Displays all information
+    * Materialize collapsible using dynamically generated information, works and allows users to expand information as when they wish.
+- Profile page
+    * All buttons work, and complete action that they are labelled to do
+    * Delete account- confirmation modal pops up first, so users cannot accidentally delete their account.
+- Create Recipe
+    * Form is validated throughout. Has labels and prompts were requried, to guide the user on how to fill the form out.
+    * Image remains optional and image provided if user does not upload one
+- Edit Recipe
+    * On testing, once edited the site was redirecting users back to the recipes library. This has been fixed and takes users back to the recipe they just edited, so they can view their changes.
+- Contact Form
+    * Form is validated, including textarea validation preventing blank messages being sent
+    * Form is pre-populated with user information if logged in
+    * Personalised modal pop ups once form submitted
+- Register Form
+    * Form is validated, highlights to user what is required if not filled in correctly
+    * Once registered takes user to profile and flashes welcome message
+- Login Form
+    * Exisitng users can log in
+    * If successful, takes users to their profile and welcome message displayed
+    * If unsuccessful a flash message will appear prompting users that password and or username is incorrect
 
 
 ## Bugs
+
+### Found and Fixed
+- Whilst developing, I wanted users to be able to add ingredients to their shopping list on their profile and then to delete selected ones. Initially users were able to select an ingredients(s) but it would delete all ingredients that had been added at the same time. I discovered I had been pushing the original ingredients as an array, rather than individual ingredients. Therefore with nested arrays, I was targeting the wrong object. I added the $each modifier to the $push operator, so that it pushed each ingredient into one array. Now users can remove an ingredient at a time, or select multiple.
+- During development there were issues with Regex patterns that prevented blank messages or inputs being submitted. A correct Regex pattern was added to inputs and a JavaScript function added to prevent a blank message being sent on the contact form. 
+- Through peer code review, additional padding to the email input for the newsletter subscription was suggested. This was added.
+- Through peer code review, it was highlighted that when a user creates a recipe, it takes them back to the recipe library rather than viewing the recipe they just created. This was fixed by changing the return redirect to view_recipe and generating the recipe_id by using inserted_id. 
+
+### Existing
+- Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked
