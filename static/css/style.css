@@ -375,7 +375,7 @@ textarea:focus {
         font-size: 130%;
         text-align: center;
     }
-    #hero_image {
+    #hero-image {
         height: 350px;
     }
     #newsletter_email {
@@ -397,7 +397,7 @@ textarea:focus {
     h1 {
         font-size: 150%;
     }
-    #hero_image {
+    #hero-image {
         height: 500px;
     }
     #newsletter_email {
