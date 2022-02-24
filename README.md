@@ -15,7 +15,7 @@ Deployed site can be viewed [here](https://the-freefrom-cookbook.herokuapp.com/)
     * [User Stories](https://github.com/anyahush/the-freefrom-cookbook#user-stories)
 4. [Scope Plane](https://github.com/anyahush/the-freefrom-cookbook#scope-plane)
     * [Existing Features](https://github.com/anyahush/the-freefrom-cookbook#existing-features)
-    * [Future Features]()
+    * [Future Features](https://github.com/anyahush/the-freefrom-cookbook#future-features)
 5. [Structure Plane](https://github.com/anyahush/the-freefrom-cookbook#structure-plane)
 6. [Skeleton Plane](https://github.com/anyahush/the-freefrom-cookbook#skeleton-plane)
     * [Wireframes](https://github.com/anyahush/the-freefrom-cookbook#wireframes)
@@ -106,7 +106,7 @@ As admin:
     - Users can sign up to a newsletter subscription
     - A flash message will display informing user either if subscription has been successful or if the email address already exists in database.
 
-### **Features Left to Implement**
+### **Future Features**
 - A section on users home page of recipe suggestions based on type of recipes saved and created in their profile.
 - Recipes to display a rating on recipe card based on the average ratings given.
 - Users to have ability to edit account, including changing password.
