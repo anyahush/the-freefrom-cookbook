@@ -14,7 +14,6 @@ function sendForm(event) {
     let message = contactForm.message.value;
 
 // Personalised response message displayed
-
     response.innerHTML = `<h5>Thank-you ${name}!</h5><br>
         <p>
         The message you sent is:
@@ -45,7 +44,6 @@ function sendForm(event) {
                 console.log("ERROR", error);
             }
         );
-
     }
 }
 

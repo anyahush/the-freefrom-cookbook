@@ -1,5 +1,6 @@
  /*jshint esversion: 8 */
  $(document).ready(function(){
+     /* Initializers from Materialize */
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.collapsible').collapsible();
@@ -130,5 +131,4 @@ $('#checkBtn').click(function() {
     alert("You haven't selected any ingredients")
     return false;
    }
-
 });
