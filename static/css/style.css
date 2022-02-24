@@ -373,6 +373,16 @@ textarea:focus {
     
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1024px) {
+    .card .card-content {
+        height: 300px;
+        padding: 10px;
+    }
+    .card .card-content p {
+        margin: 5px 0;
+    }
+}
+
 @media screen and (min-width: 1440px) {
     h1 {
         font-size: 150%;
