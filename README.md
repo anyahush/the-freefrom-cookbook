@@ -1,5 +1,7 @@
 # The FreeFrom CookBook
 
+![Mock ups](static/images/readme_images/mock_ups.png)
+
 The FreeFrom CookBook is an online recipe book specifically catering for those with food allergies and intollerances. Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances. Food allergies can be isolating and stressful, so I wanted to create something with a community-feel and help make free-from cooking easier.
 
 The FreeFrom CookBook has been developed for my Backend Development Milestone 3 Project, as part of my Full Stack Software Development Diploma with Code Insitute. 
