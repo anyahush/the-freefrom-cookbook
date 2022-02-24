@@ -161,7 +161,7 @@ There were only a couple of changes to the wireframes during development:
 ## Surface Plane
 
 ### Colour Scheme
-During development I explored different colour palettes and options. I wanted to use a colour scheme that was both pleasing to the using, and contributed to an overall stylish and simple design. Using [Coolors](https://coolors.co/), a colour palette was chosen. 
+During development I explored different colour palettes and options. I wanted to use a colour scheme that was both pleasing to the using, and contributed to an overall stylish and simple design. Whilst researching, I explored what different colours represent. Green is often associated with nature and is often viewed as a calming colour. I decided that I wanted my site to be a grounded experience for the user rather than overly garish or exciteable. From that, and using green as a central colour, I used [Coolors](https://coolors.co/),  to determine a colour palette. 
 
 Initially this palette was chosen:
 ![Colour palette](static/images/readme_images/original_coolors.png)
@@ -176,7 +176,15 @@ After further exploration and development these colours were chosen:
 
 ### Images
 
-The images in the site have been selected to showcase delcious, inviting free-from food. The site consists of a hero image on the Home page, an image displaying examples of food intollerances on the About Page and each recipe image. If the user does not upload an image, an image is provided. Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](https://www.shutterstock.com/).
+The images in the site have been selected to showcase delcious, inviting free-from food. To highlight, for the purposes of the site the images chosen by admin were chosen and recipes matched. It can't be guaranteed that the recipes displayed are actually allergen free recipes. 
+
+The site consists of:
+- A hero image on the Home page
+- An image displaying examples of food intollerances on the About Page
+- Each recipe image. 
+- If the user does not upload an image, an image is provided. 
+
+Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](https://www.shutterstock.com/).
 
 ### Typography
 [Google Fonts](https://fonts.google.com/) was used to choose fonts for the site. Lobster was chosen as the brand logo font, with its flowing, cursive design. Roboto Condensed was chosen for the rest of the site, as it is clear and easy to read. 
