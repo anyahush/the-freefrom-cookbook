@@ -18,17 +18,11 @@
 
 ### HTML Validation
 All HTML pages were tested using [W3C Markup Validation](https://validator.w3.org/). 
-    - URLs were passed through the validator to prevent errors appearing as Jinga Templating was used throughout. 
-    - One error is displayed on all pages. This refers to the section element that holds the flash messages.
+- URLs were passed through the validator to prevent errors appearing as Jinga Templating was used throughout.
+-  For the profile page the URL did not work due to sensitive data. The page source on Google Chrome was used to test the code.
+- One error is displayed on all pages. This refers to the section element that holds the flash messages.
 
 ![Example of HTML Validation](static/images/readme_images/testing/validation/html_validation_final.png)
-
-* Profile Page
-    - One error displayed highlight a <div> element had been used inside a list. This was changed to an <li> element.
-    - Additionally the profile page code was checked by text input, due to sensitive data being stored on the user's profile. This shows errors relating to Jinga templating.
-
-![Example of Profile page validation](static/images/readme_images/testing/validation/html_errors.png)
-![Example of Profile page validation](static/images/readme_images/testing/validation/html_errors-profile.png)
 
 ### CSS Validation
 The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to test the style.css file. No changes were required.
@@ -37,28 +31,13 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to test t
 
 ### JavaScript Validation
 [JSHint Validator]() was used to validate all JavaScript files. 
-- On both files errors displayed due to the version of JavaScript being used. 
-- Unused variables were detected, this is due to jQuery being used to find variables and emailJS, which is an external API.
-- In contact.js, an unused variable was removed and missed semi-colon added.
-
-![JSHint Validation](static/images/readme_images/testing/validation/jshint_errors.png)
-![JSHint Validation Contact page](static/images/readme_images/testing/validation/jshint_errors_contact.png)
-
-### Python Validation
-[PEP8 Online](http://pep8online.com/) validator was used to test the app.py file.
-- Initially it came back with errors relating to trailing whitespace, lines too long and incorrect indentation. This was resolved and the validation came back with no errors.
-
-![PEP8 online validation](static/images/readme_images/testing/validation/pep8_errors.png)
-
-### Final Validation
-Final validation results for those with errors.
-
-- JSHint
 
 ![JSHint final validation](static/images/readme_images/testing/validation/jshint_final.png)
 ![JSHint final validation contact page](static/images/readme_images/testing/validation/jshint_final_contact.png)
 
-- PEP8 online
+
+### Python Validation
+[PEP8 Online](http://pep8online.com/) validator was used to test the app.py file.
 
 ![PEP8 online validation](static/images/readme_images/testing/validation/pep8_final.png)
 
@@ -362,7 +341,27 @@ Throughout development manual testing was carried out, in addition to futher tes
 - Whilst developing, I wanted users to be able to add ingredients to their shopping list on their profile and then to delete selected ones. Initially users were able to select an ingredients(s) but it would delete all ingredients that had been added at the same time. I discovered I had been pushing the original ingredients as an array, rather than individual ingredients. Therefore with nested arrays, I was targeting the wrong object. I added the $each modifier to the $push operator, so that it pushed each ingredient into one array. Now users can remove an ingredient at a time, or select multiple.
 - During development there were issues with Regex patterns that prevented blank messages or inputs being submitted. A correct Regex pattern was added to inputs and a JavaScript function added to prevent a blank message being sent on the contact form. 
 - Through peer code review, additional padding to the email input for the newsletter subscription was suggested. This was added.
-- Through peer code review, it was highlighted that when a user creates a recipe, it takes them back to the recipe library rather than viewing the recipe they just created. This was fixed by changing the return redirect to view_recipe and generating the recipe_id by using inserted_id. 
+- Through peer code review, it was highlighted that when a user creates a recipe, it takes them back to the recipe library rather than viewing the recipe they just created. This was fixed by changing the return redirect to view_recipe and generating the recipe_id by using inserted_id.
+- HTML validation errors:
+    * An error displayed for the profile page saying that a div element had been used inside a list. 
+    * This was changed to an li element.
+
+![Example of Profile page validation](static/images/readme_images/testing/validation/html_errors.png)
+
+- JavaScript validation errors:
+    * On both files errors displayed due to the version of JavaScript being used. 
+    * Unused variables were detected, this is due to jQuery being used to find variables and emailJS, which is an external API.
+    * In contact.js, an unused variable was removed and missed semi-colon added.
+
+![JSHint Validation](static/images/readme_images/testing/validation/jshint_errors.png)
+![JSHint Validation Contact page](static/images/readme_images/testing/validation/jshint_errors_contact.png)
+
+- Python validation errors:
+    * Initially it came back with errors relating to trailing whitespace, lines too long and incorrect indentation. 
+    * This was resolved and the validation came back with no errors.
+
+![PEP8 online validation](static/images/readme_images/testing/validation/pep8_errors.png)
+
 
 ### Existing
 - Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked
