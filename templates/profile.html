@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -8,10 +9,12 @@
         </div>
     </div>
     <div class="row">
+        <!-- Introduction -->
         <div class="col s12 m4 offset-m1 center-align">
             <h3 id="profile-intro">Welcome {{ name }}</h3>
             <p>Check out your saved ingredients, favourites recipes and recipes you have created. <br>
             Happy cooking!</p>
+            <!-- User action buttons -->
             <div>
                 <a href="{{ url_for('create_recipe') }}" class="waves-effect btn profile-btns">Create Recipe</a>
             </div>
@@ -21,8 +24,8 @@
             <div>
                 <button data-target="delete-user-modal" type="submit" class="waves-effect btn delete-btns modal-trigger profile-btns">Delete Account</button>
             </div>
-            
         </div>
+        <!-- User shopping list -->
         <div class="col s12 m6">
             <div class="col s12">
                 <h3 class="center-align">Shopping List</h3>
@@ -46,7 +49,6 @@
                                     <span class="select-all">Select all</span>
                                 </label>
                             </li>
-                                
                             {% endif %}
                         </ul>
                         {% if shopping_list|length > 1 %}
@@ -56,7 +58,6 @@
                         {% endif %}
                     </form>
             </div>
-
         </div>
     </div>
     <div class="row">
@@ -64,6 +65,7 @@
             <h3 class="center-align">Recipes</h3>
             <hr>
         </div>
+        <!-- User created recipes -->
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a href="#uploaded" >Created <i class="fa-solid fa-circle-plus"></i></a></li>
@@ -115,6 +117,7 @@
             </div>
             {% endif %}
         </div>
+        <!-- User favourite recipes -->
         <div id="favourites" class="col s12">
             {% if favourites|length > 0 %}
                 <div class="row">
@@ -145,7 +148,6 @@
                         </div>
                     </div>
                     {% endfor %}
-
                 </div>
                 {% else %}
                 <div>
@@ -158,7 +160,7 @@
         </div>
     </div>
     <div class="row">
-        <!-- Delete account confirmation modal from Materialize -->
+        <!-- Delete account confirmation modal used from Materialize -->
         <div class="modal" id="delete-user-modal">
             <div class="modal-content">
                 <h5 id="response-header" class="center-align"><i class="fa-solid fa-circle-exclamation"></i>Are you sure you want to leave us?</h5>
@@ -170,7 +172,5 @@
         </div>
 </div>
 </div>
-
-
 
 {% endblock %}

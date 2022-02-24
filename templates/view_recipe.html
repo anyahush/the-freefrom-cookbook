@@ -16,6 +16,7 @@
                 <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients" class="recipe_img">
             {% endif %}
         </div>
+        <!-- Display recipe information -->
         <div class="col s12 m4 content-container recipe-view">
             <h3>{{ recipe.recipe_description }}</h3>
             <div class="content-container">
@@ -51,9 +52,7 @@
                     {% endif %}
                 {% endif %}
             </div>
-
         </div>
-
     </div>
 
     <div class="row">
@@ -63,7 +62,7 @@
                 <h5>Ingredients</h5>
                 <ul id="shopping_list">
                     <!-- Logged in users can add ingredients and save to profile -->
-                    <!-- Checkbox capture used from Pretty Pinted, in README -->
+                    <!-- Checkbox capture used from Pretty Pinted, full details in README -->
                     {% for ingredient in recipe.ingredients %}
                     <li class="collection-item">
                         <label>
@@ -103,6 +102,7 @@
             {% if session.user %}
             <h5 class="center-align">Leave a comment</h5>
             <form method="POST" action="{{ url_for('create_comment', recipe_id=recipe._id) }}">
+                <!-- Radio button rating -->
                 <div class="col s12 rating-btns">
                     <p>
                         <label>
@@ -139,6 +139,7 @@
                     <input type="text" id="user_comment" name="user_comment" placeholder="Comment here" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{2,30}$" class="validate" required>
                     <label for="user_comment" class="sr-only">Comment here</label>
                 </div>
+                <!-- Submit button -->
                 <div class="col s12 center-align">
                     <button type="submit" class="btn">Submit <i class="fa-solid fa-caret-right"></i></button>
                 </div>
@@ -194,5 +195,5 @@
             </div>
         </div>
 </div>
-</div>
+
 {% endblock %}
