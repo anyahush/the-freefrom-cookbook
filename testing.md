@@ -181,8 +181,36 @@ Final validation results for those with errors.
     * Admin user is able to delete any recipe by any user. The 'Delete' button is displayed to Admin on all individual recipe pages.
 
 ## Responsiveness
+The site was tested using [Mobile Compatitbility Tester - Google Mobile Friednly Test](https://search.google.com/test/mobile-friendly) and [Google Chrome Developer Tools](). 
+
+The Mobile Compatibility tester returned good results for all pages that could be tested. Pages protecting user logins could not be tested using this site. Responsiveness testing was carried out using Chrome Dev tools. Additionally real world testing was carried out on my iphone13, macBook Pro and additional Lenovo PC screen. Below are the results from Chrome Dev tool testing.
+
+![Site responsiveness table](static/images/readme_images/testing/responsiveness_table.png)
+
+Whilst testing for responsiveness a bug was found.
+    - On screen sizes of 1024px, the recipe cards on the recipes library were coming off the card panel and a vertical scroll was appearing. A media query has been added to prevent this and to display all information to the user without a scrollbar.
+
+After fixing this error, The FreeFrom CookBook has no responsive design errors.
 
 ## Browser Compatibility
+[Lambdatest](https://accounts.lambdatest.com/dashboard) was used to test browser compatability for the site. 
+
+The following browsers were tested:
+    * Chrome 91 (Windows 10)- good
+    * Firefox 89 (Windows 10)- good
+    * Edge 91 (Windows 10)- good
+    * Opera 74 (Windows 10)- good
+    * Safari 12 (macOS Mojave)- good
+    * IE 11 (Windows 8.1)- issues
+
+Additionally the site was developed using Google Chrome 98 on macOS Monterey and crosschecked with Safari 15.
+
+All browswers, except IE, returned good results and displayed the site well.
+
+There were compatability issues with IE:
+    * Rendering some of the images
+    * Displaying Materialize components such as the footer
+    * Keeping the responsive layout of the site.
 
 ## Performance
 
@@ -268,7 +296,7 @@ Below are the Lighthouse results.
 ![Login Page](static/images/readme_images/testing/login_performance_mobile.png)
 
     * Desktop 
-    
+
 ![Login Page](static/images/readme_images/testing/login_performance.png)
 
 
