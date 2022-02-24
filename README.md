@@ -71,6 +71,7 @@ As admin:
     - Responsive design allowing users to use site across all devices
 2. Recipes
     - Recipes can be created, read, updated and deleted (CRUD) by the users.
+    - On the create recipe form, the pre-populated allergen dropdown prompts users to select one or more allergens. The purporse of this is to ensure that users check what allergens their recipe is free from before uploading.
     - Users of the site, either logged in or not, can search the recipes either by text input and/or filtering what allergens they want the recipe to be free from.
     - Logged in users can favourite recipes and save them to their profile.
     - Logged in users can save ingredients from recipe pages to their "shopping list" on their profile.
@@ -91,8 +92,9 @@ As admin:
 
 ### **Features Left to Implement**
 - A section on users home page of recipe suggestions based on type of recipes saved and created in their profile.
-- Users to have ability to edit account, including changing password.
+- Users, including admin, to have ability to edit account, including changing password.
 - Recipes to display a rating on recipe card based on the average ratings given.
+- Users, including admin, to be able to delete or edit comments.
 
 ## Structure Plane
 This structure of the site has been developed to enable users to access and use the site with ease.
@@ -135,6 +137,9 @@ This structure of the site has been developed to enable users to access and use 
 - [User Profile Shopping List Page](static/images/readme_images/wireframes/user_profile_shopping.png)
 
 ### Changes to Wireframes
+There were only a couple of changes to the wireframes during development
+- Instead of a table to display the allergens on the About Page, I decided to use a Materialize collapsible. This allows user to expand information as and when they require. It also minimises the amount of text being displayed at once, which can sometimes be overwhelming to a user.
+- On the profile page, initially I was going to have a profile page with three sections(Favourits, Shopping List and My Recipes), which took the user to three different pages. I decided early on in development that this wasn't needed. I want the user to have a good experience and easily access all information. Additionally I didn't feel there would be enough content to fill 3 additional pages. It has been developed that the user has one profile page with all information, clearly laid out in sections.
 
 ## Surface Plane
 
