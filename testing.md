@@ -378,6 +378,10 @@ Throughout development manual testing was carried out, in addition to futher tes
 
 ![PEP8 online validation](static/images/readme_images/testing/validation/pep8_errors.png)
 
+- Performance
+    * Whilst testing performance I discovered that the hero image and image on the About page were causing performance issues due to their size. I subsequently used [Cloud Converter](https://cloudconvert.com/) to compress the images.
+    * This has improved the performance of both pages on mobile and desktop.
+    * Additionally, alt attributes were missed on some images and the order of header elements needed attention. These were fixed during testing.
 
 ### Existing
 - Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked
