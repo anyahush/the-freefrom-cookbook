@@ -186,38 +186,91 @@ Final validation results for those with errors.
 
 ## Performance
 
-[Google Chrome Lighthouse]() was used to test performance of all pages.
+[Google Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse) was used to test performance of all pages. Initially across the site alt attributes and amendment to header orders were added to improve Lighthouse performance scores. 
 
-- Home page
+Overall the site performs well on desktop. For mobile devices the site performs well but has scored lower on performance, primarily due to large media content. Currently the site performs well but in the future may have issues if the database grows, which could affect app performance. Further development coudl include limits on image sizes on the URL and compressing the images on the server.
+
+Below are the Lighthouse results.
+
+- Home page 
+    * Mobile
+
+![Home Page](static/images/readme_images/testing/home_page_performance_mobile.png)
+
+    * Desktop
 
 ![Home Page](static/images/readme_images/testing/home_page_performance.png)
 
 - About Page
 
+    * Mobile
+
+![About Page](static/images/readme_images/testing/about_performance_mobile.png)
+
+    * Desktop 
+
 ![About Page](static/images/readme_images/testing/about_page_performance.png)
 
-- Recipes Library
+- Recipes Library 
+
+    * Mobile
+
+![Recipes Library](static/images/readme_images/testing/recipe_library_mobile.png)
+
+    * Desktop
 
 ![Recipes Library](static/images/readme_images/testing/recipe_library_performance.png)
 
 - Individual Recipe Page
 
+    * Mobile
+
+![Indvidual Recipe Page](static/images/readme_images/testing/recipe_page_performance_mobile.png)
+
+    * Desktop
+
 ![Indvidual Recipe Page](static/images/readme_images/testing/recipe_page_performance.png)
 
-- Profile Page
+- Profile Page 
+
+    * Mobile
+
+![Profile Page](static/images/readme_images/testing/profile_perfomance_mobile.png)
+
+    * Desktop
 
 ![Profile Page](static/images/readme_images/testing/profile_perfomance.png)
 
-- Contact Page
+- Contact Page 
+
+    * Mobile
+
+![Contact Page](static/images/readme_images/testing/contact_performance_mobile.png)
+
+    * Desktop
 
 ![Contact Page](static/images/readme_images/testing/contact_page_performance.png)
 
-- Register Page
+- Register Page 
+
+    * Mobile 
+
+![Register Page](static/images/readme_images/testing/register_performance_mobile.png)
+
+    * Desktop
 
 ![Register Page](static/images/readme_images/testing/register_performance.png)
 
 - Login Page
 
+    * Mobile
+
+![Login Page](static/images/readme_images/testing/login_performance_mobile.png)
+
+    * Desktop 
+    
 ![Login Page](static/images/readme_images/testing/login_performance.png)
+
+
 
 ## Bugs
