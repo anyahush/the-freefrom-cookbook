@@ -43,6 +43,10 @@ h1 {
     color: #31625c;
 }
 
+.flashes h5 {
+    color: #FA545A;
+}
+
 #home-title {
     color: #5f4019;
     text-transform: uppercase;
@@ -351,6 +355,9 @@ textarea:focus {
     h1 {
         font-size: 80%;
         text-align: center;
+    }
+    .flashes h5 {
+        font-size: 100%;
     }
     h2 {
         font-size: 150%;
