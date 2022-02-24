@@ -221,6 +221,14 @@ Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](
 ### Validating and Testing
 - [Am I Responsive?](http://ami.responsivedesign.is/) used for creating mock ups.
 - [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) was used throughout development to troubleshoot and whilst testing.
+- [Lighthouse Performance Testing](https://developers.google.com/web/tools/lighthouse) used to check performance of site.
+- [W3C HTML Validator](https://validator.w3.org/) used to validate HTML code.
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS code.
+- [JSHint](https://jshint.com/) used to validate JavaScript files.
+- [PEP8 online validator](http://pep8online.com/) used to validate Python code.
+- [Mobile Friendly Test Google](https://search.google.com/test/mobile-friendly) used to check mobile responsiveness.
+- [Lambdatest](https://accounts.lambdatest.com/dashboard) used to check browser compatibility.
+
 
 
 ## Testing
