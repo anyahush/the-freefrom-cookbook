@@ -317,22 +317,22 @@ A Heroku account will be required for this.
 
 ### Content
 Recipes added by the developer/ admin are a mixture of their own recipes, modified and used from various sites, as shown below:
-- (BBC Good Food)[https://www.bbcgoodfood.com/]
-- (Two Peas and their Pod)[https://www.twopeasandtheirpod.com/]
-- (Tesco)[https://realfood.tesco.com/]
+- [BBC Good Food](https://www.bbcgoodfood.com/)
+- [Two Peas and Their Pod](https://www.twopeasandtheirpod.com/)
+- [Tesco](https://realfood.tesco.com/)
 
 Content about allergens from:
-- (Foods Standards Agency)[https://www.food.gov.uk/sites/default/files/media/document/top-allergy-types.pdf]
-- (Allergy UK)[https://www.allergyuk.org/types-of-allergies/food-allergy/]
+- [Foods Standards Agency](https://www.food.gov.uk/sites/default/files/media/document/top-allergy-types.pdf)
+- [Allergy UK](https://www.allergyuk.org/types-of-allergies/food-allergy/)
 
 
 ### Media
 
 #### Images
-- Image on About page from (Shutterstock)[https://www.shutterstock.com/image-photo/balanced-diet-cooking-culinary-food-concept-300553067]
-- Recipe images used to start the database used from (Pexels)[https://www.pexels.com/]
-- Image used when user does not upload an image used from (Pexels)[https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/]
-- Hero image used from (Pexels)[https://www.pexels.com/photo/red-and-white-round-fruits-on-brown-wooden-bowl-4099237/]
+- Image on About page from [Shutterstock](https://www.shutterstock.com/image-photo/balanced-diet-cooking-culinary-food-concept-300553067)
+- Recipe images used to start the database used from [Pexels](https://www.pexels.com/)
+- Image used when user does not upload an image used from [Pexels](https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/)
+- Hero image used from [Pexels](https://www.pexels.com/photo/red-and-white-round-fruits-on-brown-wooden-bowl-4099237/)
 
 
 ## Acknowledgements
