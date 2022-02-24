@@ -169,6 +169,14 @@ hr {
     overflow-y: auto;
 }
 
+.card .card-content h4 {
+    font-size: 120%;
+}
+
+.card .card-content h5 {
+    text-transform: none;
+}
+
 .card .card-content p {
     margin: 8px 0;
     font-size: 90%;
