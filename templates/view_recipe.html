@@ -10,10 +10,10 @@
         <div class="col s12 m8 content-container">
              <!--If recipe has an image then displayed-->
             {% if recipe.image_url %}
-                <img class="recipe_img" src="{{ recipe.image_url }}" alt="Image of recipe">
+                <img class="recipe-img" src="{{ recipe.image_url }}" alt="Image of recipe">
             <!-- If recipe doesn't have an image use alternative -->
             {% else %}
-                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients" class="recipe_img">
+                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of ingredients" class="recipe-img">
             {% endif %}
         </div>
         <!-- Display recipe information -->
