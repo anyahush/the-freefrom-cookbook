@@ -148,6 +148,9 @@ def search():
     elif allergen_query:
         recipe_results = list(mongo.db.recipes.find(
             {"allergen_list": {"$all": allergen_query}}))
+    else:
+        flash("Please select an allergen or type to search")
+        return redirect(url_for("get_recipes"))
 
     # paginate the results - need to handle a no results case
     if recipe_results:
