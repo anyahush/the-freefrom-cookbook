@@ -337,3 +337,8 @@ Content about allergens from:
 
 
 ## Acknowledgements
+* Code Institute and the Task Manager Project. This supported me a lot during initial stages of development.
+* My mentor Precious Ijege for his time, support and feedback.
+* The Code Institute tutor team, for all their support and feedback.
+* My mini feb 2021 team on Slack for all their help, support and feedback.
+* The Slack community.
