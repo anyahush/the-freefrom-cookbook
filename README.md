@@ -114,7 +114,7 @@ As admin:
 - Admin to be able to edit or delete any users account and comments on recipes.
 
 ## Structure Plane
-This structure of the site has been developed to enable users to access and use the site with ease.
+The structure of the site has been developed to enable users to access and use the site with ease.
 - Home Page- accessible by all users, whether logged in or not. 
 - Navbar- accessible to all users. The navbar changes to a sidenav on tablet screens and smaller for responsiveness. The options available in the navbar change depending on whether a user is logged in or not.
     * For logged in users:  
@@ -124,12 +124,12 @@ This structure of the site has been developed to enable users to access and use 
 - About Page and Contact Page- accessible to all users, whether logged in or not.
 - Recipes library- accessible to all users, whether logged in or not. 
 - On recipe card in the recipes library and on individual recipe pages an 'Add to favourites' button is available to logged in users. This allows logged in users, that did not create the recipe, to save recipes to their profile.
-- View Recipe Page- Each recipe can be viewed in full and accessible to all users, whether logged in or not. This page has edit, delete and 'Add to favourites' buttons, 'Save to Shopping List' and comment section.
+- View Recipe Page- Each recipe can be viewed in full and is accessible to all users, whether logged in or not. This page has edit, delete and 'Add to favourites' buttons, 'Save to Shopping List' and a comments section.
 - The edit button on the View Recipe Page, is available to admin or the user that created the recipe. This allows the user or admin to edit any part of the recipe and save it.
 - The delete button on the View Recipe Page, is available to admin or the user that created the recipe. This allows the user or admin to delete the recipe from the database.
 - The 'Save to Shopping List' button allows all logged in users to select ingredients in a recipe and save to a shopping list on their profile.
 - Profile Page- this has the users name displayed in the welcome message. On the users profile there are buttons to create a recipe, find recipes in the library and delete account, as well as their shopping list, recipes the user has created and recipes they have saved to their favourites.
-- Error Pages have been created incase a user tries to access a page that isn't available to them, doesn't exist or there is an issue. 
+- Error Pages have been created incase a user tries to access a page that doesn't exist or there is an issue. 
 ![404 Error Page Example](static/images/readme_images/error_page_example.png) 
 - Database schema design was created using [dbdiagram](https://dbdiagram.io/home), see below.
 
@@ -154,9 +154,9 @@ This structure of the site has been developed to enable users to access and use 
 - [User Profile Shopping List Page](static/images/readme_images/wireframes/user_profile_shopping.png)
 
 ### Changes to Wireframes
-There were only a couple of changes to the wireframes during development
+There were only a couple of changes to the wireframes during development:
 - Instead of a table to display the allergens on the About Page, I decided to use a Materialize collapsible. This allows user to expand information as and when they require. It also minimises the amount of text being displayed at once, which can sometimes be overwhelming to a user.
-- On the profile page, initially I was going to have a profile page with three sections(Favourits, Shopping List and My Recipes), which took the user to three different pages. I decided early on in development that this wasn't needed. I want the user to have a good experience and easily access all information. Additionally I didn't feel there would be enough content to fill 3 additional pages. It has been developed that the user has one profile page with all information, clearly laid out in sections.
+- On the profile page, initially I was going to have a profile page with three sections(Favourites, Shopping List and My Recipes), which took the user to three different pages. I decided early on in development that this wasn't needed. I want the user to have a good experience and easily access all information. Additionally I didn't feel there would be enough content to fill 3 additional pages. It has been developed that the user has one profile page with all information displayed, clearly laid out in sections.
 
 ## Surface Plane
 
