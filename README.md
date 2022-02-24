@@ -217,6 +217,7 @@ Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](
 - [Balsamiq](https://balsamiq.com/) was used to create wireframes.
 - [Coolors](https://coolors.co/) was used to help form a colour palette for the website.
 - [Favicon](https://favicon.io/) was used to create a favicon for the site.
+- [Cloud Converter](https://cloudconvert.com/) was used to compress hero image and About page image.
 
 ### Validating and Testing
 - [Am I Responsive?](http://ami.responsivedesign.is/) used for creating mock ups.
