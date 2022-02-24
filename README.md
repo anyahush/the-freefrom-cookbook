@@ -286,6 +286,7 @@ A MongoDB account will be required for this.
 ![](static/images/readme_images/procfile_commands.png)
 
 - These are both required by Heroku. Commit and push your repository.
+- If working in a local copy, open terminal window in IDE and type python3 app.py and run the app.
 
 ### Heroku and Deployment
 A Heroku account will be required for this.
