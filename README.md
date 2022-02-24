@@ -2,7 +2,7 @@
 
 ![Mock ups](static/images/readme_images/mock_ups.png)
 
-The FreeFrom CookBook is an online recipe book specifically catering for those with food allergies and intollerances. Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances. Food allergies can be isolating and stressful, so I wanted to create something with a community-feel and help make free-from cooking easier.
+The FreeFrom CookBook is an online recipe book specifically catering for those with food allergies and intollerances. Last year I was diagnosed with a severe gluten-intollerance. Understanding free-from cooking, scrutinising labels and educating friends and family has quickly become part of my everyday life. I wanted to create a site where people could explore, create and share allergen free recipes in one place and help educate and promote the importance of understanding food allergies and intollerances amongst everyone. Food allergies can be isolating and stressful, so I wanted to create something with a community-feel and help make free-from cooking more easily accessible.
 
 The FreeFrom CookBook has been developed for my Backend Development Milestone 3 Project, as part of my Full Stack Software Development Diploma with Code Insitute. 
 
@@ -83,15 +83,15 @@ As admin:
 ### **Existing Features**
 1. Design
     - Simple, clean design and layout with consistency throughout.
-    - Easy navigation by using navigation bar
-    - Responsive design allowing users to use site across all devices
+    - Easy navigation by using navigation bar. Nav links are clearly idenfied both on desktop and when sidenav is expanded on smaller devices.
+    - Responsive design allowing users to use site across all devices.
 2. Recipes
     - Recipes can be created, read, updated and deleted (CRUD) by the users.
     - On the create recipe form, the pre-populated allergen dropdown prompts users to select one or more allergens. The purporse of this is to ensure that users check what allergens their recipe is free from before uploading.
     - Users of the site, either logged in or not, can search the recipes either by text input and/or filtering what allergens they want the recipe to be free from.
     - Logged in users can favourite recipes and save them to their profile.
     - Logged in users can save ingredients from recipe pages to their "shopping list" on their profile.
-    - Logged in users have access to their profile, where they can view favourite recipes, recipes they uploaded and saved ingredients to their shopping list.
+    - Logged in users have access to their profile, where they can view favourite recipes, recipes they uploaded and saved ingredients in their shopping list.
     - Recipe information includes servings, prep and cook times, what allergens it is free from, category, ingredients and the method.
     - Flash messages will appear when users create, edit, delete and favourite recipes and when their shopping list has been updated.
 3. Register, Login and Logout
@@ -102,15 +102,16 @@ As admin:
 4. Contact and Newsletter
     - Users can contact the site owner through a contact form
     - Contact form powered by emailJS
-    - On successfull delivery of a contact message, a modal will display informing the user it has been successful.
+    - On successfull delivery of a contact message, a modal will display informing the user it has been successful with a personalised message.
     - Users can sign up to a newsletter subscription
     - A flash message will display informing user either if subscription has been successful or if the email address already exists in database.
 
 ### **Features Left to Implement**
 - A section on users home page of recipe suggestions based on type of recipes saved and created in their profile.
-- Users, including admin, to have ability to edit account, including changing password.
 - Recipes to display a rating on recipe card based on the average ratings given.
-- Users, including admin, to be able to delete or edit comments.
+- Users to have ability to edit account, including changing password.
+- Users to be able to delete or edit their own comments.
+- Admin to be able to edit or delete any users account and comments on recipes.
 
 ## Structure Plane
 This structure of the site has been developed to enable users to access and use the site with ease.
