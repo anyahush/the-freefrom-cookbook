@@ -315,6 +315,7 @@ A Heroku account will be required for this.
 - [Stack Overflow](https://stackoverflow.com/questions/386281/how-to-implement-select-all-check-box-in-html) for help to create select all functionality on checkbox lists for both create and remove shopping list items.
 - [Stack Overflow](https://stackoverflow.com/questions/43076209/changing-materialize-css-navbar-active-color) used to help remove the background colour in Materialize active class on the navbar.
 - Modified code from [Stack Overflow](https://stackoverflow.com/questions/12635489/how-to-validate-a-textarea-using-javascript) for validating textarea in contact form.
+- Modified code from [All PHP Tricks](https://www.allphptricks.com/submit-form-atleast-one-checkbox-checked/) for ensuring one checkbox is selected in ingredients and shopping list if form submitted and it is empty. Alert pops up to user to prompt selection.
 
 
 ### Content
