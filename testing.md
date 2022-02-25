@@ -385,6 +385,7 @@ Throughout development manual testing was carried out, in addition to futher tes
     * Whilst testing performance I discovered that the hero image and image on the About page were causing performance issues due to their size. I subsequently used [Cloud Converter](https://cloudconvert.com/) to compress the images.
     * This has improved the performance of both pages on mobile and desktop.
     * Additionally, alt attributes were missed on some images and the order of header elements needed attention. These were fixed during testing.
+- During final testing, I discovered there was a horizontal scroll on my individual recipe page. I use Google Chrome, so cross checked the site on multiple screen sizes and Safari. I used [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB), in additional to Chrome Developer Tools and couldn't find what was causing this. A peer also cross checked it on desktop, tablet and mobile screen sizes and the horizontal scroll was not there. I checked again and it has gone. I think it may have been an error in my browser. Currently as it is there is no horizontal scroll on the site.
 
 
 ### Existing
