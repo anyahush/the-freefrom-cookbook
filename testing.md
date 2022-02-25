@@ -386,7 +386,10 @@ Throughout development manual testing was carried out, in addition to futher tes
     * This has improved the performance of both pages on mobile and desktop.
     * Additionally, alt attributes were missed on some images and the order of header elements needed attention. These were fixed during testing.
 - During final testing, I discovered there was a horizontal scroll on my individual recipe page. I use Google Chrome, so cross checked the site on multiple screen sizes and Safari. I used [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB), in additional to Chrome Developer Tools and couldn't find what was causing this. A peer also cross checked it on desktop, tablet and mobile screen sizes and the horizontal scroll was not there. I checked again and it has gone. I think it may have been an error in my browser. Currently as it is there is no horizontal scroll on the site.
+- Just prior to submission, an error was displayed in the console as the deployed site could not find the favicon files. There had been no issues with this up until now. In order to remove concole errors, the favicon was removed. I had designed the favicon myself, using [Favicon](https://favicon.io/). I intend to add this in future development and explore why an error was now being displayed.
+
+![Favicon image](static/images/readme_images/testing/favicon_bug.png)
 
 
 ### Existing
-- Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked
+- Once users have searched once, in order to access allergen drop down list the reset button needs to be clicked. In future development, I intend to explore how to ensure that the drop down automatically refreshes without the user having to do so.
