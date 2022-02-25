@@ -106,6 +106,18 @@ As admin:
     - Users can sign up to a newsletter subscription
     - A flash message will display informing user either if subscription has been successful or if the email address already exists in database.
 
+### Defensive Programming
+
+To protect the site and defend against any "brute force", I added some defensive programming:
+* Created Python functions that:
+    - Check if a user is logged in. This checks if the session user is active, if so allows the user to perform the action. If not will redirect user to the appropriate page with flash message.
+    - Check if it is correct user (has the permission). For example with edit recipe, this checks if the session user is equal to the created_by field in the recipe. If so, it allows the user to edit the recipe. If the check fails, it redirects the user with appropriate flash message.
+    - Check if user is superuser (is admin). An admin function in the app.py defines the admin_user by checking whether the user is admin or not in the admin field in the user collection. The admin function is then used in functions such as edit and delete recipes, to allow the admin user these powers. If the check fails, the user is redirected and a flash message displayed.
+* Use Jinga templating to display certain buttons:
+    - Certain action buttons are only displayed to certain users, for example 'Add to favourites' is only displayed to users that are logged in and didn't create the recipe. Use of Jinga for loops and if conditions to display if users are authorised to do so. 
+
+
+
 ### **Future Features**
 - A section on users home page of recipe suggestions based on type of recipes saved and created in their profile.
 - Recipes to display a rating on recipe card based on the average ratings given.
@@ -134,6 +146,7 @@ The structure of the site has been developed to enable users to access and use t
 - Database schema design was created using [dbdiagram](https://dbdiagram.io/home), see below.
 
 ![Database Schema Diagram](static/images/readme_images/database_schema.png)
+
 
 ## Skeleton Plane
 
