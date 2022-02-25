@@ -229,6 +229,7 @@ Images have been used from [Pexels](https://www.pexels.com/) and [Shutterstock](
 - [PEP8 online validator](http://pep8online.com/) used to validate Python code.
 - [Mobile Friendly Test Google](https://search.google.com/test/mobile-friendly) used to check mobile responsiveness.
 - [Lambdatest](https://accounts.lambdatest.com/dashboard) used to check browser compatibility.
+- [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) used to check layout and element alignment.
 
 
 ## Testing
