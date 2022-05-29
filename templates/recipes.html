@@ -17,23 +17,25 @@
                 <!-- Collapsible with additional checkboxes to filter search -->
                 <ul class="collapsible col s12">
                     <li>
-                      <div class="collapsible-header"><h3>Filter your allergens </h3></div>
-                      <div class="collapsible-body">
-                        <div class="col s12">
-                            <ul>
-                                <li>
+                        <div class="collapsible-header">
+                            <h3>Filter your allergens </h3>
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="col s12">
+                                <ul>
+                                    <li>
                                     {% for allergen in allergens %}
                                             <label class="align-allergens">
-                                                <input type="checkbox" class="filled-in" name="allergen-query" id="allergen-query" value="{{ allergen.allergen_name }}">
+                                                <input type="checkbox" class="filled-in" name="allergen-query" value="{{ allergen.allergen_name }}">
                                                 <span>{{ allergen.allergen_name }}</span>
-                                            </label for="allergen-query">
+                                            </label>
                                     {% endfor %}
                                 </li>
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
-                      </div>
                     </li>
-                  </ul>
+                </ul>
                 <div class="col s12">
                     <a href="{{ url_for('get_recipes') }}" class="waves-effect waves-light btn">Reset</a>
                     <button type="submit" class="waves-effect waves-light btn">
@@ -49,26 +51,29 @@
     <div class="row">
         {% for recipe in recipes %}
         <div class="col s12 m6 l4">
-            {% if loop.index / 4 %}
             <div class="card">
                 <div class="card-image">
-                    
-                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" aria-label="Click here to view full recipe">
+
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
+                        aria-label="Click here to view full recipe">
                         <!--If recipe has an image then displayed-->
                         {% if recipe.image_url %}
-                            <img src="{{ recipe.image_url }}" alt="Image of recipe">
+                        <img src="{{ recipe.image_url }}" alt="Image of recipe">
                         <!-- If recipe doesn't have an image use alternative -->
                         {% else %}
-                            <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
+                        <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
                         {% endif %}
                     </a>
-                        {% if session.user %}
-                        {% if session.user != recipe.created_by %}
-                            {% if recipe  not in favourites %}
-                                <a href="{{ url_for('favourite_recipe_multi', recipe_id=recipe._id) }}" class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top" data-tooltip="Add to favourites" aria-label="Add recipe to favourites"><i class="fa-solid fa-heart"></i></a>
-                            {% endif %}
-                        {% endif %}
-                        {% endif %}
+                    {% if session.user %}
+                    {% if session.user != recipe.created_by %}
+                    {% if recipe  not in favourites %}
+                    <a href="{{ url_for('favourite_recipe_multi', recipe_id=recipe._id) }}"
+                        class="btn-small pink accent-2 favourite-btns tooltipped" data-position="top"
+                        data-tooltip="Add to favourites" aria-label="Add recipe to favourites"><i
+                            class="fa-solid fa-heart"></i></a>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
                 </div>
                 <div class="card-content">
                     <div class="col s12">
@@ -77,26 +82,26 @@
                         <p>{{ recipe.recipe_description }}</p>
                     </div>
                     <div class="col s12">
-                            <p>
-                                <i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins
-                             </p>
-                            <p>
-                                <i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}
-                            </p>
+                        <p>
+                            <i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins
+                        </p>
+                        <p>
+                            <i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}
+                        </p>
                         <h5><strong>Created By:</strong> {{ recipe.created_by }}</h5>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            {% endif %}
         {% endfor %}
-        </div>
     </div>
+ 
+
     <div class="row center-align">
         {{ pagination.links }}
     </div>
     {% endif %}
 </div>
+
 
 {% endblock %}
