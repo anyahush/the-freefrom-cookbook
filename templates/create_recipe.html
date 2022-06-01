@@ -6,104 +6,113 @@
     <!-- Recipe form -->
     <div class="row">
         <form class="col s12 l8 offset-l2" action="{{ url_for('create_recipe')}}" method="POST">
-        <div class="card-panel">
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="recipe_title" name="recipe_title" type="text" class="validate" pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{5,25}$" title="5-25 characters" required>
-                <label for="recipe_title">Recipe Title</label>
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="recipe_title" name="recipe_title" type="text" class="validate"
+                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{5,25}$" title="5-25 characters" required>
+                        <label for="recipe_title">Recipe Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="image_url" name="image_url" type="text" placeholder="Optional" class="validate">
+                        <label for="image_url">Upload image url</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="servings" name="servings" type="number" min="1" max="20"
+                            title="Servings 1-20 using numeric values" class="validate" required>
+                        <label for="servings">Servings</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="category_name" name="category_name" class="validate" required>
+                            <option value="" disabled selected>Select One</option>
+                            {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="category_name">Category</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select multiple id="allergen_list" name="allergen_list" class="validate" required>
+                            <option value="" disabled>Select One or More</option>
+                            {% for allergen in allergens %}
+                            <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">
+                                {{ allergen.allergen_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="allergen_list">Free From</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="prep_time" name="prep_time" type="text" minlength="1" maxlength="5"
+                            title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"
+                            required>
+                        <label for="prep_time">Prep Time (mins)</label>
+                        <p>Time in minutes</p>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5"
+                            title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"
+                            required>
+                        <label for="cook_time">Cook Time (mins)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="recipe_description" name="recipe_description" type="text"
+                            title="Description between 10 and 100 characters"
+                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{10,100}$" class="validate" required>
+                        <label for="recipe_description">Description</label>
+                        <p>Between 10 and 100 characters</p>
+                    </div>
+                </div>
+                <!--Modified from Wanderlust Recipes full details in README -->
+                <div class="row">
+                    <div class="col s12">
+                        <h6>Ingredients</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="ingredients" class="collection">
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-ingredient-list-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Quantity and Ingredient</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <h6>Method</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="method_step" class="collection validate">
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-method-step-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Method Step</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s8">
-                <input id="image_url" name="image_url" type="text" placeholder="Optional" class="validate">
-                <label for="image_url">Upload image url</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="servings" name="servings" type="number" min="1" max="20" title="Servings 1-20 using numeric values" pattern="^[0-9]*$" class="validate" required>
-                <label for="servings">Servings</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Select One</option>
-                    {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="category_name">Category</label>
-            </div>
-            <div class="input-field col s6">
-                <select multiple id="allergen_list" name="allergen_list" class="validate" required>
-                    <option value="" disabled>Select One or More</option>
-                    {% for allergen in allergens %}
-                    <option class="add-allergen-list-item" value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="allergen_list">Free From</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="prep_time" name="prep_time" type="text" minlength="1" maxlength="5" title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$" required>
-                <label for="prep_time">Prep Time (mins)</label>
-                <p>Time in minutes</p>
-            </div>
-            <div class="input-field col s6">
-                <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5" title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"  required>
-                <label for="cook_time">Cook Time (mins)</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="recipe_description" name="recipe_description" type="text" title="Description between 10 and 100 characters"
-                pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{10,100}$" class="validate" required>
-                <label for="recipe_description">Description</label>
-                <p>Between 10 and 100 characters</p>
-            </div>
-        </div>
-        <!--Modified from Wanderlust Recipes full details in README -->
-        <div class="row">
-            <div class="col s12">
-                <h6>Ingredients</h6>
-            </div>
-            <div class="col s12">
-                <ul id="ingredients" class="collection">
-                    <li class="collection-item">
-                        <a class="btn-floating btn-small waves-effect waves-light add-ingredient-list-item">
-                            <i class="fas fa-plus"></i>
-                            <span class="sr-only">Add Quantity and Ingredient</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <h6>Method</h6>
-            </div>
-            <div class="col s12">
-                <ul id="method_step" class="collection validate">
-                    <li class="collection-item">
-                        <a class="btn-floating btn-small waves-effect waves-light add-method-step-item">
-                            <i class="fas fa-plus"></i>
-                            <span class="sr-only">Add Method Step</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--End of Wanderlust code -->
+            <!--End of Wanderlust code -->
 
-        <!-- Action buttons -->
-        <div class="row">
-            <div class="col s12 m6 center-align">
-                <a href="{{ url_for('get_recipes') }}" class="wave-effect btn-large delete-btns">Cancel</a>
+            <!-- Action buttons -->
+            <div class="row">
+                <div class="col s12 m6 center-align">
+                    <a href="{{ url_for('get_recipes') }}" class="wave-effect btn-large delete-btns">Cancel</a>
+                </div>
+                <div class="col s12 m6 center-align">
+                    <button type="submit" class="wave-effect btn-large">Submit</button>
+                </div>
             </div>
-            <div class="col s12 m6 center-align">
-                <button type="submit" class="wave-effect btn-large">Submit</button>
-            </div>
-        </div>
         </form>
     </div>
 </div>
