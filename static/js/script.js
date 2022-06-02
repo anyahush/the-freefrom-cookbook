@@ -128,7 +128,7 @@ Modified from (https://www.allphptricks.com/submit-form-atleast-one-checkbox-che
 */
 $('#checkBtn').click(function() {
    if($('input:checkbox').filter (':checked').length < 1){
-    alert("You haven't selected any ingredients")
+    alert("You haven't selected any ingredients");
     return false;
    }
 });
