@@ -1,17 +1,17 @@
 # Testing
 
 ## Table of Contents
-1. [Code Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#code-validation)
-    * [HTML Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#html-validation)
-    * [CSS Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#css-validation)
-    * [JavaScript Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#javascript-validation)
-    * [Python Validation](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#python-validation)
-2. [User Stories](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#user-stories)
-3. [Responsiveness](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#responsiveness)
-4. [Browser Compatability](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#browser-compatibility)
-5. [Performance](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#performance)
-6. [Manual Testing](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#manual-testing)
-7. [Bugs](https://github.com/anyahush/the-freefrom-cookbook/blob/main/testing.md#bugs)
+1. [Code Validation](#code-validation)
+    * [HTML Validation](#html-validation)
+    * [CSS Validation](#css-validation)
+    * [JavaScript Validation](#javascript-validation)
+    * [Python Validation](#python-validation)
+2. [User Stories](#user-stories)
+3. [Responsiveness](#responsiveness)
+4. [Browser Compatability](#browser-compatibility)
+5. [Performance](#performance)
+6. [Manual Testing](#manual-testing)
+7. [Bugs](#bugs)
 
 
 ## Code Validation
@@ -30,7 +30,7 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to test t
 ![CSS Validation](static/images/readme_images/testing/validation/css_final.png)
 
 ### JavaScript Validation
-[JSHint Validator]() was used to validate all JavaScript files. 
+[JSHint Validator](https://jshint.com/) was used to validate all JavaScript files. 
 
 ![JSHint final validation](static/images/readme_images/testing/validation/jshint_final.png)
 ![JSHint final validation contact page](static/images/readme_images/testing/validation/jshint_final_contact.png)
