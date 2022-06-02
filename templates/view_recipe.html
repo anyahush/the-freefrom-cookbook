@@ -105,34 +105,34 @@
                 <!-- Radio button rating -->
                 <div class="col s12 rating-btns">
                     <p>
-                        <label>
+                        <label for="1">
                           <input class="with-gap" type="radio" id="1" value="1" name="rating" required/>
                           <span>1</span>
-                        </label for="1">
+                        </label>
                       </p>
                       <p>
-                        <label>
+                        <label for="2">
                           <input class="with-gap" type="radio" id="2" value="2" name="rating"/>
                           <span>2</span>
-                        </label for="2">
+                        </label>
                       </p>
                       <p>
-                        <label>
+                        <label for="3">
                           <input class="with-gap" type="radio" id="3" value="3" name="rating"/>
                           <span>3</span>
-                        </label for="3">
+                        </label>
                       </p>
                       <p>
-                        <label>
+                        <label for="4">
                           <input class="with-gap" type="radio" id="4" value="4" name="rating" />
                           <span>4</span>
-                        </label for="4">
+                        </label>
                       </p>
                       <p>
-                        <label>
+                        <label for="5">
                           <input class="with-gap" type="radio" id="5" value="5" name="rating"/>
                           <span>5</span>
-                        </label for="5">
+                        </label>
                       </p>
                 </div>
                 <div class="col s12">
@@ -184,6 +184,7 @@
         {% endfor %}
     </div>
     <div class="row">
+
         <!-- Deletion confirmation modal from Materialize -->
         <div class="modal" id="delete-recipe-modal">
             <div class="modal-content">
@@ -194,6 +195,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 {% endblock %}
