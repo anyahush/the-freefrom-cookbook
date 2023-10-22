@@ -6,7 +6,7 @@ The FreeFrom CookBook is an online recipe book specifically catering for those w
 
 The FreeFrom CookBook has been developed for my Backend Development Milestone 3 Project, as part of my Full Stack Software Development Diploma with Code Insitute. 
 
-Deployed site can be viewed [here](https://the-freefrom-cookbook.herokuapp.com/)
+Deployed site can be viewed [here](https://the-freefrom-cookbook.onrender.com/)
 
 ## Table of Contents
 1. [Project Goals](#project-goals)
